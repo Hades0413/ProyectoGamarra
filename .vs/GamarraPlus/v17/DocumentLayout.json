@@ -1,0 +1,206 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\DSWI\\GamarraPlus\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|c:\\dswi\\gamarraplus\\gamarraplus\\models\\carrito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|solutionrelative:gamarraplus\\models\\carrito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|c:\\dswi\\gamarraplus\\gamarraplus\\models\\detallecompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|solutionrelative:gamarraplus\\models\\detallecompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|c:\\dswi\\gamarraplus\\gamarraplus\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|solutionrelative:gamarraplus\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|c:\\dswi\\gamarraplus\\gamarraplus\\models\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|solutionrelative:gamarraplus\\models\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|c:\\dswi\\gamarraplus\\gamarraplus\\models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|solutionrelative:gamarraplus\\models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|c:\\dswi\\gamarraplus\\gamarraplus\\models\\marca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|solutionrelative:gamarraplus\\models\\marca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|c:\\dswi\\gamarraplus\\gamarraplus\\models\\provincia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|solutionrelative:gamarraplus\\models\\provincia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|c:\\dswi\\gamarraplus\\gamarraplus\\models\\departamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|solutionrelative:gamarraplus\\models\\departamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|c:\\dswi\\gamarraplus\\gamarraplus\\models\\distrito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|solutionrelative:gamarraplus\\models\\distrito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|c:\\dswi\\gamarraplus\\gamarraplus\\models\\compra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{645AB540-50B2-4552-93E1-ACADBC6C364B}|GamarraPlus\\GamarraPlus.csproj|solutionrelative:gamarraplus\\models\\compra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DetalleCompra.cs",
+              "DocumentMoniker": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\DetalleCompra.cs",
+              "RelativeDocumentMoniker": "GamarraPlus\\Models\\DetalleCompra.cs",
+              "ToolTip": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\DetalleCompra.cs",
+              "RelativeToolTip": "GamarraPlus\\Models\\DetalleCompra.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:26:49.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Compra.cs",
+              "DocumentMoniker": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Compra.cs",
+              "RelativeDocumentMoniker": "GamarraPlus\\Models\\Compra.cs",
+              "ToolTip": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Compra.cs",
+              "RelativeToolTip": "GamarraPlus\\Models\\Compra.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:24:33.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Distrito.cs",
+              "DocumentMoniker": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Distrito.cs",
+              "RelativeDocumentMoniker": "GamarraPlus\\Models\\Distrito.cs",
+              "ToolTip": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Distrito.cs",
+              "RelativeToolTip": "GamarraPlus\\Models\\Distrito.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:21:42.646Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Departamento.cs",
+              "DocumentMoniker": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Departamento.cs",
+              "RelativeDocumentMoniker": "GamarraPlus\\Models\\Departamento.cs",
+              "ToolTip": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Departamento.cs",
+              "RelativeToolTip": "GamarraPlus\\Models\\Departamento.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:19:44.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Carrito.cs",
+              "DocumentMoniker": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Carrito.cs",
+              "RelativeDocumentMoniker": "GamarraPlus\\Models\\Carrito.cs",
+              "ToolTip": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Carrito.cs",
+              "RelativeToolTip": "GamarraPlus\\Models\\Carrito.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:17:26.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Provincia.cs",
+              "DocumentMoniker": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Provincia.cs",
+              "RelativeDocumentMoniker": "GamarraPlus\\Models\\Provincia.cs",
+              "ToolTip": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Provincia.cs",
+              "RelativeToolTip": "GamarraPlus\\Models\\Provincia.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:15:18.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Marca.cs",
+              "DocumentMoniker": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Marca.cs",
+              "RelativeDocumentMoniker": "GamarraPlus\\Models\\Marca.cs",
+              "ToolTip": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Marca.cs",
+              "RelativeToolTip": "GamarraPlus\\Models\\Marca.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:13:46.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Producto.cs",
+              "DocumentMoniker": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Producto.cs",
+              "RelativeDocumentMoniker": "GamarraPlus\\Models\\Producto.cs",
+              "ToolTip": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Producto.cs",
+              "RelativeToolTip": "GamarraPlus\\Models\\Producto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:12:52.784Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Categoria.cs",
+              "DocumentMoniker": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Categoria.cs",
+              "RelativeDocumentMoniker": "GamarraPlus\\Models\\Categoria.cs",
+              "ToolTip": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Categoria.cs",
+              "RelativeToolTip": "GamarraPlus\\Models\\Categoria.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:10:44.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "GamarraPlus\\Models\\Usuario.cs",
+              "ToolTip": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\Models\\Usuario.cs",
+              "RelativeToolTip": "GamarraPlus\\Models\\Usuario.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T18:07:57.13Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
