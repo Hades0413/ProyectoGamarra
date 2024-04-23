@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\DSWI\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj": {}
+    "C:\\Users\\migve\\OneDrive\\Escritorio\\Repositorios\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj": {}
   },
   "projects": {
-    "C:\\DSWI\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj": {
+    "C:\\Users\\migve\\OneDrive\\Escritorio\\Repositorios\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj",
+        "projectUniqueName": "C:\\Users\\migve\\OneDrive\\Escritorio\\Repositorios\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj",
         "projectName": "GamarraPlus",
-        "projectPath": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj",
+        "projectPath": "C:\\Users\\migve\\OneDrive\\Escritorio\\Repositorios\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj",
         "packagesPath": "C:\\Users\\migve\\.nuget\\packages\\",
-        "outputPath": "C:\\DSWI\\GamarraPlus\\GamarraPlus\\obj\\",
+        "outputPath": "C:\\Users\\migve\\OneDrive\\Escritorio\\Repositorios\\GamarraPlus\\GamarraPlus\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\migve\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,9 +45,17 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.Data.SqlClient": {
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
-              "version": "[5.2.0, )"
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.6, )"
             }
           },
           "imports": [

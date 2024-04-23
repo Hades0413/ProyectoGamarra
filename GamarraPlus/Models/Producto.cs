@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Text.RegularExpressions;
-
-namespace GamarraPlus.Models
+﻿namespace GamarraPlus.Models
 {
     public class Producto
     {
+   
+
         public int IdProducto { get; set; }
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public Marca oMarca { get; set; }
+        public string Codigo { get; set; }
         public Categoria oCategoria { get; set; }
-        public decimal Precio { get; set; }
+        public string Descripcion { get; set; }
+        public decimal PrecioCompra { get; set; }
+        public decimal PrecioVenta { get; set; }
         public int Stock { get; set; }
-        public string RutaImagen { get; set; }
-        public bool Activo { get; set; }
-        public string base64 { get; set; }
-        public string extension { get; set; }
     }
 }
