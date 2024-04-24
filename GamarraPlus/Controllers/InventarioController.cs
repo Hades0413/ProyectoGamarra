@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using GamarraPlus.Datos;
 using GamarraPlus.Models;
+using Newtonsoft.Json;
 
 namespace GamarraPlus.Controllers
 {
@@ -18,8 +19,48 @@ namespace GamarraPlus.Controllers
 
         public IActionResult Categorias()
         {
-            return View();
+            // Llama al método ListaCategoria y espera su resultado
+            var task = ListaCategoria();
+            task.Wait();
+            var result = task.Result;
+
+            // Devuelve el resultado obtenido
+            return result;
         }
+
+
+
+
+        public async Task<IActionResult> ListaCategoria()
+        {
+            List<Categoria> lista;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:7034/api/Inventario/categorias/");
+                HttpResponseMessage response = await client.GetAsync("");
+                if (response.IsSuccessStatusCode)
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    lista = JsonConvert.DeserializeObject<List<Categoria>>(apiResponse);
+                }
+                else
+                {
+                    lista = new List<Categoria>();
+                }
+            }
+            return View(await Task.Run(() => lista));
+        }
+
+
+
+
+
+
+
+
+
+        
 
         [HttpGet]
         public JsonResult ListaProducto()
@@ -57,6 +98,7 @@ namespace GamarraPlus.Controllers
             return Json(new { respuesta = respuesta });
         }
 
+        /*
         [HttpGet]
         public JsonResult ListaCategoria()
         {
@@ -64,6 +106,7 @@ namespace GamarraPlus.Controllers
             oLista = _daCategoria.Listar();
             return Json(new { data = oLista });
         }
+        */
 
         [HttpPost]
         public JsonResult GuardarCategoria([FromBody] Categoria obj)

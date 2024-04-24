@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sxkGZ+Rjhmow/xtqXvQcakuYzuuvc21s3lVeYBeTJ51IuXxL4Zst26epRXBsSKp0RxduqC80TJC8ppaIKERaHg==",
+  "dgSpecHash": "3mnS+mdCDlZpRtdUBKmk7Q9NxuhrUt5lL9m9UECDKD2LBr5fXm/4GF4kTWxzQ55oDgFcbl7OCnT8xGIhUR6XRQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\migve\\OneDrive\\Escritorio\\Repositorios\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj",
+  "projectFilePath": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\migve\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\migve\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

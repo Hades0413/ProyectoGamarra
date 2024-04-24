@@ -6146,11 +6146,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\migve\\OneDrive\\Escritorio\\Repositorios\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj",
+      "projectUniqueName": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj",
       "projectName": "GamarraPlus",
-      "projectPath": "C:\\Users\\migve\\OneDrive\\Escritorio\\Repositorios\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj",
+      "projectPath": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj",
       "packagesPath": "C:\\Users\\migve\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\migve\\OneDrive\\Escritorio\\Repositorios\\GamarraPlus\\GamarraPlus\\obj\\",
+      "outputPath": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\migve\\AppData\\Roaming\\NuGet\\NuGet.Config",
