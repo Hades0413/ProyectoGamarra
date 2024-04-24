@@ -1,9 +1,9 @@
 
 
-create database DBVENTA_CORE
+create database GamarraPlus
 go
 
-USE DBVENTA_CORE
+USE GamarraPlus
 
 go
 
@@ -91,9 +91,6 @@ insert into USUARIO(NombreCompleto,Correo,Clave) values('codigo estudiante','cod
 
 go
 
---=============================================================================================
--- PROCEDIMIENTOS ALMACENADOS -> PRODUCTO
---=============================================================================================
 create procedure sp_listar_producto
 as
 begin
@@ -161,9 +158,6 @@ end
 
 go
 
---=============================================================================================
--- PROCEDIMIENTOS ALMACENADOS -> CATEGORIA
---=============================================================================================
 
 create procedure sp_listar_categoria
 as
@@ -171,7 +165,6 @@ begin
 	select IdCategoria,Descripcion from CATEGORIA
 
 end
-
 go
 
 create procedure sp_guardar_categoria
@@ -185,7 +178,6 @@ begin
 	(@Descripcion)
 
 end
-
 go
 
 create procedure sp_editar_categoria
@@ -199,7 +191,6 @@ begin
 	update CATEGORIA set Descripcion = @Descripcion where IdCategoria = @IdCategoria
 
 end
-
 go
 
 
@@ -213,10 +204,6 @@ begin
 end
 
 go
-
---=============================================================================================
--- PROCEDIMIENTOS ALMACENADOS -> USUARIO
---=============================================================================================
 
 
 create procedure sp_listar_usuario
@@ -267,10 +254,6 @@ begin
 	delete from USUARIO where IdUsuario = @IdUsuario
 end
 GO
-
---=============================================================================================
--- PROCEDIMIENTOS ALMACENADOS -> VENTA
---=============================================================================================
 
 create procedure sp_registrar_venta(
 @Venta_xml xml,
@@ -325,9 +308,6 @@ begin
 		from @Venta_xml.nodes('Venta/Detalle_Venta/Item') nodo(elemento)
 
 
-		--================================================
-		-- EMPIEZA EL REGISTRO DE LA VENTA
-		--================================================
 		declare @identity as table(ID int)
 		declare @id int = (SELECT isnull(max(IdVenta),0) +1 FROM VENTA)
 		declare @tempnrodocumento varchar(50) = RIGHT('000000' + convert(varchar(max),@id),6)
@@ -386,10 +366,6 @@ begin
 		FOR XML PATH ('') , ROOT('Venta') 
 end
 go
-
---=============================================================================================
--- PROCEDIMIENTOS ALMACENADOS -> REPORTE
---=============================================================================================
 
 create procedure sp_reporte_venta(
 @fechaInicio varchar(10),
