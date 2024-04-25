@@ -1,459 +1,343 @@
-﻿
+﻿@model IEnumerable<GamarraPlus.Models.Producto>
+
+
 @{
     ViewData["Title"] = "Productos";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section Styles{
- <!-- ============================================================
-    =ESTILOS PARA USO DE DATATABLES JS
-    ===============================================================-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+<h1>Productos</h1>
 
-    <!-- ============================================================
-    =HEADER
-    ===============================================================-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.2/css/fixedHeader.dataTables.min.css">
+<p>
+    <button class="btn btn-primary" onclick="openCreateModal()">Create New</button>
+</p>
 
-    <style>
-        .dataTables_filter {
-            color: #fff !important;
-        }
-        input[type="search"]{
-            color: #fff !important;
-        }
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdProducto)</th>
+                <th>@Html.DisplayNameFor(model => model.Codigo)</th>
+                <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+                <th>@Html.DisplayNameFor(model => model.oCategoria.Descripcion)</th>
+                <th>@Html.DisplayNameFor(model => model.PrecioCompra)</th>
+                <th>@Html.DisplayNameFor(model => model.PrecioVenta)</th>
+                <th>@Html.DisplayNameFor(model => model.Stock)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.IdProducto)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Codigo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                    <td>@Html.DisplayFor(modelItem => item.oCategoria.Descripcion)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PrecioCompra)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PrecioVenta)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Stock)</td>
+                    <td>
+                        <a class="btn btn-primary" onclick="openEditModal('@item.IdProducto', '@item.Codigo', '@item.Descripcion', '@item.PrecioCompra', '@item.PrecioVenta', '@item.Stock')">Edit</a> |
+                        <button class="btn btn-danger" onclick="confirmDelete('@item.IdProducto', '@item.Descripcion')">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
-        .dataTables_length{
-            color: #fff !important;
-        }
+<!-- Modal para la edición o creación de un producto -->
+<div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEditarLabel">Edit Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario de edición o creación del producto -->
+                <form id="formEditarProducto">
+                    <div class="mb-3">
+                        <label for="inputCodigo" class="form-label">Code</label>
+                        <input type="text" class="form-control" id="inputCodigo" name="codigo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputDescripcion" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="inputDescripcion" name="descripcion">
+                    </div>
+                    <div class="mb-3">
+                        <label for="selectCategoria" class="form-label">Category</label>
+                        <select class="form-control" id="selectCategoria" name="categoria">
+                            @if (ViewBag.Categorias != null && ViewBag.Categorias is List<SelectListItem>)
+                            {
+                                var categorias = ViewBag.Categorias as List<SelectListItem>;
+                                foreach (var categoria in categorias)
+                                {
+                                    <option value="@categoria.Value">@categoria.Text</option>
+                                }
+                            }
+                            else
+                            {
+                                <option value="">No categories available</option>
+                            }
+                        </select>
+                    </div>
 
-        .dataTables_info{
-            color: #fff !important;
-        }
+                    <div class="mb-3">
+                        <label for="inputPrecioCompra" class="form-label">Purchase Price</label>
+                        <input type="number" class="form-control" id="inputPrecioCompra" name="precioCompra">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPrecioVenta" class="form-label">Sale Price</label>
+                        <input type="number" class="form-control" id="inputPrecioVenta" name="precioVenta">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputStock" class="form-label">Stock</label>
+                        <input type="number" class="form-control" id="inputStock" name="stock">
+                    </div>
+                    <input type="hidden" id="inputIdProducto" name="idProducto">
+                </form>
 
-        table.dataTable tbody tr{
-            background-color: #4e5d6c !important;
-        }
-
-        table.dataTable thead th{
-            padding: 0.5rem 0.5rem !important;
-        }
-
-
-        .btn-nuevo{
-            background-color: #5cb85c !important;
-            color: #fff !important;
-        }
-
-        .buttons-excel{
-            background-color: #5bc0de !important;
-            color: #fff !important;
-        }
-
-        .buttons-page-length{
-            background-color: #e9ecef !important;
-            color: #000 !important;
-        }
-        
-        .paginate_button{
-            background-color: #e9ecef !important;
-            color: #000 !important;
-        }
-        
-        
-        #tbdata > thead input {
-            width: 100%;
-        }
-
-    </style>
-}
-
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Inventario</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Productos</li>
-  </ol>
-</nav>
-
-
-<div class="card">
-    <div class="card-header">
-        Lista de productos
-    </div>
-    <div class="card-body">
-     @*   <button class="btn btn-success" id="btnCrear">Crear nuevo</button>
-        <hr />*@
-
-        <div class="row">
-            <div class="col-sm-12">
-                <table id="tbdata" class="table table-striped w-100 shadow" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>IdProducto</th>
-                            <th>Codigo</th>
-                            <th>Categoria</th>
-                            <th>Producto</th>
-                            <th>P. Compra</th>
-                            <th>P. Venta</th>
-                            <th>Stock</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="EditarProducto()">Save changes</button>
             </div>
         </div>
-
-        
-        
     </div>
-
 </div>
 
-<div id="modalProducto" class="modal" tabindex="-1" data-bs-backdrop="static">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Detalle Producto</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          <form class="needs-validation" novalidate>
-             <input id="txtidproducto" value="0" type="hidden" />
-            <div class="row">
-                <div class="col-6">
-                    <label for="exampleFormControlInput1" class="form-label">Codigo de barras</label>
-                    <input type="text" class="form-control form-control-sm" id="txtcodigobarras" required/>
-                    <div class="invalid-feedback">Ingrese el codigo de barras</div>
-                </div>
-                <div class="col-6">
-                    <label for="exampleFormControlInput1" class="form-label">Categoría</label>
-                    <select class="form-select form-select-sm" id="cbocategoria" required>
-                    </select>
-                    <div class="invalid-feedback">Seleccione categoria</div>
-                </div>
+<!-- Modal para la creación de un nuevo producto -->
+<div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="modalCrearLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCrearLabel">Create New Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="row mt-2">
-                <div class="col-12">
-                    <label for="exampleFormControlInput1" class="form-label">Descripción</label>
-                    <input type="text" class="form-control form-control-sm" id="txtdescripcion" required/>
-                    <div class="invalid-feedback">Ingrese la descripcion</div>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-4">
-                    <label for="exampleFormControlInput1" class="form-label">Precio Compra</label>
-                    <input type="text" class="form-control form-control-sm" id="txtpreciocompra" required/>
-                    <div class="invalid-feedback">Ingrese el precio compra</div>
-                </div>
-                <div class="col-4">
-                    <label for="exampleFormControlInput1" class="form-label">Precio Venta</label>
-                    <input type="text" class="form-control form-control-sm" id="txtprecioventa" required/>
-                    <div class="invalid-feedback">Ingrese el precio venta</div>
-                </div>
-                <div class="col-4">
-                    <label for="exampleFormControlInput1" class="form-label">Stock</label>
-                    <input type="text" class="form-control form-control-sm" id="txtstock" required/>
-                    <div class="invalid-feedback">Ingrese el stock</div>
-                </div>
-            </div>
-          </form>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-        <button id="btnguardarproducto" type="button" class="btn btn-primary">Guardar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-@section Scripts
-{
-
-     <!-- ============================================================
-    =LIBRERIAS PARA USO DE DATATABLES JS
-    ===============================================================-->
-    <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>        
-    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-
-     <!-- ============================================================
-    =HEADER
-    ===============================================================-->
-    <script src="https://cdn.datatables.net/fixedheader/3.2.2/js/dataTables.fixedHeader.min.js"></script>
-
-
-     <!-- ============================================================
-    =LIBRERIAS PARA EXPORTAR A ARCHIVOS
-    ===============================================================-->
-    <script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.print.min.js"></script>
-
-   
-
-
-    <script>
-        var operacion = "";
-        var tabla;
-
-        $(document).ready(function(){
-
-            $('#tbdata thead tr').clone(true).addClass('filters').appendTo('#tbdata thead')
-
-            tabla = $("#tbdata").DataTable({
-                orderCellsTop: true,
-                fixedHeader: true,
-                dom:"Bfrtip",
-                buttons:[
-                    {
-                        text:"Crear Nuevo",
-                        className:"btn-nuevo",
-                        action:function(e,dt,node,config){
-
-                            operacion = "crear";
-                            limpiarControles();
-                            $(".needs-validation").removeClass("was-validated")
-                            $("#txtidproducto").val("0");
-                            $("#modalProducto").modal("show");
-
-                        }
-                    },
-                    {
-                        text: 'Exportar Excel',
-                        extend: 'excelHtml5',
-                        title: '',
-                        filename: 'Reporte Productos',
-                        exportOptions: {
-                            columns: [ 1,2,3,4,5,6 ]
-                        }
-                    },'pageLength'
-                ],
-                pageLength: 10,
-                responsive: true,
-                "ajax": {
-                    "url": '@Url.Action("ListaProducto", "Inventario")',
-                    "type": "GET",
-                    "datatype": "json"
-                },
-                "columns": [
-                    { "data": "idProducto" },
-                    { "data": "codigo" },
-                    {
-                        "data": "oCategoria", "render": function (data) {
-                            return data.descripcion
-                        }
-                    },
-                    { "data": "descripcion" },
-                    { "data": "precioCompra" },
-                    { "data": "precioVenta" },
-                    { "data": "stock" },
-                    {
-                        "defaultContent": '<button class="btn btn-primary btn-editar btn-sm me-2"><i class="bi bi-pencil-fill"></i></button>' +
-                            '<button class="btn btn-danger btn-eliminar btn-sm"><i class="bi bi-trash-fill"></i></button>',
-                        "orderable": false,
-                        "searchable": false,
-                        "width": "80px"
-                    }
-                ],
-                initComplete: function () {
-                        var api = this.api();
- 
-                        // For each column
-                        api.columns().eq(0).each(function (colIdx) {
-                                // Set the header cell to contain the input element
-                                var cell = $('.filters th').eq(
-                                    $(api.column(colIdx).header()).index()
-                                );
-                                var title = $(cell).text();
-
-                                //especificar que columna debe mostrar la caja de filtro
-                                if ($(api.column(colIdx).header()).index() >= 0 &&  $(api.column(colIdx).header()).index() != 6) {
-                                     $(cell).html('<input type="text" placeholder="buscar..."/>');
+            <div class="modal-body">
+                <!-- Formulario para crear un nuevo producto -->
+                <form id="formCrearProducto">
+                    <div class="mb-3">
+                        <label for="inputNuevoCodigo" class="form-label">Code</label>
+                        <input type="text" class="form-control" id="inputNuevoCodigo" name="nuevoCodigo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputNuevaDescripcion" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="inputNuevaDescripcion" name="nuevaDescripcion">
+                    </div>
+                    <div class="mb-3">
+                        <label for="selectNuevaCategoria" class="form-label">Category</label>
+                        <select class="form-control" id="selectNuevaCategoria" name="nuevaCategoria">
+                            @if (ViewBag.Categorias != null && ViewBag.Categorias is List<SelectListItem>)
+                            {
+                                var categorias = ViewBag.Categorias as List<SelectListItem>;
+                                foreach (var categoria in categorias)
+                                {
+                                    <option value="@categoria.Value">@categoria.Text</option>
                                 }
- 
-                                // On every keypress in this input
-                                $('input', $('.filters th').eq($(api.column(colIdx).header()).index())).off('keyup change').on('keyup change', function (e) {
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputNuevoPrecioCompra" class="form-label">Purchase Price</label>
+                        <input type="number" class="form-control" id="inputNuevoPrecioCompra" name="nuevoPrecioCompra">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputNuevoPrecioVenta" class="form-label">Sale Price</label>
+                        <input type="number" class="form-control" id="inputNuevoPrecioVenta" name="nuevoPrecioVenta">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputNuevoStock" class="form-label">Stock</label>
+                        <input type="number" class="form-control" id="inputNuevoStock" name="nuevoStock">
+                    </div>
+                </form>
 
-                                        e.stopPropagation();
- 
-                                        // Get the search value
-                                        $(this).attr('title', $(this).val());
-                                        var regexr = '({search})'; //$(this).parents('th').find('select').val();
- 
-                                        var cursorPosition = this.selectionStart;
-                                        // Search the column for that value
-                                        api.column(colIdx).search(
-                                                this.value != '' ? regexr.replace('{search}', '(((' + this.value + ')))') : '',
-                                                this.value != '',
-                                                this.value == ''
-                                            ).draw();
- 
-                                        $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
-                                    });
-                            });
-                },
-                columnDefs:[
-                    {
-                        targets: 0,
-                        visible:false
-                    }
-                ],
-                language:{
-                    url:"//cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
-                },
-            })
-        
-        })
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="CrearProducto()">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-        jQuery.ajax({
-                url: '@Url.Action("ListaCategoria", "Inventario")',
-                type: "GET",
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    $("<option>").attr({ "value": ""}).text("Seleccionar").appendTo("#cbocategoria");
-                    $.each(data.data, function (index, value) {
-                        $("<option>").attr({ "value": value.idCategoria }).text(value.descripcion).appendTo("#cbocategoria");
-                    });
-                },
-                error: function (error) {
-                    console.log(error)
-                }
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmDelete(idProducto, descripcion) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You are about to delete product with ID ${idProducto} (${descripcion}). This action cannot be undone!`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If the user confirms deletion
+                deleteProducto(idProducto);
+            }
         });
-  
-        
-        $("#btnguardarproducto").on("click",function(){
+    }
 
-            //BUSCAR EN GOOGLE 2Validation · Bootstrap v5.0""
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.querySelectorAll('.needs-validation')
-            
-            // Loop over them and prevent submission
-            Array.prototype.slice.call(forms).forEach(function (form) {
-            
-                  if (form.checkValidity()) {
-                      console.log("Listo para registrar");
-                      var request_body = {
-                          IdProducto : $("#txtidproducto").val(),
-                          Codigo :$("#txtcodigobarras").val(),
-                          oCategoria : { IdCategoria :  $("#cbocategoria option:selected").val()},
-                          Descripcion : $("#txtdescripcion").val(),
-                          PrecioCompra : $("#txtpreciocompra").val(),
-                          PrecioVenta : $("#txtprecioventa").val(),
-                          Stock : $("#txtstock").val()
-                      };
-                      
-                      
-                      jQuery.ajax({
-                          url: '@Url.Action("GuardarProducto", "Inventario")',
-                          type: "POST",
-                          headers: {
-                              operacion: operacion
-                          },
-                          data: JSON.stringify(request_body),
-                          dataType: "json",
-                          contentType: "application/json; charset=utf-8",
-                          success: function (data) {
-                              console.log(data)
-                      
-                              if(data.respuesta){
-                                  tabla.ajax.reload();
-                                  $("#modalProducto").modal("hide");
-                              }
-                          },
-                          error: function (error) {
-                          },
-                          beforeSend: function () {
-                          }
-                      });
-
-                  }else{
-                      console.log("no paso validacion")
-                  }
-            
-                  form.classList.add('was-validated')
-            })
-
-        })
-
-
-        $("#tbdata tbody").on("click",".btn-editar",function(){
-            operacion = "editar";
-            $(".needs-validation").removeClass("was-validated")
-            $("#modalProducto").modal("show");
-
-            var filaSeleccionada = $(this).closest('tr');
-            var data = tabla.row(filaSeleccionada).data();
-
-            $("#txtidproducto").val(data.idProducto)
-            $("#txtcodigobarras").val(data.codigo)
-            $("#cbocategoria").val(data.oCategoria.idCategoria)
-            $("#txtdescripcion").val(data.descripcion)
-            $("#txtpreciocompra").val(data.precioCompra)
-            $("#txtprecioventa").val(data.precioVenta)
-            $("#txtstock").val(data.stock)
-
-            console.log(data);
-        })
-
-        $("#tbdata tbody").on("click",".btn-eliminar",function(){
-
-            var filaSeleccionada = $(this).closest('tr');
-            var data = tabla.row(filaSeleccionada).data();
-
-            $("#txtidproducto").val(data.idProducto)
-
-            Swal.fire({
-              title: '¿Esta seguro de eliminar?',
-              //text: "You won't be able to revert this!",
-              icon: 'warning',
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Si, eliminarlo',
-              cancelButtonText: 'Cancelar'
-            }).then((result) => {
-
-                if (result.isConfirmed) {
-                      jQuery.ajax({
-                          url: '@Url.Action("EliminarProducto", "Inventario")?idproducto='+data.idProducto,
-                          type: "DELETE",
-                          dataType: "json",
-                          contentType: "application/json; charset=utf-8",
-                          success: function (data) {
-                              console.log(data)
-                              if(data.respuesta){
-                                  tabla.ajax.reload();
-                              }
-                          },
-                          error: function (error) {
-                          },
-                          beforeSend: function () {
-                          }
-                      });
+    async function deleteProducto(idProducto) {
+        try {
+            const response = await fetch(`/Inventario/EliminarProducto?idProducto=${idProducto}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
                 }
+            });
 
-            })
-
-
-            console.log(data);
-        })
-
-
-        function limpiarControles(){
-            $("#txtcodigobarras").val("");
-            $("#cbocategoria").val($("#cbocategoria option:first").val());
-            $("#txtdescripcion").val("");
-            $("#txtpreciocompra").val("");
-            $("#txtprecioventa").val("");
-            $("#txtstock").val("");
+            if (response.ok) {
+                // Close the confirmation alert
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: 'The product has been deleted.',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                // Reload the page after successful deletion
+                location.reload();
+            } else {
+                throw new Error('Failed to delete product!');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: error.message || 'Failed to delete product!'
+            });
         }
-    </script>
-}
+    }
+
+    // Function to open the modal for editing or creating a product
+    function openEditModal(idProducto, codigo, descripcion, precioCompra, precioVenta, stock, categoria) {
+        $('#inputIdProducto').val(idProducto);
+        $('#inputCodigo').val(codigo);
+        $('#inputDescripcion').val(descripcion);
+        $('#inputPrecioCompra').val(precioCompra);
+        $('#inputPrecioVenta').val(precioVenta);
+        $('#inputStock').val(stock);
+        $('#selectCategoria').val(categoria); // Assuming 'categoria' is the ID of the category
+        $('#modalEditarLabel').text('Edit Product');
+        $('#modalEditar').modal('show');
+    }
+
+    // Function to open the modal for creating a new product
+    function openCreateModal() {
+        $('#inputNuevoCodigo').val('');
+        $('#inputNuevaDescripcion').val('');
+        $('#inputNuevoPrecioCompra').val('');
+        $('#inputNuevoPrecioVenta').val('');
+        $('#inputNuevoStock').val('');
+        $('#selectNuevaCategoria').val(''); // Clear the selected category
+        $('#modalCrearLabel').text('Create New Product');
+        $('#modalCrear').modal('show');
+    }
+
+    // Function to send changes to the server when clicking on the "Save changes" button
+    async function EditarProducto() {
+        var idProducto = $('#inputIdProducto').val();
+        var nuevoCodigo = $('#inputCodigo').val();
+        var nuevaDescripcion = $('#inputDescripcion').val();
+        var nuevoPrecioCompra = $('#inputPrecioCompra').val();
+        var nuevoPrecioVenta = $('#inputPrecioVenta').val();
+        var nuevoStock = $('#inputStock').val();
+        var categoria = $('#selectCategoria').val(); // Get the selected category ID
+
+        try {
+            const response = await fetch(`/Inventario/ActualizarProducto`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    idProducto: idProducto,
+                    codigo: nuevoCodigo,
+                    descripcion: nuevaDescripcion,
+                    precioCompra: nuevoPrecioCompra,
+                    precioVenta: nuevoPrecioVenta,
+                    stock: nuevoStock,
+                    categoria: categoria
+                })
+            });
+
+            if (response.ok) {
+                // If the response is successful, show a success message and reload the page
+                Swal.fire({
+                    title: 'Saved!',
+                    text: 'The product has been updated.',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                location.reload();
+            } else {
+                throw new Error('Failed to save product!');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: error.message || 'Failed to save product!'
+            });
+        }
+    }
+
+    // Function to create a new product
+    async function CrearProducto() {
+        var nuevoCodigo = $('#inputNuevoCodigo').val();
+        var nuevaDescripcion = $('#inputNuevaDescripcion').val();
+        var nuevoPrecioCompra = $('#inputNuevoPrecioCompra').val();
+        var nuevoPrecioVenta = $('#inputNuevoPrecioVenta').val();
+        var nuevoStock = $('#inputNuevoStock').val();
+        var nuevaCategoria = $('#selectNuevaCategoria').val(); // Get the selected category ID
+
+        try {
+            const response = await fetch(`/Inventario/GuardarProducto`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    codigo: nuevoCodigo,
+                    descripcion: nuevaDescripcion,
+                    precioCompra: nuevoPrecioCompra,
+                    precioVenta: nuevoPrecioVenta,
+                    stock: nuevoStock,
+                    categoria: nuevaCategoria
+                })
+            });
+
+            if (response.ok) {
+                // If the response is successful, show a success message and reload the page
+                Swal.fire({
+                    title: 'Created!',
+                    text: 'The product has been created.',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                location.reload();
+            } else {
+                throw new Error('Failed to create product!');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: error.message || 'Failed to create product!'
+            });
+        }
+    }
+</script>
+
+
