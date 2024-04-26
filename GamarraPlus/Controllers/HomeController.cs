@@ -17,6 +17,13 @@ namespace GamarraPlus.Controllers
         {
             return View();
         }
+
+        public IActionResult Inicio()
+        {
+            return View();
+        }
+
+
         public IActionResult DetalleVenta()
         {
             return View();

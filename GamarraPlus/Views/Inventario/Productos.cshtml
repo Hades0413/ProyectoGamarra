@@ -2,7 +2,77 @@
 
 @{
     ViewData["Title"] = "Productos";
+    int page = ViewBag.Page ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
 }
+
+
+<style>
+    .container-producto {
+        display: flex;
+        justify-content: center;
+    }
+
+    .table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .tabla > :not(:first-child) {
+        border-top: 0px;
+    }
+
+    .tabla { /*
+                width: 100%;*/
+        border-collapse: collapse;
+        border: 1px solid #000;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.8rem;
+    }
+
+        .tabla th, .tabla td {
+            padding: 10px;
+            border: 1px solid #000; /* Añade bordes a las celdas */
+            width: 400px;
+            text-align: center;
+        }
+
+        .tabla th {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .tabla td {
+            color: #333;
+        }
+
+    .btnEditar, .btnEliminar {
+        display: inline-block;
+        padding: 8px 12px;
+        margin: 4px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .btnEditar {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .btnEliminar {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+
+</style>
 
 <h1>Productos</h1>
 
@@ -10,18 +80,19 @@
     <button class="btn btn-primary" onclick="openCreateModal()">Create New</button>
 </p>
 
-<div class="table-responsive">
-    <table class="table table-striped">
+
+<div class="container-producto">
+    <table class="tabla">
         <thead>
             <tr>
-                <th>@Html.DisplayNameFor(model => model.IdProducto)</th>
-                <th>@Html.DisplayNameFor(model => model.Codigo)</th>
-                <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
-                <th>@Html.DisplayNameFor(model => model.oCategoria.Descripcion)</th>
-                <th>@Html.DisplayNameFor(model => model.PrecioCompra)</th>
-                <th>@Html.DisplayNameFor(model => model.PrecioVenta)</th>
-                <th>@Html.DisplayNameFor(model => model.Stock)</th>
-                <th>Actions</th>
+                <th>ID</th>
+                <th>CÓDIGO</th>
+                <th>DESCRIPCIÓN</th>
+                <th>CATEGORÍA</th>
+                <th>PRECIO COMPRA</th>
+                <th>PRECIO VENTA</th>
+                <th>STOCK</th>
+                <th>ACCIONES</th>
             </tr>
         </thead>
         <tbody>
@@ -36,8 +107,8 @@
                     <td>@Html.DisplayFor(modelItem => item.PrecioVenta)</td>
                     <td>@Html.DisplayFor(modelItem => item.Stock)</td>
                     <td>
-                        <a class="btn btn-primary" onclick="openEditModal('@item.IdProducto', '@item.Codigo', '@item.Descripcion', '@item.PrecioCompra', '@item.PrecioVenta', '@item.Stock', '@item.oCategoria.Descripcion')">Edit</a> |
-                        <button class="btn btn-danger" onclick="confirmDelete('@item.IdProducto', '@item.Descripcion')">Delete</button>
+                        <a class="btnEditar btn-primary" onclick="openEditModal('@item.IdProducto', '@item.Codigo', '@item.Descripcion', '@item.PrecioCompra', '@item.PrecioVenta', '@item.Stock', '@item.oCategoria.Descripcion')">EDITAR</a>
+                        <button class="btnEliminar btn-danger" onclick="confirmDelete('@item.IdProducto', '@item.Descripcion')">DELETE</button>
                     </td>
                 </tr>
             }
@@ -45,27 +116,25 @@
     </table>
 </div>
 
-<!-- Modal para la edición o creación de un producto -->
 <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalEditarLabel">Edit Product</h5>
+                <h5 class="modal-title" id="modalEditarLabel">Editar producto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Formulario de edición o creación del producto -->
                 <form id="formEditarProducto">
                     <div class="mb-3">
-                        <label for="inputCodigo" class="form-label">Code</label>
+                        <label for="inputCodigo" class="form-label">Código</label>
                         <input type="text" class="form-control" id="inputCodigo" name="codigo">
                     </div>
                     <div class="mb-3">
-                        <label for="inputDescripcion" class="form-label">Description</label>
+                        <label for="inputDescripcion" class="form-label">Descripción</label>
                         <input type="text" class="form-control" id="inputDescripcion" name="descripcion">
                     </div>
                     <div class="mb-3">
-                        <label for="selectCategoria" class="form-label">Category</label>
+                        <label for="selectCategoria" class="form-label">Categoría</label>
                         <select class="form-control" id="selectCategoria" name="categoria">
                             @foreach (var categoria in ViewBag.Categorias)
                             {
@@ -74,11 +143,11 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="inputPrecioCompra" class="form-label">Purchase Price</label>
+                        <label for="inputPrecioCompra" class="form-label">Precio de compra</label>
                         <input type="number" class="form-control" id="inputPrecioCompra" name="precioCompra">
                     </div>
                     <div class="mb-3">
-                        <label for="inputPrecioVenta" class="form-label">Sale Price</label>
+                        <label for="inputPrecioVenta" class="form-label">Precio de venta</label>
                         <input type="number" class="form-control" id="inputPrecioVenta" name="precioVenta">
                     </div>
                     <div class="mb-3">
@@ -90,35 +159,31 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="EditarProducto()">Save changes</button>
+                <button type="button" class="btn btn-primary" onclick="EditarProducto()">Save</button>
             </div>
         </div>
     </div>
 </div>
 
-
-
-<!-- Modal para la creación de un nuevo producto -->
 <div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="modalCrearLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCrearLabel">Create New Product</h5>
+                <h5 class="modal-title" id="modalCrearLabel">Crear nuevo Producto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Formulario para crear un nuevo producto -->
                 <form id="formCrearProducto">
                     <div class="mb-3">
-                        <label for="inputNuevoCodigo" class="form-label">Code</label>
+                        <label for="inputNuevoCodigo" class="form-label">Código</label>
                         <input type="text" class="form-control" id="inputNuevoCodigo" name="nuevoCodigo">
                     </div>
                     <div class="mb-3">
-                        <label for="inputNuevaDescripcion" class="form-label">Description</label>
+                        <label for="inputNuevaDescripcion" class="form-label">Descripción</label>
                         <input type="text" class="form-control" id="inputNuevaDescripcion" name="nuevaDescripcion">
                     </div>
                     <div class="mb-3">
-                        <label for="selectNuevaCategoria" class="form-label">Category</label>
+                        <label for="selectNuevaCategoria" class="form-label">Categoría</label>
                         <select class="form-control" id="selectNuevaCategoria" name="idCategoria">
                             @foreach (var categoria in ViewBag.Categorias)
                             {
@@ -127,11 +192,11 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="inputNuevoPrecioCompra" class="form-label">Purchase Price</label>
+                        <label for="inputNuevoPrecioCompra" class="form-label">Precio de compra</label>
                         <input type="number" class="form-control" id="inputNuevoPrecioCompra" name="nuevoPrecioCompra">
                     </div>
                     <div class="mb-3">
-                        <label for="inputNuevoPrecioVenta" class="form-label">Sale Price</label>
+                        <label for="inputNuevoPrecioVenta" class="form-label">Precio de venta</label>
                         <input type="number" class="form-control" id="inputNuevoPrecioVenta" name="nuevoPrecioVenta">
                     </div>
                     <div class="mb-3">
@@ -154,13 +219,10 @@
 
 
 <script>
-    // Obtener la lista de categorías del ViewBag y serializarla
     var categorias = @Json.Serialize(ViewBag.Categorias);
 
-    // Obtener el select por su ID
     var selectNuevaCategoria = document.getElementById('selectNuevaCategoria');
 
-    // Iterar sobre las categorías y agregar opciones al select
     categorias.forEach(function (categoria) {
         var option = document.createElement('option');
         option.value = categoria.Value;
@@ -172,17 +234,16 @@
 <script>
     function confirmDelete(idProducto, descripcion) {
         Swal.fire({
-            title: 'Are you sure?',
-            text: `You are about to delete product with ID ${idProducto} (${descripcion}). This action cannot be undone!`,
+            title: '¿Estás seguro?',
+            text: `Estás a punto de eliminar el producto con ID ${idProducto} (${descripcion}). ¡Esta acción no se puede deshacer!`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
             cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'Cancel'
+            confirmButtonText: '¡Sí, bórralo!',
+            cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                // If the user confirms deletion
                 deleteProducto(idProducto);
             }
         });
@@ -198,25 +259,23 @@
             });
 
             if (response.ok) {
-                // Close the confirmation alert
                 Swal.fire({
-                    title: 'Deleted!',
-                    text: 'The product has been deleted.',
+                    title: '¡Eliminado!',
+                    text: 'El producto ha sido eliminado.',
                     icon: 'success',
                     showConfirmButton: false,
                     timer: 1500
                 });
-                // Reload the page after successful deletion
                 location.reload();
             } else {
-                throw new Error('Failed to delete product!');
+                throw new Error('¡No se pudo eliminar el producto!');
             }
         } catch (error) {
             console.error('Error:', error);
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: error.message || 'Failed to delete product!'
+                text: error.message || '¡No se pudo eliminar el producto!'
             });
         }
     }
@@ -229,10 +288,8 @@
         $('#inputPrecioVenta').val(precioVenta);
         $('#inputStock').val(stock);
 
-        // Set the category ID and select the corresponding option
         $('#selectCategoria').val(categoria);
 
-        // Update the selected option based on the category value
         $('#selectCategoria option').filter(function () {
             return $(this).text() === categoria;
         }).prop('selected', true);
@@ -241,10 +298,6 @@
         $('#modalEditar').modal('show');
     }
 
-
-
-
-    // Function to send changes to the server when clicking on the "Save changes" button
     async function EditarProducto() {
         var idProducto = $('#inputIdProducto').val();
         var nuevoCodigo = $('#inputCodigo').val();
@@ -252,7 +305,7 @@
         var nuevoPrecioCompra = $('#inputPrecioCompra').val();
         var nuevoPrecioVenta = $('#inputPrecioVenta').val();
         var nuevoStock = $('#inputStock').val();
-        var categoria = $('#selectCategoria').val(); // Get the selected category ID
+        var categoria = $('#selectCategoria').val();
 
         try {
             const response = await fetch(`/Inventario/ActualizarProducto`, {
@@ -269,30 +322,29 @@
                     stock: nuevoStock,
                     oCategoria: {
                         IdCategoria: categoria,
-                        Descripcion: $('#selectNuevaCategoria option:selected').text() // Send the selected category description as well
+                        Descripcion: $('#selectNuevaCategoria option:selected').text() 
                     }
                 })
             });
 
             if (response.ok) {
-                // If the response is successful, show a success message and reload the page
                 Swal.fire({
-                    title: 'Saved!',
-                    text: 'The product has been updated.',
+                    title: '¡Editado!',
+                    text: 'El producto ha sido actualizado.',
                     icon: 'success',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 location.reload();
             } else {
-                throw new Error('Failed to save product!');
+                throw new Error('¡No se pudo guardar el producto!');
             }
         } catch (error) {
             console.error('Error:', error);
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: error.message || 'Failed to save product!'
+                text: error.message || '¡No se pudo guardar el producto!'
             });
         }
     }
@@ -300,14 +352,13 @@
 </script>
 
 <script>
-    // Function to open the modal for creating a new product
     function openCreateModal() {
         $('#inputNuevoCodigo').val('');
         $('#inputNuevaDescripcion').val('');
         $('#inputNuevoPrecioCompra').val('');
         $('#inputNuevoPrecioVenta').val('');
         $('#inputNuevoStock').val('');
-        $('#selectNuevaCategoria').val(''); // Clear the selected category
+        $('#selectNuevaCategoria').val('');
         $('#modalCrearLabel').text('Create New Product');
         $('#modalCrear').modal('show');
     }
@@ -318,7 +369,7 @@
         var nuevoPrecioCompra = $('#inputNuevoPrecioCompra').val();
         var nuevoPrecioVenta = $('#inputNuevoPrecioVenta').val();
         var nuevoStock = $('#inputNuevoStock').val();
-        var idCategoria = $('#selectNuevaCategoria').val(); // Get the selected category ID
+        var idCategoria = $('#selectNuevaCategoria').val();
 
         try {
             const response = await fetch(`/Inventario/GuardarProducto`, {
@@ -334,30 +385,29 @@
                     Stock: nuevoStock,
                     oCategoria: {
                         IdCategoria: idCategoria,
-                        Descripcion: $('#selectNuevaCategoria option:selected').text() // Send the selected category description as well
+                        Descripcion: $('#selectNuevaCategoria option:selected').text()
                     }
                 })
             });
 
             if (response.ok) {
-                // If the response is successful, show a success message and reload the page
                 Swal.fire({
-                    title: 'Created!',
-                    text: 'The product has been created.',
+                    title: '¡Creado!',
+                    text: 'El producto ha sido creado.',
                     icon: 'success',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 location.reload();
             } else {
-                throw new Error('Failed to create product!');
+                throw new Error('¡No se pudo crear el producto!');
             }
         } catch (error) {
             console.error('Error:', error);
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: error.message || 'Failed to create product!'
+                text: error.message || '¡No se pudo crear el producto!'
             });
         }
     }

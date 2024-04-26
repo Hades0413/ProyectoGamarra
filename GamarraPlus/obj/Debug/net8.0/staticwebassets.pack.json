@@ -5,24 +5,424 @@
       "PackagePath": "staticwebassets\\GamarraPlus.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\accesorios\\n1.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\accesorios\\n1.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\accesorios\\n2.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\accesorios\\n2.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\accesorios\\n3.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\accesorios\\n3.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\accesorios\\n4.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\accesorios\\n4.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\accesorios\\n5.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\accesorios\\n5.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\accesorios\\n6.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\accesorios\\n6.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\accesorios\\n7.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\accesorios\\n7.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\accesorios\\n8.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\accesorios\\n8.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\pantalones\\n1.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\pantalones\\n1.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\pantalones\\n2.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\pantalones\\n2.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\pantalones\\n3.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\pantalones\\n3.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\pantalones\\n4.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\pantalones\\n4.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\pantalones\\n5.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\pantalones\\n5.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\pantalones\\n6.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\pantalones\\n6.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\pantalones\\n7.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\pantalones\\n7.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\pantalones\\n8.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\pantalones\\n8.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\poleras\\n1.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\poleras\\n1.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\poleras\\n2.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\poleras\\n2.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\poleras\\n3.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\poleras\\n3.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\poleras\\n4.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\poleras\\n4.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\poleras\\n5.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\poleras\\n5.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\poleras\\n6.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\poleras\\n6.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\poleras\\n7.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\poleras\\n7.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\poleras\\n8.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\poleras\\n8.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\polos\\n1.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\polos\\n1.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\polos\\n2.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\polos\\n2.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\polos\\n3.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\polos\\n3.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\polos\\n4.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\polos\\n4.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\polos\\n5.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\polos\\n5.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\polos\\n6.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\polos\\n6.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\polos\\n7.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\polos\\n7.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\filter\\polos\\n8.png",
+      "PackagePath": "staticwebassets\\assets\\filter\\polos\\n8.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\collection-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\collection-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\collection-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\collection-1.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\collection-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\collection-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\collection-2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\collection-2.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\collection-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\collection-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\collection-3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\collection-3.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\cta-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\cta-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\cta-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\cta-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\hero-banner-2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\hero-banner-2.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\hero-banner-3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\hero-banner-3.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\hero-banner-4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\hero-banner-4.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\hero-banner-5.png",
+      "PackagePath": "staticwebassets\\assets\\images\\hero-banner-5.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\hero-banner-6.png",
+      "PackagePath": "staticwebassets\\assets\\images\\hero-banner-6.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\hero-banner.png",
+      "PackagePath": "staticwebassets\\assets\\images\\hero-banner.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\insta-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\insta-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\insta-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\insta-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\insta-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\insta-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\insta-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\insta-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\insta-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\insta-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\insta-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\insta-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\insta-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\insta-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\insta-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\insta-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\logo.png",
+      "PackagePath": "staticwebassets\\assets\\images\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\logo.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\logo.svg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\product-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\product-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\product-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\product-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\product-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\product-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\product-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\product-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\service-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\service-1.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\service-2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\service-2.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\service-3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\service-3.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\service-4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\service-4.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\special-banner.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\special-banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\sponsor-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\sponsor-1.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\sponsor-2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\sponsor-2.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\sponsor-3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\sponsor-3.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\sponsor-4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\sponsor-4.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\images\\sponsor-5.png",
+      "PackagePath": "staticwebassets\\assets\\images\\sponsor-5.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\js\\filter.js",
+      "PackagePath": "staticwebassets\\assets\\js\\filter.js"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\assets\\js\\script.js",
+      "PackagePath": "staticwebassets\\assets\\js\\script.js"
+    },
+    {
       "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\css\\bootsWatch.css",
       "PackagePath": "staticwebassets\\css\\bootsWatch.css"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\css\\landing-page.css",
+      "PackagePath": "staticwebassets\\css\\landing-page.css"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\css\\productos.css",
+      "PackagePath": "staticwebassets\\css\\productos.css"
     },
     {
       "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\css\\table.css",
+      "PackagePath": "staticwebassets\\css\\table.css"
+    },
+    {
       "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\Alex Gonley.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Alex Gonley.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\Alson GC.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Alson GC.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\Jeet Saru.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Jeet Saru.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\Sarita Limbu.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Sarita Limbu.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\Sonal Gharti.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Sonal Gharti.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\Zinzu Chan Lee.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Zinzu Chan Lee.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\csv.png",
+      "PackagePath": "staticwebassets\\imagenes\\csv.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\excel.png",
+      "PackagePath": "staticwebassets\\imagenes\\excel.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\export.png",
+      "PackagePath": "staticwebassets\\imagenes\\export.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\gamarra.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\gamarra.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\html_table.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\html_table.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\json.png",
+      "PackagePath": "staticwebassets\\imagenes\\json.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\logo.png",
+      "PackagePath": "staticwebassets\\imagenes\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\pdf.png",
+      "PackagePath": "staticwebassets\\imagenes\\pdf.png"
     },
     {
       "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\pexels-karolina.jpg",
       "PackagePath": "staticwebassets\\imagenes\\pexels-karolina.jpg"
     },
     {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\screenshot.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\screenshot.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\search.png",
+      "PackagePath": "staticwebassets\\imagenes\\search.png"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\js\\filter.js",
+      "PackagePath": "staticwebassets\\js\\filter.js"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\js\\script.js",
+      "PackagePath": "staticwebassets\\js\\script.js"
+    },
+    {
       "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\js\\table.js",
+      "PackagePath": "staticwebassets\\js\\table.js"
     },
     {
       "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\lib\\bootstrap\\LICENSE",

@@ -1,0 +1,30 @@
+﻿
+    /* Estilos para la tabla */
+    .table {
+        width: 100%; /* Hace que la tabla ocupe el 100% del ancho disponible */
+        border-collapse: collapse; /* Une los bordes de las celdas */
+        color: #000;
+    }
+
+    thead th, tbody td {
+        font-size: 1.5rem;
+        width: 15%;
+        padding: 8px; /* Añade espaciado interno a las celdas */
+        text-align: left; /* Alinea el texto a la izquierda */
+        color: #000;
+        border-bottom: 1px solid #ddd; /* Añade bordes inferiores a las filas */
+    }
+    /* Estilos para los botones */
+    .btn {
+        margin-right: 5px; /* Añade margen derecho a los botones */
+    }
+    /* Media query para hacer la tabla responsive */
+    @media screen and (max-width: 768px) {
+        .table {
+            font-size: 0.8rem; /* Reduce el tamaño de fuente en pantallas pequeñas */
+        }
+
+        thead th, tbody td {
+            width: auto; /* Ajusta el ancho de las celdas automáticamente en pantallas pequeñas */
+        }
+    }

@@ -4,19 +4,88 @@
     ViewData["Title"] = "Categorias";
 }
 
+<style>
+    .container-categoria {
+        display: flex;
+        justify-content: center;
+    }
+
+    .table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .tabla > :not(:first-child) {
+        border-top: 0px;
+    }
+
+    .tabla {/*
+            width: 100%;*/
+        border-collapse: collapse;
+        border: 1px solid #000;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.8rem;
+        
+    }
+
+        .tabla th, .tabla td {
+            padding: 10px;
+            border: 1px solid #000; /* Añade bordes a las celdas */
+            width: 400px;
+            text-align: center;
+        }
+
+        .tabla th {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .tabla td {
+            color: #333;
+        }
+
+    .btnEditar, .btnEliminar {
+        display: inline-block;
+        padding: 8px 12px;
+        margin: 4px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .btnEditar {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .btnEliminar {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+
+</style>
+
 <h1>Categorias</h1>
 
 <p>
     <button class="btn btn-primary" onclick="openCreateModal()">Create New</button>
 </p>
 
-<div class="table-responsive">
-    <table class="table table-striped">
+<div class="container-categoria">
+
+    <table class="tabla">
         <thead>
             <tr>
-                <th>@Html.DisplayNameFor(model => model.IdCategoria)</th>
-                <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
-                <th>Actions</th>
+                <th>ID</th>
+                <th>DESCRIPCIÓN</th>
+                <th>ACCIONES</th>
             </tr>
         </thead>
         <tbody>
@@ -26,28 +95,27 @@
                     <td>@Html.DisplayFor(modelItem => item.IdCategoria)</td>
                     <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
                     <td>
-                        <a class="btn btn-primary" onclick="openEditModal('@item.IdCategoria', '@item.Descripcion')">Edit</a> |
-                        <button class="btn btn-danger" onclick="confirmDelete('@item.IdCategoria', '@item.Descripcion')">Delete</button>
+                        <a class="btnEditar btn-primary" onclick="openEditModal('@item.IdCategoria', '@item.Descripcion')">EDITAR</a>
+                        <button class="btnEliminar btn-danger" onclick="confirmDelete('@item.IdCategoria', '@item.Descripcion')">DELETE</button>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+
 </div>
 
-<!-- Modal para la edición o creación de la categoría -->
 <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalEditarLabel">Edit Category</h5>
+                <h5 class="modal-title" id="modalEditarLabel">Editar Categoria</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Formulario de edición o creación de la categoría -->
                 <form id="formEditarCategoria">
                     <div class="mb-3">
-                        <label for="inputDescripcion" class="form-label">Description</label>
+                        <label for="inputDescripcion" class="form-label">Descripción</label>
                         <input type="text" class="form-control" id="inputDescripcion" name="descripcion">
                     </div>
                     <input type="hidden" id="inputIdCategoria" name="idCategoria">
@@ -55,25 +123,23 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="EditarCategoria()">Save changes</button>
+                <button type="button" class="btn btn-primary" onclick="EditarCategoria()">Save</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Modal para la creación de una nueva categoría -->
 <div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="modalCrearLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCrearLabel">Create New Category</h5>
+                <h5 class="modal-title" id="modalCrearLabel">Crear nueva Categoría</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Formulario para crear una nueva categoría -->
                 <form id="formCrearCategoria">
                     <div class="mb-3">
-                        <label for="inputNuevaDescripcion" class="form-label">Description</label>
+                        <label for="inputNuevaDescripcion" class="form-label">Descripción</label>
                         <input type="text" class="form-control" id="inputNuevaDescripcion" name="nuevaDescripcion">
                     </div>
                 </form>
@@ -90,17 +156,16 @@
 <script>
     function confirmDelete(idCategoria, descripcion) {
         Swal.fire({
-            title: 'Are you sure?',
-            text: `You are about to delete category with ID ${idCategoria} (${descripcion}). This action cannot be undone!`,
+            title: '¿Estás seguro?',
+            text: `Estás a punto de eliminar la categoría con ID. ${idCategoria} (${descripcion}). ¡Esta acción no se puede deshacer!`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
             cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'Cancel'
+            confirmButtonText: '¡Sí, bórralo!',
+            cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                // If the user confirms deletion
                 deleteCategoria(idCategoria);
             }
         });
@@ -116,37 +181,33 @@
             });
 
             if (response.ok) {
-                // Close the confirmation alert
                 Swal.fire({
-                    title: 'Deleted!',
-                    text: 'The category has been deleted.',
+                    title: '¡Eliminada!',
+                    text: 'La categoría ha sido eliminada.',
                     icon: 'success',
                     showConfirmButton: false,
                     timer: 1500
                 });
-                // Reload the page after successful deletion
                 location.reload();
             } else {
-                throw new Error('Failed to delete category!');
+                throw new Error('¡No se pudo eliminar la categoría!');
             }
         } catch (error) {
             console.error('Error:', error);
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: error.message || 'Failed to delete category!'
+                text: error.message || '¡No se pudo eliminar la categoría!'
             });
         }
     }
 
-    // Función para abrir el modal de creación de categoría
     function openCreateModal() {
         $('#inputNuevaDescripcion').val('');
-        $('#modalCrearLabel').text('Create New Category');
+        $('#modalCrearLabel').text('Crear nueva Categoría');
         $('#modalCrear').modal('show');
     }
 
-    // Función para enviar los cambios al servidor al hacer clic en el botón "Create"
     async function CrearCategoria() {
         var nuevaDescripcion = $('#inputNuevaDescripcion').val();
 
@@ -162,37 +223,34 @@
             });
 
             if (response.ok) {
-                // Si la respuesta es exitosa, muestra un mensaje de éxito y recarga la página
                 Swal.fire({
-                    title: 'Created!',
-                    text: 'The category has been created.',
+                    title: '¡Creada!',
+                    text: 'La categoría ha sido creada.',
                     icon: 'success',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 location.reload();
             } else {
-                throw new Error('Failed to create category!');
+                throw new Error('¡No se pudo crear la categoría!');
             }
         } catch (error) {
             console.error('Error:', error);
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: error.message || 'Failed to create category!'
+                text: error.message || '¡No se pudo crear la categoría!'
             });
         }
     }
 
-    // Función para abrir el modal con los detalles de la categoría para editar
     function openEditModal(idCategoria, descripcion) {
         $('#inputIdCategoria').val(idCategoria);
         $('#inputDescripcion').val(descripcion);
-        $('#modalEditarLabel').text('Edit Category');
+        $('#modalEditarLabel').text('Editar Categoria');
         $('#modalEditar').modal('show');
     }
 
-    // Función para enviar los cambios al servidor al hacer clic en el botón "Save changes"
     async function EditarCategoria() {
         var idCategoria = $('#inputIdCategoria').val();
         var nuevaDescripcion = $('#inputDescripcion').val();
@@ -210,24 +268,23 @@
             });
 
             if (response.ok) {
-                // Si la respuesta es exitosa, muestra un mensaje de éxito y recarga la página
                 Swal.fire({
-                    title: 'Saved!',
-                    text: 'The category has been updated.',
+                    title: '¡Editado!',
+                    text: 'La categoría ha sido actualizada.',
                     icon: 'success',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 location.reload();
             } else {
-                throw new Error('Failed to save category!');
+                throw new Error('¡No se pudo editar la categoría!');
             }
         } catch (error) {
             console.error('Error:', error);
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: error.message || 'Failed to save category!'
+                text: error.message || '¡No se pudo editar la categoría!'
             });
         }
     }
