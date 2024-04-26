@@ -387,3 +387,25 @@ begin
 end
 go
 
+
+
+CREATE PROCEDURE sp_obtener_producto_por_id
+(
+    @IdProducto int
+)
+AS
+BEGIN
+    SELECT 
+        p.IdProducto,
+        p.Codigo,
+        p.IdCategoria,
+        c.Descripcion AS DesCategoria, -- Asegúrate de que esta columna esté presente en el resultado
+        p.Descripcion,
+        p.PrecioCompra,
+        p.PrecioVenta,
+        p.Stock
+    FROM PRODUCTO p
+    INNER JOIN CATEGORIA c ON c.IdCategoria = p.IdCategoria
+    WHERE p.IdProducto = @IdProducto;
+END
+GO

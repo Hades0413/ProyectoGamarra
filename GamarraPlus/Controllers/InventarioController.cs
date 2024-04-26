@@ -13,16 +13,24 @@ namespace GamarraPlus.Controllers
         DA_Producto _daProducto = new DA_Producto();
         DA_Categoria _daCategoria = new DA_Categoria();
 
-        public IActionResult Productos()
+        public async Task<IActionResult> Productos()
         {
-            // Llama al método ListaProducto y espera su resultado
-            var task = ListaProducto();
-            task.Wait();
-            var result = task.Result;
+            // Obtener la lista de categorías
+            var categoriasTask = ListaCategoria();
+            var categorias = await categoriasTask;
 
-            // Devuelve el resultado obtenido
-            return result;
+            // Llama al método ListaProducto y espera su resultado
+            var productosTask = ListaProducto();
+            var productos = await productosTask;
+
+            // Puedes pasar tanto la lista de productos como la de categorías a la vista
+            ViewBag.Productos = productos;
+            ViewBag.Categorias = categorias;
+
+            // Devuelve la vista
+            return View();
         }
+
 
         public async Task<IActionResult> ListaProducto()
         {

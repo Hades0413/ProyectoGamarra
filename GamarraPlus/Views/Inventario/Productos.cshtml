@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<GamarraPlus.Models.Producto>
 
-
 @{
     ViewData["Title"] = "Productos";
 }
@@ -37,7 +36,7 @@
                     <td>@Html.DisplayFor(modelItem => item.PrecioVenta)</td>
                     <td>@Html.DisplayFor(modelItem => item.Stock)</td>
                     <td>
-                        <a class="btn btn-primary" onclick="openEditModal('@item.IdProducto', '@item.Codigo', '@item.Descripcion', '@item.PrecioCompra', '@item.PrecioVenta', '@item.Stock')">Edit</a> |
+                        <a class="btn btn-primary" onclick="openEditModal('@item.IdProducto', '@item.Codigo', '@item.Descripcion', '@item.PrecioCompra', '@item.PrecioVenta', '@item.Stock', '@item.oCategoria.Descripcion')">Edit</a> |
                         <button class="btn btn-danger" onclick="confirmDelete('@item.IdProducto', '@item.Descripcion')">Delete</button>
                     </td>
                 </tr>
@@ -68,21 +67,12 @@
                     <div class="mb-3">
                         <label for="selectCategoria" class="form-label">Category</label>
                         <select class="form-control" id="selectCategoria" name="categoria">
-                            @if (ViewBag.Categorias != null && ViewBag.Categorias is List<SelectListItem>)
+                            @foreach (var categoria in ViewBag.Categorias)
                             {
-                                var categorias = ViewBag.Categorias as List<SelectListItem>;
-                                foreach (var categoria in categorias)
-                                {
-                                    <option value="@categoria.Value">@categoria.Text</option>
-                                }
-                            }
-                            else
-                            {
-                                <option value="">No categories available</option>
+                                <option value="@categoria.IdCategoria">@categoria.Descripcion</option>
                             }
                         </select>
                     </div>
-
                     <div class="mb-3">
                         <label for="inputPrecioCompra" class="form-label">Purchase Price</label>
                         <input type="number" class="form-control" id="inputPrecioCompra" name="precioCompra">
@@ -97,7 +87,6 @@
                     </div>
                     <input type="hidden" id="inputIdProducto" name="idProducto">
                 </form>
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -106,6 +95,8 @@
         </div>
     </div>
 </div>
+
+
 
 <!-- Modal para la creación de un nuevo producto -->
 <div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="modalCrearLabel" aria-hidden="true">
@@ -128,14 +119,10 @@
                     </div>
                     <div class="mb-3">
                         <label for="selectNuevaCategoria" class="form-label">Category</label>
-                        <select class="form-control" id="selectNuevaCategoria" name="nuevaCategoria">
-                            @if (ViewBag.Categorias != null && ViewBag.Categorias is List<SelectListItem>)
+                        <select class="form-control" id="selectNuevaCategoria" name="idCategoria">
+                            @foreach (var categoria in ViewBag.Categorias)
                             {
-                                var categorias = ViewBag.Categorias as List<SelectListItem>;
-                                foreach (var categoria in categorias)
-                                {
-                                    <option value="@categoria.Value">@categoria.Text</option>
-                                }
+                                <option value="@categoria.IdCategoria">@categoria.Descripcion</option>
                             }
                         </select>
                     </div>
@@ -164,6 +151,24 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+    // Obtener la lista de categorías del ViewBag y serializarla
+    var categorias = @Json.Serialize(ViewBag.Categorias);
+
+    // Obtener el select por su ID
+    var selectNuevaCategoria = document.getElementById('selectNuevaCategoria');
+
+    // Iterar sobre las categorías y agregar opciones al select
+    categorias.forEach(function (categoria) {
+        var option = document.createElement('option');
+        option.value = categoria.Value;
+        option.textContent = categoria.Text;
+        selectNuevaCategoria.appendChild(option);
+    });
+</script>
+
 <script>
     function confirmDelete(idProducto, descripcion) {
         Swal.fire({
@@ -216,7 +221,6 @@
         }
     }
 
-    // Function to open the modal for editing or creating a product
     function openEditModal(idProducto, codigo, descripcion, precioCompra, precioVenta, stock, categoria) {
         $('#inputIdProducto').val(idProducto);
         $('#inputCodigo').val(codigo);
@@ -224,22 +228,21 @@
         $('#inputPrecioCompra').val(precioCompra);
         $('#inputPrecioVenta').val(precioVenta);
         $('#inputStock').val(stock);
-        $('#selectCategoria').val(categoria); // Assuming 'categoria' is the ID of the category
+
+        // Set the category ID and select the corresponding option
+        $('#selectCategoria').val(categoria);
+
+        // Update the selected option based on the category value
+        $('#selectCategoria option').filter(function () {
+            return $(this).text() === categoria;
+        }).prop('selected', true);
+
         $('#modalEditarLabel').text('Edit Product');
         $('#modalEditar').modal('show');
     }
 
-    // Function to open the modal for creating a new product
-    function openCreateModal() {
-        $('#inputNuevoCodigo').val('');
-        $('#inputNuevaDescripcion').val('');
-        $('#inputNuevoPrecioCompra').val('');
-        $('#inputNuevoPrecioVenta').val('');
-        $('#inputNuevoStock').val('');
-        $('#selectNuevaCategoria').val(''); // Clear the selected category
-        $('#modalCrearLabel').text('Create New Product');
-        $('#modalCrear').modal('show');
-    }
+
+
 
     // Function to send changes to the server when clicking on the "Save changes" button
     async function EditarProducto() {
@@ -264,7 +267,10 @@
                     precioCompra: nuevoPrecioCompra,
                     precioVenta: nuevoPrecioVenta,
                     stock: nuevoStock,
-                    categoria: categoria
+                    oCategoria: {
+                        IdCategoria: categoria,
+                        Descripcion: $('#selectNuevaCategoria option:selected').text() // Send the selected category description as well
+                    }
                 })
             });
 
@@ -291,14 +297,28 @@
         }
     }
 
-    // Function to create a new product
+</script>
+
+<script>
+    // Function to open the modal for creating a new product
+    function openCreateModal() {
+        $('#inputNuevoCodigo').val('');
+        $('#inputNuevaDescripcion').val('');
+        $('#inputNuevoPrecioCompra').val('');
+        $('#inputNuevoPrecioVenta').val('');
+        $('#inputNuevoStock').val('');
+        $('#selectNuevaCategoria').val(''); // Clear the selected category
+        $('#modalCrearLabel').text('Create New Product');
+        $('#modalCrear').modal('show');
+    }
+
     async function CrearProducto() {
         var nuevoCodigo = $('#inputNuevoCodigo').val();
         var nuevaDescripcion = $('#inputNuevaDescripcion').val();
         var nuevoPrecioCompra = $('#inputNuevoPrecioCompra').val();
         var nuevoPrecioVenta = $('#inputNuevoPrecioVenta').val();
         var nuevoStock = $('#inputNuevoStock').val();
-        var nuevaCategoria = $('#selectNuevaCategoria').val(); // Get the selected category ID
+        var idCategoria = $('#selectNuevaCategoria').val(); // Get the selected category ID
 
         try {
             const response = await fetch(`/Inventario/GuardarProducto`, {
@@ -307,12 +327,15 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    codigo: nuevoCodigo,
-                    descripcion: nuevaDescripcion,
-                    precioCompra: nuevoPrecioCompra,
-                    precioVenta: nuevoPrecioVenta,
-                    stock: nuevoStock,
-                    categoria: nuevaCategoria
+                    Codigo: nuevoCodigo,
+                    Descripcion: nuevaDescripcion,
+                    PrecioCompra: nuevoPrecioCompra,
+                    PrecioVenta: nuevoPrecioVenta,
+                    Stock: nuevoStock,
+                    oCategoria: {
+                        IdCategoria: idCategoria,
+                        Descripcion: $('#selectNuevaCategoria option:selected').text() // Send the selected category description as well
+                    }
                 })
             });
 
