@@ -25,8 +25,9 @@ namespace GamarraPlus.Controllers
             Usuario ouser = new Usuario();
             ouser = _daUsuario.Listar().Where(u => u.Correo == correo && u.Clave == clave).FirstOrDefault();
 
-            if (ouser == null) {
-                ViewData["mensaje"] = "Usuario no encontrado";
+            if (ouser == null)
+            {
+                TempData["mensaje"] = "Usuario no encontrado";
                 return View();
             }
 
@@ -39,7 +40,7 @@ namespace GamarraPlus.Controllers
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,new ClaimsPrincipal(claimsIdentity));
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
             //SESIONES
             //HttpContext.Session.SetString("correo", correo);
@@ -50,9 +51,9 @@ namespace GamarraPlus.Controllers
         public async Task<IActionResult> Salir()
         {
             // Clear the existing external cookie
-            await HttpContext.SignOutAsync( CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-            return RedirectToAction("Index","Acceso");
+            return RedirectToAction("Index", "Acceso");
         }
     }
 }

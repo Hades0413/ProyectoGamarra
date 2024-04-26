@@ -209,19 +209,19 @@ go
 create procedure sp_listar_producto
 as
 begin
-	select 
-	p.IdProducto,
-	p.Codigo,
-	c.IdCategoria,c.Descripcion[DesCategoria],
-	p.Descripcion,
-	p.PrecioCompra,
-	p.PrecioVenta,
-	p.Stock
-	from PRODUCTO p
-	inner join CATEGORIA c on c.IdCategoria = p.IdCategoria
-	order by p.IdProducto desc
+    select 
+        p.IdProducto,
+        p.Codigo,
+        c.IdCategoria,
+        c.Descripcion as DesCategoria,
+        p.Descripcion,
+        p.PrecioCompra,
+        p.PrecioVenta,
+        p.Stock
+    from PRODUCTO p
+    inner join CATEGORIA c on c.IdCategoria = p.IdCategoria
+    order by p.IdProducto asc
 end
-
 go
 
 create procedure sp_guardar_producto
@@ -514,7 +514,7 @@ BEGIN
         p.IdProducto,
         p.Codigo,
         p.IdCategoria,
-        c.Descripcion AS DesCategoria, -- Asegúrate de que esta columna esté presente en el resultado
+        c.Descripcion AS DesCategoria,
         p.Descripcion,
         p.PrecioCompra,
         p.PrecioVenta,

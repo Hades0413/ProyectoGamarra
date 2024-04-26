@@ -264,9 +264,12 @@
                     text: 'El producto ha sido eliminado.',
                     icon: 'success',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 2000
                 });
-                location.reload();
+
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
             } else {
                 throw new Error('¡No se pudo eliminar el producto!');
             }
@@ -333,9 +336,12 @@
                     text: 'El producto ha sido actualizado.',
                     icon: 'success',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 2000
                 });
-                location.reload();
+
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
             } else {
                 throw new Error('¡No se pudo guardar el producto!');
             }
@@ -396,9 +402,12 @@
                     text: 'El producto ha sido creado.',
                     icon: 'success',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 2000
                 });
-                location.reload();
+
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
             } else {
                 throw new Error('¡No se pudo crear el producto!');
             }
