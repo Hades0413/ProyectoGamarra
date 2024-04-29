@@ -23,7 +23,7 @@
     }
 
     .tabla { /*
-                width: 100%;*/
+                    width: 100%;*/
         border-collapse: collapse;
         border: 1px solid #000;
         font-family: 'Roboto', sans-serif;
@@ -92,6 +92,7 @@
                 <th>PRECIO COMPRA</th>
                 <th>PRECIO VENTA</th>
                 <th>STOCK</th>
+                <th>IMAGEN</th>
                 <th>ACCIONES</th>
             </tr>
         </thead>
@@ -106,6 +107,9 @@
                     <td>@Html.DisplayFor(modelItem => item.PrecioCompra)</td>
                     <td>@Html.DisplayFor(modelItem => item.PrecioVenta)</td>
                     <td>@Html.DisplayFor(modelItem => item.Stock)</td>
+                    <td>
+                        <img src="@item.RutaImagen" class="imagen-producto" />
+                    </td>
                     <td>
                         <a class="btnEditar btn-primary" onclick="openEditModal('@item.IdProducto', '@item.Codigo', '@item.Descripcion', '@item.PrecioCompra', '@item.PrecioVenta', '@item.Stock', '@item.oCategoria.Descripcion')">EDITAR</a>
                         <button class="btnEliminar btn-danger" onclick="confirmDelete('@item.IdProducto', '@item.Descripcion')">DELETE</button>
@@ -154,6 +158,12 @@
                         <label for="inputStock" class="form-label">Stock</label>
                         <input type="number" class="form-control" id="inputStock" name="stock">
                     </div>
+
+                    <div class="mb-3">
+                        <label for="inputImagen" class="form-label">Imagen</label>
+                        <input type="file" class="form-control" id="inputImagen" name="imagen">
+                    </div>
+
                     <input type="hidden" id="inputIdProducto" name="idProducto">
                 </form>
             </div>
@@ -217,6 +227,16 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script>
+    // Script para mostrar la imagen en lugar de la ruta
+    document.addEventListener("DOMContentLoaded", function () {
+        var imagenes = document.querySelectorAll(".imagen-producto");
+        imagenes.forEach(function (imagen) {
+            var rutaImagen = imagen.getAttribute("src");
+            imagen.setAttribute("src", rutaImagen);
+        });
+    });
+</script>
 
 <script>
     var categorias = @Json.Serialize(ViewBag.Categorias);
@@ -325,7 +345,7 @@
                     stock: nuevoStock,
                     oCategoria: {
                         IdCategoria: categoria,
-                        Descripcion: $('#selectNuevaCategoria option:selected').text() 
+                        Descripcion: $('#selectNuevaCategoria option:selected').text()
                     }
                 })
             });

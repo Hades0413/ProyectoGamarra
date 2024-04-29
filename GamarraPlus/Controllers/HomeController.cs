@@ -4,6 +4,7 @@ using GamarraPlus.Models;
 using System.Xml.Linq;
 
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
 
 namespace GamarraPlus.Controllers
 {
@@ -13,10 +14,28 @@ namespace GamarraPlus.Controllers
         DA_Producto _daProducto = new DA_Producto();
         DA_Venta _daVenta = new DA_Venta();
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            List<Producto> productos;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:7034/api/Inventario/productos/");
+                HttpResponseMessage response = await client.GetAsync("");
+                if (response.IsSuccessStatusCode)
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    productos = JsonConvert.DeserializeObject<List<Producto>>(apiResponse);
+                }
+                else
+                {
+                    productos = new List<Producto>();
+                }
+            }
+
+            return View(productos);
         }
+
 
         public IActionResult Inicio()
         {

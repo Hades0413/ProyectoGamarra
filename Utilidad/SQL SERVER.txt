@@ -24,9 +24,9 @@ Descripcion varchar(100),
 PrecioCompra decimal(10,2),
 PrecioVenta decimal(10,2),
 Stock int,
-FechaRegistro datetime default getdate()
+FechaRegistro datetime default getdate(),
+RutaImagen varchar(255)
 )
-
 go
 
 create table VENTA(
@@ -92,7 +92,7 @@ insert into CATEGORIA(Descripcion) values
 ('Baterías Externas'); -- Código 20
 go
 
-
+/*
 insert into PRODUCTO(Codigo, IdCategoria, Descripcion, PrecioCompra, PrecioVenta, Stock) values
 ('CAM001', 1, 'Polo de algodón blanco', 10.00, 15.00, 50), -- Camisetas
 ('CAM002', 1, 'Blusa floral de verano', 12.00, 20.00, 40), -- Camisetas
@@ -195,6 +195,7 @@ insert into PRODUCTO(Codigo, IdCategoria, Descripcion, PrecioCompra, PrecioVenta
 ('BAT004', 20, 'Batería externa inalámbrica de 15000mAh', 45.00, 65.00, 30), -- Baterías Externas
 ('BAT005', 20, 'Batería externa resistente al agua de 30000mAh', 50.00, 80.00, 25); -- Baterías Externas
 go
+*/
 
 insert into USUARIO(NombreCompleto, Correo, Clave) values 
 ('Jorge Fabrizio Olano Farfan 26', 'leder@hotmail.com', 'asd'),
@@ -217,50 +218,94 @@ begin
         p.Descripcion,
         p.PrecioCompra,
         p.PrecioVenta,
-        p.Stock
+        p.Stock,
+        p.RutaImagen
     from PRODUCTO p
     inner join CATEGORIA c on c.IdCategoria = p.IdCategoria
     order by p.IdProducto asc
 end
 go
 
+
 create procedure sp_guardar_producto
 (
-@Codigo varchar(100),
-@IdCategoria int,
-@Descripcion varchar(100),
-@PrecioCompra decimal(10,2),
-@PrecioVenta decimal(10,2),
-@Stock int
+    @Codigo varchar(100),
+    @IdCategoria int,
+    @Descripcion varchar(100),
+    @PrecioCompra decimal(10,2),
+    @PrecioVenta decimal(10,2),
+    @Stock int,
+    @RutaImagen varchar(255)
 )
 as
 begin
-	
-	insert into PRODUCTO(Codigo,IdCategoria,Descripcion,PrecioCompra,PrecioVenta,Stock) values
-	(@Codigo,@IdCategoria,@Descripcion,@PrecioCompra,@PrecioVenta,@Stock)
-
+    insert into PRODUCTO(Codigo, IdCategoria, Descripcion, PrecioCompra, PrecioVenta, Stock, RutaImagen) 
+    values (@Codigo, @IdCategoria, @Descripcion, @PrecioCompra, @PrecioVenta, @Stock, @RutaImagen)
 end
-
 go
 
-create procedure sp_editar_producto
+-- Insertar el primer producto
+execute sp_guardar_producto
+    @Codigo = 'PRD003',
+    @IdCategoria = 1,
+    @Descripcion = 'Producto 1',
+    @PrecioCompra = 10.50,
+    @PrecioVenta = 15.99,
+    @Stock = 100,
+    @RutaImagen = '/Productos/01.jpg';
+	go
+
+-- Insertar el segundo producto
+execute sp_guardar_producto
+    @Codigo = 'PRD004',
+    @IdCategoria = 2,
+    @Descripcion = 'Producto 2',
+    @PrecioCompra = 15.75,
+    @PrecioVenta = 24.99,
+    @Stock = 75,
+    @RutaImagen = '/Productos/02.jpg';
+go
+
+
+CREATE PROCEDURE sp_editar_producto
 (
-@IdProducto int,
-@Codigo varchar(100),
-@IdCategoria int,
-@Descripcion varchar(100),
-@PrecioCompra decimal(10,2),
-@PrecioVenta decimal(10,2),
-@Stock int
+    @IdProducto int,
+    @Codigo varchar(100),
+    @IdCategoria int,
+    @Descripcion varchar(100),
+    @PrecioCompra decimal(10,2),
+    @PrecioVenta decimal(10,2),
+    @Stock int,
+    @RutaImagen varchar(255)
 )
-as
-begin
-	update PRODUCTO set Codigo = @Codigo, IdCategoria = @IdCategoria, Descripcion = @Descripcion, PrecioCompra = @PrecioCompra,
-	PrecioVenta = @PrecioVenta, Stock = @Stock where IdProducto = @IdProducto
+AS
+BEGIN
+    UPDATE PRODUCTO 
+    SET 
+        Codigo = @Codigo, 
+        IdCategoria = @IdCategoria, 
+        Descripcion = @Descripcion, 
+        PrecioCompra = @PrecioCompra,
+        PrecioVenta = @PrecioVenta, 
+        Stock = @Stock,
+        RutaImagen = @RutaImagen 
+    WHERE IdProducto = @IdProducto;
+END
+GO
 
-end
+-- Editar el primer producto
+EXEC sp_editar_producto
+    @IdProducto = 1,
+    @Codigo = 'PRD003',
+    @IdCategoria = 1,
+    @Descripcion = 'Producto Editado',
+    @PrecioCompra = 12.50,
+    @PrecioVenta = 18.99,
+    @Stock = 150,
+    @RutaImagen = '/Productos/04.jpg';
+	go
 
-go
+
 
 create procedure sp_eliminar_producto
 (
@@ -518,9 +563,11 @@ BEGIN
         p.Descripcion,
         p.PrecioCompra,
         p.PrecioVenta,
-        p.Stock
+        p.Stock,
+        p.RutaImagen
     FROM PRODUCTO p
     INNER JOIN CATEGORIA c ON c.IdCategoria = p.IdCategoria
     WHERE p.IdProducto = @IdProducto;
 END
 GO
+
