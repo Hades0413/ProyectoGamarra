@@ -5,7 +5,171 @@
 <head>
     <!-- Slider -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+
+
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="https://kit.fontawesome.com/4dd764bfea.js" crossorigin="anonymous"></script>
+
+
+
 </head>
+
+<style>
+    
+    /* wsp */
+
+    .whatsapp-button {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 9999;
+    }
+
+        .whatsapp-button a {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 24px;
+            transition: background-color 0.3s ease;
+            overflow: hidden;
+        }
+
+            .whatsapp-button a:hover {
+                background-color: #128C7E;
+            }
+
+            .whatsapp-button a #close-icon {
+                display: none;
+            }
+
+        .whatsapp-button .box {
+            position: absolute;
+            top: -250px;
+            /* 320 */
+            right: 0;
+            width: 320px;
+            /*padding: 20px;*/
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .whatsapp-button .box-header {
+            display: flex;
+            align-items: center;
+            background-color: #25D366;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px 5px 0 0;
+        }
+
+            .whatsapp-button .box-header svg {
+                font-size: 50px;
+                margin: 10px;
+            }
+
+            .whatsapp-button .box-header h4 {
+                margin: 0;
+                font-size: 14pt;
+                flex-grow: 1;
+            }
+
+            .whatsapp-button .box-header p {
+                margin: 0;
+                font-size: 12px;
+                flex-grow: 1;
+            }
+
+        .whatsapp-button .box-content {
+            padding: 10px;
+            color: #333;
+            background: #f5f7f9;
+            margin: 5%;
+            border-radius: 5px;
+        }
+
+            .whatsapp-button .box-content h4 {
+                margin-top: 0;
+                font-size: 18px;
+            }
+
+            .whatsapp-button .box-content p {
+                font-size: 9pt;
+            }
+
+            .whatsapp-button .box-content .whatsapp-contact {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+            }
+
+                .whatsapp-button .box-content .whatsapp-contact svg {
+                    font-size: 44px;
+                    color: #25D366;
+                    margin-right: 10px;
+                }
+
+            .whatsapp-button .box-content .whatsapp-info {
+                flex-grow: 1;
+            }
+
+            .whatsapp-button .box-content .whatsapp-contact #ico2 {
+                font-size: 24px;
+                color: #25D366;
+                margin-right: 10px;
+            }
+
+
+
+
+            .whatsapp-button .box-content a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 40px;
+                padding: 0 20px;
+                background-color: #25D366;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 20px;
+                font-weight: bold;
+                transition: background-color 0.3s ease;
+            }
+
+                .whatsapp-button .box-content a:hover {
+                    background-color: #128C7E;
+                }
+
+            .whatsapp-button .box-content i {
+                margin-right: 10px;
+            }
+
+        .whatsapp-button .log {
+            text-align: center;
+        }
+
+            .whatsapp-button .log img {
+                width: 10%;
+                cursor: pointer;
+                margin-bottom: 5px;
+            }
+
+    /* wsp */
+</style>
 
 <main>
     <article>
@@ -159,48 +323,82 @@
         -->
         @model List<GamarraPlus.Models.Producto>
 
-        <div class="py-2">
-            <div class="container px-2 px-lg-2 mt-5">
+        <section class="section product">
+            <div class="container">
+                <h2 class="h2 section-title">Nuestros productos</h2>
+
                 @if (Model != null && Model.Count > 0)
                 {
-                    <div id="catalogo-productos" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    <ul id="catalogo-productos" class="product-list">
 
                         @foreach (var producto in Model)
                         {
-                            <div class="col mb-5">
-                                <div class="card h-100">
-                                    <img class="card-img-top" src="@producto.RutaImagen" alt="Imagen del producto">
-                                    <div class="card-body p-4">
-                                        <div class="text-center">
-                                            <h5 class="fw-bolder">@producto.Descripcion</h5>
-                                            <p>S/. @producto.PrecioVenta.ToString("F2")</p>
+                            <li class="product-item">
+                                <div class="product-card" tabindex="0">
+                                    <figure class="card-banner">
+                                        <img loading="lazy" width="312" height="350" class="image-contain" src="@producto.RutaImagen" alt="Imagen del producto">
+                                        <ul class="card-action-list">
+
+                                            <li class="card-action-item">
+                                                <button class="card-action-btn btn btn-primary" aria-labelledby="card-label-1">
+                                                    <ion-icon name="cart-outline"></ion-icon>
+                                                </button>
+
+                                                <div class="card-action-tooltip" id="card-label-1">Añadir al Carrito</div>
+                                            </li>
+
+                                            <li class="card-action-item">
+                                                <button class="card-action-btn btn btn-secondary" aria-labelledby="card-label-3">
+                                                    <ion-icon name="eye-outline"></ion-icon>
+                                                </button>
+
+                                                <div class="card-action-tooltip" id="card-label-3">Ver Detalles</div>
+                                            </li>
+
+                                            <!--<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                    <div class="d-grid d-md-grid gap-2 d-md-block align-items-center text-center">
+                                                        <button class="btn btn-primary">Agregar al carrito</button>
+                                                        <button class="btn btn-secondary">Ver detalles</button>
+                                                    </div>
+                                                </div>
+                                            -->
+
+                                        </ul>
+
+                                    </figure>
+
+                                    <div class="card-content">
+
+                                        <div class="card-cat">
+                                            <a href="#" class="card-cat-link">Hombre</a> /
+                                            <a href="#" class="card-cat-link">Mujer</a>
                                         </div>
+
+                                        <h3 class="h3 card-title">@producto.Descripcion</h3>
+
+
+                                        <p class="card-price">S/. @producto.PrecioVenta.ToString("F2")</p>
+
+
+
                                     </div>
-                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                        <div class="d-grid d-md-grid gap-2 d-md-block align-items-center text-center">
-                                            <button class="btn btn-primary">Agregar al carrito</button>
-                                            <button class="btn btn-secondary">Ver detalles</button>
-                                        </div>
-                                    </div>
+
                                 </div>
-                            </div>
+                            </li>
                         }
-                    </div>
+                    </ul>
                 }
                 else
                 {
                     <p>No hay productos disponibles.</p>
                 }
             </div>
-        </div>
+        </section>
 
 
         <!--
           - #SCRIPT PRODDUCTOS
         -->
-
-
-
         <!--
           - #PRODUCT
         -->
@@ -237,10 +435,10 @@
 
                 </ul>
 
-                <ul class="product-list">
+                <!---->  <ul class="product-list">
 
                     <li class="product-item zapatos">
-                        <div class="product-card " tabindex="0">
+                        <div class="product-card" tabindex="0">
 
                             <figure class="card-banner">
                                 <img src="./assets/images/product-1.jpg" width="312" height="350" loading="lazy"
@@ -3242,6 +3440,36 @@
     </article>
 </main>
 
+<!-- WSP -->
+
+<div class="whatsapp-button">
+    <a href="#" onclick="toggleButton(event)">
+        <i id="whatsapp-icon" class="fab fa-whatsapp"></i>
+        <i id="close-icon" class="fas fa-times"></i>
+    </a>
+    <div id="whatsapp-box" class="box">
+        <div class="box-header">
+            <i class="fab fa-whatsapp"></i>
+            <div>
+                <h4>Comenzar Chat</h4>
+                <p>¡Hola! Haga clic en uno de nuestros miembros a continuación para chatear en WhatsApp</p>
+            </div>
+        </div>
+        <div class="box-content" id="whatsapp-link">
+            <div class="whatsapp-contact">
+                <i class="fab fa-whatsapp"></i>
+                <div class="whatsapp-info">
+                    <h4>Contacto</h4>
+                    <p>Asistencia Técnica</p>
+                </div>
+                <i id="ico2" class="fab fa-whatsapp"></i>
+            </div>
+        </div>
+        <div class="log"><img src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/03b2e9ee829c5fb02a683aebca0ad447~c5_100x100.jpeg?lk3s=a5d48078&x-expires=1708549200&x-signature=h7Rz0kK0dZCVUYa%2BbPNBeDlN4Jk%3D" alt="logo" style="border-radius:50%;"></div>
+    </div>
+</div>
+<!-- WSP -->
+
 <a href="#top" class="go-top-btn" data-go-top>
     <ion-icon name="arrow-up-outline"></ion-icon>
 </a>
@@ -3271,4 +3499,44 @@
             el: '.swiper-scrollbar',
         },
     });
+
 </script>
+
+    <script>
+    /* wsp*/
+
+    function toggleButton(event) {
+        event.preventDefault();
+
+        var closeButton = document.getElementById("close-icon");
+        var whatsappIcon = document.getElementById("whatsapp-icon");
+        var whatsappBox = document.getElementById("whatsapp-box");
+
+        if (closeButton.style.display === "block") {
+            closeButton.style.display = "none";
+            whatsappIcon.style.display = "block";
+            whatsappBox.style.opacity = 0;
+            whatsappBox.style.visibility = "hidden";
+        } else {
+            closeButton.style.display = "block";
+            whatsappIcon.style.display = "none";
+            whatsappBox.style.opacity = 1;
+            whatsappBox.style.visibility = "visible";
+        }
+    }
+    /* Enlace */
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Obtenemos la referencia a la div de box-content
+        var whatsappLink = document.getElementById("whatsapp-link");
+
+        // Agregamos un evento de clic a la div
+        whatsappLink.addEventListener("click", function () {
+            // Definimos el enlace de WhatsApp
+            var mensaje = encodeURIComponent("Deja de ser tan Homogremquin :v");
+            var whatsappURL = "https://api.whatsapp.com/send?phone=+51945273741&text=" + mensaje;
+            // Redireccionamos a la página de WhatsApp
+            window.open(whatsappURL, "_blank");
+        });
+    });
+    </script>

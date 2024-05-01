@@ -7,118 +7,59 @@
 }
 
 
-<style>
-    .container-producto {
-        display: flex;
-        justify-content: center;
-    }
+<head>
+    <link rel="stylesheet" href="~/css/tables.css">
+</head>
 
-    .table-wrapper {
-        width: 100%;
-        overflow-x: auto;
-    }
+<main>
 
-    .tabla > :not(:first-child) {
-        border-top: 0px;
-    }
-
-    .tabla { /*
-                    width: 100%;*/
-        border-collapse: collapse;
-        border: 1px solid #000;
-        font-family: 'Roboto', sans-serif;
-        font-size: 1.8rem;
-    }
-
-        .tabla th, .tabla td {
-            padding: 10px;
-            border: 1px solid #000; /* Añade bordes a las celdas */
-            width: 400px;
-            text-align: center;
-        }
-
-        .tabla th {
-            background-color: #000;
-            color: #fff;
-        }
-
-        .tabla td {
-            color: #333;
-        }
-
-    .btnEditar, .btnEliminar {
-        display: inline-block;
-        padding: 8px 12px;
-        margin: 4px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        text-decoration: none;
-        text-align: center;
-        font-size: 14px;
-    }
-
-    .btnEditar {
-        background-color: #007bff;
-        color: #fff;
-    }
-
-    .btnEliminar {
-        background-color: #dc3545;
-        color: #fff;
-    }
-
-    .btn:hover {
-        opacity: 0.8;
-    }
-
-</style>
-
-<h1>Productos</h1>
-
-<p>
-    <button class="btn btn-primary" onclick="openCreateModal()">Create New</button>
-</p>
+    <p class="crear-btn">
+        <button class="btn btn-primary" onclick="openCreateModal()">Crear Nuevo</button>
+    </p>
 
 
-<div class="container-producto">
-    <table class="tabla">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>CÓDIGO</th>
-                <th>DESCRIPCIÓN</th>
-                <th>CATEGORÍA</th>
-                <th>PRECIO COMPRA</th>
-                <th>PRECIO VENTA</th>
-                <th>STOCK</th>
-                <th>IMAGEN</th>
-                <th>ACCIONES</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    <div class="wrapper">
+        <table class="tabla">
+            <thead>
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => item.IdProducto)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Codigo)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
-                    <td>@Html.DisplayFor(modelItem => item.oCategoria.Descripcion)</td>
-                    <td>@Html.DisplayFor(modelItem => item.PrecioCompra)</td>
-                    <td>@Html.DisplayFor(modelItem => item.PrecioVenta)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Stock)</td>
-                    <td>
-                        <img src="@item.RutaImagen" class="imagen-producto" />
-                    </td>
-                    <td>
-                        <a class="btnEditar btn-primary" onclick="openEditModal('@item.IdProducto', '@item.Codigo', '@item.Descripcion', '@item.PrecioCompra', '@item.PrecioVenta', '@item.Stock', '@item.oCategoria.Descripcion')">EDITAR</a>
-                        <button class="btnEliminar btn-danger" onclick="confirmDelete('@item.IdProducto', '@item.Descripcion')">DELETE</button>
-                    </td>
+                    <th>ID</th>
+                    <th>CÓDIGO</th>
+                    <th>DESCRIPCIÓN</th>
+                    <th>CATEGORÍA</th>
+                    <th>PRECIO COMPRA</th>
+                    <th>PRECIO VENTA</th>
+                    <th>STOCK</th>
+                    <th>IMAGEN</th>
+                    <th>ACCIONES</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td data-cell="id">@Html.DisplayFor(modelItem => item.IdProducto)</td>
+                        <td data-cell="código">@Html.DisplayFor(modelItem => item.Codigo)</td>
+                        <td data-cell="descripción">@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                        <td data-cell="categoría">@Html.DisplayFor(modelItem => item.oCategoria.Descripcion)</td>
+                        <td data-cell="Precio Compra">@Html.DisplayFor(modelItem => item.PrecioCompra)</td>
+                        <td data-cell="Precio Venta">@Html.DisplayFor(modelItem => item.PrecioVenta)</td>
+                        <td data-cell="stock">@Html.DisplayFor(modelItem => item.Stock)</td>
+                        <td data-cell="imagen de muestra">
+                            <img src="@item.RutaImagen" class="imagen-producto" />
+                        </td>
+                        <td data-cell="acciones">
+                            <div class="acciones-btns">
+                                <a class="btnEditar btn-primary" onclick="openEditModal('@item.IdProducto', '@item.Codigo', '@item.Descripcion', '@item.PrecioCompra', '@item.PrecioVenta', '@item.Stock', '@item.oCategoria.Descripcion')">EDITAR</a>
+                                <button class="btnEliminar btn-danger" onclick="confirmDelete('@item.IdProducto', '@item.Descripcion')">DELETE</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</main>
 
 <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
     <div class="modal-dialog">

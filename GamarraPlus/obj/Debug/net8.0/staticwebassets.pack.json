@@ -273,8 +273,48 @@
       "PackagePath": "staticwebassets\\Productos\\61.jpg"
     },
     {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\62.jpg",
+      "PackagePath": "staticwebassets\\Productos\\62.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\63.jpg",
+      "PackagePath": "staticwebassets\\Productos\\63.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\64.jpg",
+      "PackagePath": "staticwebassets\\Productos\\64.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\65.jpg",
+      "PackagePath": "staticwebassets\\Productos\\65.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\66.jpg",
+      "PackagePath": "staticwebassets\\Productos\\66.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\67.jpg",
+      "PackagePath": "staticwebassets\\Productos\\67.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\68.jpg",
+      "PackagePath": "staticwebassets\\Productos\\68.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\69.jpg",
+      "PackagePath": "staticwebassets\\Productos\\69.jpg"
+    },
+    {
       "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\7.jpg",
       "PackagePath": "staticwebassets\\Productos\\7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\70.jpg",
+      "PackagePath": "staticwebassets\\Productos\\70.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\71.jpg",
+      "PackagePath": "staticwebassets\\Productos\\71.jpg"
     },
     {
       "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\8.jpg",
@@ -617,6 +657,10 @@
       "PackagePath": "staticwebassets\\css\\table.css"
     },
     {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\css\\tables.css",
+      "PackagePath": "staticwebassets\\css\\tables.css"
+    },
+    {
       "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
@@ -707,6 +751,10 @@
     {
       "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\js\\table.js",
       "PackagePath": "staticwebassets\\js\\table.js"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\js\\tables.js",
+      "PackagePath": "staticwebassets\\js\\tables.js"
     },
     {
       "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\lib\\bootstrap\\LICENSE",

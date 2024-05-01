@@ -8,66 +8,64 @@ USE GamarraPlus
 go
 
 
-CREATE TABLE CATEGORIA(
-IdCategoria int primary key identity,
-Descripcion varchar(100),
-FechaRegistro datetime default getdate()
+CREATE TABLE CATEGORIA (
+    IdCategoria int primary key identity,
+    Descripcion varchar(100),
+    FechaRegistro datetime default getdate()
 )
-
 go
 
-CREATE TABLE PRODUCTO(
-IdProducto int primary key identity,
-Codigo varchar(100),
-IdCategoria int,
-Descripcion varchar(100),
-PrecioCompra decimal(10,2),
-PrecioVenta decimal(10,2),
-Stock int,
-FechaRegistro datetime default getdate(),
-RutaImagen varchar(255)
+CREATE TABLE PRODUCTO (
+    IdProducto int primary key identity,
+    Codigo varchar(100),
+    IdCategoria int,
+    Descripcion varchar(100),
+    PrecioCompra decimal(10,2),
+    PrecioVenta decimal(10,2),
+    Stock int,
+    FechaRegistro datetime default getdate(),
+    RutaImagen varchar(255),
+    FOREIGN KEY (IdCategoria) REFERENCES CATEGORIA(IdCategoria)
 )
 go
 
 create table VENTA(
-IdVenta int primary key identity,
-TipoPago varchar(50),
-NumeroDocumento varchar(50),
-DocumentoCliente varchar(50),
-NombreCliente varchar(100),
-MontoPagoCon decimal(10,2),
-MontoCambio decimal(10,2),
-MontoSubTotal  decimal(10,2),
-MontoIGV  decimal(10,2),
-MontoTotal decimal(10,2),
-FechaRegistro datetime default getdate()
+    IdVenta int primary key identity,
+    TipoPago varchar(50),
+    NumeroDocumento varchar(50),
+    DocumentoCliente varchar(50),
+    NombreCliente varchar(100),
+    MontoPagoCon decimal(10,2),
+    MontoCambio decimal(10,2),
+    MontoSubTotal  decimal(10,2),
+    MontoIGV  decimal(10,2),
+    MontoTotal decimal(10,2),
+    FechaRegistro datetime default getdate()
 )
-
-
 go
 
-
 create table DETALLE_VENTA(
-IdDetalleVenta int primary key identity,
-IdVenta int,
-IdProducto int,
-PrecioVenta decimal(10,2),
-Cantidad int,
-Total decimal(10,2),
-FechaRegistro datetime default getdate()
+    IdDetalleVenta int primary key identity,
+    IdVenta int,
+    IdProducto int,
+    PrecioVenta decimal(10,2),
+    Cantidad int,
+    Total decimal(10,2),
+    FechaRegistro datetime default getdate(),
+    FOREIGN KEY (IdVenta) REFERENCES VENTA(IdVenta),
+    FOREIGN KEY (IdProducto) REFERENCES PRODUCTO(IdProducto)
 )
-
 go
 
 create table USUARIO(
-IdUsuario int primary key identity,
-NombreCompleto varchar(100),
-Correo varchar(100),
-Clave varchar(100),
-FechaRegistro datetime default getdate()
+    IdUsuario int primary key identity,
+    NombreCompleto varchar(100),
+    Correo varchar(100),
+    Clave varchar(100),
+    FechaRegistro datetime default getdate()
 )
-
 go
+
 
 insert into CATEGORIA(Descripcion) values
 ('Camisetas'), -- Código 1
@@ -92,110 +90,109 @@ insert into CATEGORIA(Descripcion) values
 ('Baterías Externas'); -- Código 20
 go
 
-/*
-insert into PRODUCTO(Codigo, IdCategoria, Descripcion, PrecioCompra, PrecioVenta, Stock) values
-('CAM001', 1, 'Polo de algodón blanco', 10.00, 15.00, 50), -- Camisetas
-('CAM002', 1, 'Blusa floral de verano', 12.00, 20.00, 40), -- Camisetas
-('CAM003', 1, 'Camiseta de manga larga', 15.00, 25.00, 35), -- Camisetas
-('CAM004', 1, 'Camiseta de tirantes', 8.00, 12.00, 60), -- Camisetas
-('CAM005', 1, 'Camiseta estampada', 10.00, 18.00, 45), -- Camisetas
-('PAN001', 2, 'Jeans azul oscuro', 25.00, 40.00, 30), -- Pantalones
-('PAN002', 2, 'Pantalón cargo camuflado', 30.00, 45.00, 20), -- Pantalones
-('PAN003', 2, 'Pantalón chino beige', 20.00, 35.00, 25), -- Pantalones
-('PAN004', 2, 'Pantalón corto vaquero', 15.00, 25.00, 40), -- Pantalones
-('PAN005', 2, 'Pantalón deportivo', 18.00, 30.00, 35), -- Pantalones
-('ZAP001', 3, 'Botas de cuero marrón', 50.00, 80.00, 25), -- Zapatos
-('ZAP002', 3, 'Zapatillas deportivas negras', 40.00, 60.00, 35), -- Zapatos
-('ZAP003', 3, 'Zapatos de vestir negros', 60.00, 90.00, 20), -- Zapatos
-('ZAP004', 3, 'Sandalias de verano', 25.00, 35.00, 30), -- Zapatos
-('ZAP005', 3, 'Zapatillas de casa', 15.00, 20.00, 45), -- Zapatos
-('CHA001', 4, 'Abrigo acolchado para invierno', 60.00, 100.00, 15), -- Chaquetas
-('CHA002', 4, 'Chaleco de plumas ligero', 35.00, 60.00, 20), -- Chaquetas
-('CHA003', 4, 'Chaqueta vaquera', 40.00, 70.00, 25), -- Chaquetas
-('CHA004', 4, 'Chaqueta de cuero', 80.00, 120.00, 15), -- Chaquetas
-('CHA005', 4, 'Chaqueta cortavientos', 30.00, 45.00, 30), -- Chaquetas
-('VES001', 5, 'Vestido casual de algodón', 20.00, 35.00, 30), -- Vestidos
-('VES002', 5, 'Vestido de noche elegante', 50.00, 80.00, 15), -- Vestidos
-('VES003', 5, 'Vestido estampado floral', 25.00, 40.00, 20), -- Vestidos
-('VES004', 5, 'Vestido largo de fiesta', 60.00, 100.00, 10), -- Vestidos
-('VES005', 5, 'Vestido corto de verano', 18.00, 30.00, 25), -- Vestidos
-('FAL001', 6, 'Falda larga plisada', 18.00, 30.00, 25), -- Faldas
-('FAL002', 6, 'Mini falda vaquera', 15.00, 25.00, 30), -- Faldas
-('FAL003', 6, 'Falda de cuero negra', 30.00, 50.00, 15), -- Faldas
-('FAL004', 6, 'Falda floral de verano', 20.00, 35.00, 20), -- Faldas
-('FAL005', 6, 'Falda lápiz', 25.00, 40.00, 18), -- Faldas
-('SWE001', 7, 'Suéter de lana tejida', 30.00, 50.00, 20), -- Sweaters
-('SWE002', 7, 'Sudadera con capucha gris', 25.00, 40.00, 25), -- Sweaters
-('SWE003', 7, 'Jersey cuello alto', 35.00, 55.00, 18), -- Sweaters
-('SWE004', 7, 'Cárdigan de punto', 40.00, 60.00, 20), -- Sweaters
-('SWE005', 7, 'Chaqueta de punto abierta', 30.00, 45.00, 22), -- Sweaters
-('JEAN001', 8, 'Vaqueros ajustados', 30.00, 50.00, 20), -- Jeans
-('JEAN002', 8, 'Jeans rectos clásicos', 25.00, 40.00, 25), -- Jeans
-('JEAN003', 8, 'Pantalón vaquero desgastado', 35.00, 55.00, 18), -- Jeans
-('JEAN004', 8, 'Jeans acampanados', 28.00, 45.00, 20), -- Jeans
-('JEAN005', 8, 'Jeans de tiro alto', 32.00, 50.00, 22), -- Jeans
-('ACC001', 9, 'Bufanda de lana a cuadros', 12.00, 20.00, 30), -- Accesorios
-('ACC002', 9, 'Gorro de lana con pompón', 10.00, 18.00, 35), -- Accesorios
-('ACC003', 9, 'Cinturón de cuero negro', 15.00, 25.00, 25), -- Accesorios
-('ACC004', 9, 'Bolso de mano de piel', 40.00, 70.00, 20), -- Accesorios
-('ACC005', 9, 'Pulsera de plata', 20.00, 35.00, 30), -- Accesorios
-('SOM001', 10, 'Sombrero de paja', 18.00, 30.00, 25), -- Sombreros
-('SOM002', 10, 'Gorra de béisbol', 12.00, 20.00, 30), -- Sombreros
-('SOM003', 10, 'Sombrero de fieltro', 25.00, 40.00, 20), -- Sombreros
-('SOM004', 10, 'Sombrero de ala ancha', 20.00, 35.00, 22), -- Sombreros
-('SOM005', 10, 'Sombrero de invierno con pompón', 22.00, 38.00, 28), -- Sombreros
-('MON001', 11, 'Monitor LED 24 pulgadas Full HD', 150.00, 200.00, 20), -- Monitores
-('MON002', 11, 'Monitor curvo 32 pulgadas QHD', 300.00, 400.00, 15), -- Monitores
-('MON003', 11, 'Monitor gaming 27 pulgadas 4K', 400.00, 600.00, 10), -- Monitores
-('MON004', 11, 'Monitor portátil 15.6 pulgadas', 200.00, 300.00, 12), -- Monitores
-('MON005', 11, 'Monitor profesional 27 pulgadas 8K', 800.00, 1000.00, 8), -- Monitores
-('TEC001', 12, 'Teclado inalámbrico retroiluminado', 40.00, 60.00, 30), -- Teclados
-('TEC002', 12, 'Teclado mecánico RGB', 60.00, 90.00, 15), -- Teclados
-('TEC003', 12, 'Teclado numérico externo', 20.00, 30.00, 20), -- Teclados
-('TEC004', 12, 'Teclado para iPad', 50.00, 70.00, 25), -- Teclados
-('TEC005', 12, 'Teclado plegable Bluetooth', 30.00, 45.00, 18), -- Teclados
-('RAT001', 13, 'Ratón óptico para gaming', 25.00, 35.00, 50), -- Ratones
-('RAT002', 13, 'Ratón inalámbrico ergonómico', 20.00, 30.00, 40), -- Ratones
-('RAT003', 13, 'Ratón vertical con cable', 18.00, 25.00, 45), -- Ratones
-('RAT004', 13, 'Ratón bluetooth compacto', 15.00, 22.00, 55), -- Ratones
-('RAT005', 13, 'Ratón láser recargable', 30.00, 40.00, 35), -- Ratones
-('AUR001', 14, 'Auriculares Bluetooth con cancelación de ruido', 80.00, 120.00, 25), -- Auriculares
-('AUR002', 14, 'Auriculares inalámbricos deportivos', 50.00, 70.00, 30), -- Auriculares
-('AUR003', 14, 'Auriculares con micrófono desmontable', 60.00, 90.00, 15), -- Auriculares
-('AUR004', 14, 'Auriculares gaming con iluminación RGB', 60.00, 90.00, 15), -- Auriculares
-('AUR005', 14, 'Auriculares in-ear con estuche de carga', 40.00, 60.00, 20), -- Auriculares
-('SSD001', 15, 'SSD de 500GB SATA III', 80.00, 100.00, 40), -- SSD
-('SSD002', 15, 'SSD NVMe de 1TB M.2', 120.00, 150.00, 30), -- SSD
-('SSD003', 15, 'SSD externo de 2TB USB-C', 150.00, 200.00, 25), -- SSD
-('SSD004', 15, 'SSD de 250GB para portátil', 50.00, 70.00, 35), -- SSD
-('SSD005', 15, 'SSD portátil de 1TB con cifrado de hardware', 100.00, 130.00, 20), -- SSD
-('GPU001', 16, 'Tarjeta gráfica GeForce RTX 3060 Ti', 500.00, 600.00, 15), -- Tarjetas Gráficas
-('GPU002', 16, 'Tarjeta gráfica AMD Radeon RX 6700 XT', 550.00, 650.00, 10), -- Tarjetas Gráficas
-('GPU003', 16, 'Tarjeta gráfica NVIDIA Quadro RTX 4000', 700.00, 900.00, 8), -- Tarjetas Gráficas
-('GPU004', 16, 'Tarjeta gráfica externa Thunderbolt 3', 400.00, 550.00, 12), -- Tarjetas Gráficas
-('GPU005', 16, 'Tarjeta gráfica para workstation CAD', 800.00, 1000.00, 6), -- Tarjetas Gráficas
-('CPU001', 17, 'Procesador Intel Core i7-11700K', 400.00, 500.00, 10), -- Procesadores
-('CPU002', 17, 'Procesador AMD Ryzen 7 5800X', 450.00, 550.00, 8), -- Procesadores
-('CPU003', 17, 'Procesador Intel Core i9-11900K', 550.00, 700.00, 6), -- Procesadores
-('CPU004', 17, 'Procesador de bajo consumo Intel Core i5', 250.00, 350.00, 12), -- Procesadores
-('CPU005', 17, 'Procesador de sobremesa AMD Ryzen 5', 200.00, 300.00, 15), -- Procesadores
-('IMP001', 18, 'Impresora láser multifunción a color', 250.00, 350.00, 20), -- Impresoras
-('IMP002', 18, 'Impresora de inyección de tinta', 150.00, 200.00, 25), -- Impresoras
-('IMP003', 18, 'Impresora fotográfica portátil', 100.00, 150.00, 30), -- Impresoras
-('IMP004', 18, 'Impresora láser monocromática', 200.00, 250.00, 18), -- Impresoras
-('IMP005', 18, 'Impresora térmica de tickets', 180.00, 220.00, 22), -- Impresoras
-('WEB001', 19, 'Webcam HD 1080p con micrófono integrado', 50.00, 70.00, 30), -- Webcams
-('WEB002', 19, 'Webcam Full HD con lente gran angular', 60.00, 80.00, 25), -- Webcams
-('WEB003', 19, 'Webcam 4K con seguimiento automático', 80.00, 100.00, 20), -- Webcams
-('WEB004', 19, 'Webcam giratoria 360 grados', 70.00, 90.00, 18), -- Webcams
-('WEB005', 19, 'Webcam con luz LED ajustable', 55.00, 75.00, 22), -- Webcams
-('BAT001', 20, 'Batería externa de 20000mAh con carga rápida', 30.00, 50.00, 40), -- Baterías Externas
-('BAT002', 20, 'Batería portátil solar de 10000mAh', 40.00, 60.00, 35), -- Baterías Externas
-('BAT003', 20, 'Batería externa ultradelgada de 5000mAh', 20.00, 30.00, 50), -- Baterías Externas
-('BAT004', 20, 'Batería externa inalámbrica de 15000mAh', 45.00, 65.00, 30), -- Baterías Externas
-('BAT005', 20, 'Batería externa resistente al agua de 30000mAh', 50.00, 80.00, 25); -- Baterías Externas
-go
-*/
+
+insert into PRODUCTO(Codigo, IdCategoria, Descripcion, PrecioCompra, PrecioVenta, Stock, RutaImagen) values
+('CAM001', 1, 'Polo de algodón blanco', 10.00, 15.00, 50, '/Productos/01.jpg'), -- Camisetas
+('CAM002', 1, 'Blusa floral de verano', 12.00, 20.00, 40, '/Productos/02.jpg'), -- Camisetas
+('CAM003', 1, 'Camiseta de manga larga', 15.00, 25.00, 35, '/Productos/03.jpg'), -- Camisetas
+('CAM004', 1, 'Camiseta de tirantes', 8.00, 12.00, 60, '/Productos/04.jpg'), -- Camisetas
+('CAM005', 1, 'Camiseta estampada', 10.00, 18.00, 45, '/Productos/05.jpg'), -- Camisetas
+('PAN001', 2, 'Jeans azul oscuro', 25.00, 40.00, 30, '/Productos/06.jpg'), -- Pantalones
+('PAN002', 2, 'Pantalón cargo camuflado', 30.00, 45.00, 20, '/Productos/07.jpg'), -- Pantalones
+('PAN003', 2, 'Pantalón chino beige', 20.00, 35.00, 25, '/Productos/08.jpg'), -- Pantalones
+('PAN004', 2, 'Pantalón corto vaquero', 15.00, 25.00, 40, '/Productos/09.jpg'), -- Pantalones
+('PAN005', 2, 'Pantalón deportivo', 18.00, 30.00, 35, '/Productos/10.jpg'), -- Pantalones
+('ZAP001', 3, 'Botas de cuero marrón', 50.00, 80.00, 25, '/Productos/11.jpg'), -- Zapatos
+('ZAP002', 3, 'Zapatillas deportivas negras', 40.00, 60.00, 35, '/Productos/12.jpg'), -- Zapatos
+('ZAP003', 3, 'Zapatos de vestir negros', 60.00, 90.00, 20, '/Productos/13.jpg'), -- Zapatos
+('ZAP004', 3, 'Sandalias de verano', 25.00, 35.00, 30, '/Productos/14.jpg'), -- Zapatos
+('ZAP005', 3, 'Zapatillas de casa', 15.00, 20.00, 45, '/Productos/15.jpg'), -- Zapatos
+('CHA001', 4, 'Abrigo acolchado para invierno', 60.00, 100.00, 15, '/Productos/16.jpg'), -- Chaquetas
+('CHA002', 4, 'Chaleco de plumas ligero', 35.00, 60.00, 20, '/Productos/17.jpg'), -- Chaquetas
+('CHA003', 4, 'Chaqueta vaquera', 40.00, 70.00, 25, '/Productos/18.jpg'), -- Chaquetas
+('CHA004', 4, 'Chaqueta de cuero', 80.00, 120.00, 15, '/Productos/19.jpg'), -- Chaquetas
+('CHA005', 4, 'Chaqueta cortavientos', 30.00, 45.00, 30, '/Productos/20.jpg'), -- Chaquetas
+('VES001', 5, 'Vestido casual de algodón', 20.00, 35.00, 30, '/Productos/21.jpg'), -- Vestidos
+('VES002', 5, 'Vestido de noche elegante', 50.00, 80.00, 15, '/Productos/22.jpg'), -- Vestidos
+('VES003', 5, 'Vestido estampado floral', 25.00, 40.00, 20, '/Productos/23.jpg'), -- Vestidos
+('VES004', 5, 'Vestido largo de fiesta', 60.00, 100.00, 10, '/Productos/24.jpg'), -- Vestidos
+('VES005', 5, 'Vestido corto de verano', 18.00, 30.00, 25, '/Productos/25.jpg'), -- Vestidos
+('FAL001', 6, 'Falda larga plisada', 18.00, 30.00, 25, '/Productos/26.jpg'), -- Faldas
+('FAL002', 6, 'Mini falda vaquera', 15.00, 25.00, 30, '/Productos/27.jpg'), -- Faldas
+('FAL003', 6, 'Falda de cuero negra', 30.00, 50.00, 15, '/Productos/28.jpg'), -- Faldas
+('FAL004', 6, 'Falda floral de verano', 20.00, 35.00, 20, '/Productos/29.jpg'), -- Faldas
+('FAL005', 6, 'Falda lápiz', 25.00, 40.00, 18, '/Productos/30.jpg'), -- Faldas
+('SWE001', 7, 'Suéter de lana tejida', 30.00, 50.00, 20, '/Productos/31.jpg'), -- Sweaters
+('SWE002', 7, 'Sudadera con capucha gris', 25.00, 40.00, 25, '/Productos/32.jpg'), -- Sweaters
+('SWE003', 7, 'Jersey cuello alto', 35.00, 55.00, 18, '/Productos/33.jpg'), -- Sweaters
+('SWE004', 7, 'Cárdigan de punto', 40.00, 60.00, 20, '/Productos/34.jpg'), -- Sweaters
+('SWE005', 7, 'Chaqueta de punto abierta', 30.00, 45.00, 22, '/Productos/35.jpg'), -- Sweaters
+('JEAN001', 8, 'Vaqueros ajustados', 30.00, 50.00, 20, '/Productos/36.jpg'), -- Jeans
+('JEAN002', 8, 'Jeans rectos clásicos', 25.00, 40.00, 25, '/Productos/37.jpg'), -- Jeans
+('JEAN003', 8, 'Pantalón vaquero desgastado', 35.00, 55.00, 18, '/Productos/38.jpg'), -- Jeans
+('JEAN004', 8, 'Jeans acampanados', 28.00, 45.00, 20, '/Productos/39.jpg'), -- Jeans
+('JEAN005', 8, 'Jeans de tiro alto', 32.00, 50.00, 22, '/Productos/40.jpg'), -- Jeans
+('ACC001', 9, 'Bufanda de lana a cuadros', 12.00, 20.00, 30, '/Productos/41.jpg'), -- Accesorios
+('ACC002', 9, 'Gorro de lana con pompón', 10.00, 18.00, 35, '/Productos/42.jpg'), -- Accesorios
+('ACC003', 9, 'Cinturón de cuero negro', 15.00, 25.00, 25, '/Productos/43.jpg'), -- Accesorios
+('ACC004', 9, 'Bolso de mano de piel', 40.00, 70.00, 20, '/Productos/44.jpg'), -- Accesorios
+('ACC005', 9, 'Pulsera de plata', 20.00, 35.00, 30, '/Productos/45.jpg'), -- Accesorios
+('SOM001', 10, 'Sombrero de paja', 18.00, 30.00, 25, '/Productos/46.jpg'), -- Sombreros
+('SOM002', 10, 'Gorra de béisbol', 12.00, 20.00, 30, '/Productos/47.jpg'), -- Sombreros
+('SOM003', 10, 'Sombrero de fieltro', 25.00, 40.00, 20, '/Productos/48.jpg'), -- Sombreros
+('SOM004', 10, 'Sombrero de ala ancha', 20.00, 35.00, 22, '/Productos/49.jpg'), -- Sombreros
+('SOM005', 10, 'Sombrero de invierno con pompón', 22.00, 38.00, 28, '/Productos/50.jpg'), -- Sombreros
+('MON001', 11, 'Monitor LED 24 pulgadas Full HD', 150.00, 200.00, 20, '/Productos/51.jpg'), -- Monitores
+('MON002', 11, 'Monitor curvo 32 pulgadas QHD', 300.00, 400.00, 15, '/Productos/52.jpg'), -- Monitores
+('MON003', 11, 'Monitor gaming 27 pulgadas 4K', 400.00, 600.00, 10, '/Productos/53.jpg'), -- Monitores
+('MON004', 11, 'Monitor portátil 15.6 pulgadas', 200.00, 300.00, 12, '/Productos/54.jpg'), -- Monitores
+('MON005', 11, 'Monitor profesional 27 pulgadas 8K', 800.00, 1000.00, 8, '/Productos/55.jpg'), -- Monitores
+('TEC001', 12, 'Teclado inalámbrico retroiluminado', 40.00, 60.00, 30, '/Productos/56.jpg'), -- Teclados
+('TEC002', 12, 'Teclado mecánico RGB', 60.00, 90.00, 15, '/Productos/57.jpg'), -- Teclados
+('TEC003', 12, 'Teclado numérico externo', 20.00, 30.00, 20, '/Productos/58.jpg'), -- Teclados
+('TEC004', 12, 'Teclado para iPad', 50.00, 70.00, 25, '/Productos/59.jpg'), -- Teclados
+('TEC005', 12, 'Teclado plegable Bluetooth', 30.00, 45.00, 18, '/Productos/60.jpg'), -- Teclados
+('RAT001', 13, 'Ratón óptico para gaming', 25.00, 35.00, 50, '/Productos/61.jpg'), -- Ratones
+('RAT002', 13, 'Ratón inalámbrico ergonómico', 20.00, 30.00, 40, '/Productos/62.jpg'), -- Ratones
+('RAT003', 13, 'Ratón vertical con cable', 18.00, 25.00, 45, '/Productos/63.jpg'), -- Ratones
+('RAT004', 13, 'Ratón bluetooth compacto', 15.00, 22.00, 55, '/Productos/64.jpg'), -- Ratones
+('RAT005', 13, 'Ratón láser recargable', 30.00, 40.00, 35, '/Productos/65.jpg'), -- Ratones
+('AUR001', 14, 'Auriculares Bluetooth con cancelación de ruido', 80.00, 120.00, 25, '/Productos/66.jpg'), -- Auriculares
+('AUR002', 14, 'Auriculares inalámbricos deportivos', 50.00, 70.00, 30, '/Productos/67.jpg'), -- Auriculares
+('AUR003', 14, 'Auriculares con micrófono desmontable', 60.00, 90.00, 15, '/Productos/68.jpg'), -- Auriculares
+('AUR004', 14, 'Auriculares gaming con iluminación RGB', 60.00, 90.00, 15, '/Productos/69.jpg'), -- Auriculares
+('AUR005', 14, 'Auriculares in-ear con estuche de carga', 40.00, 60.00, 20, '/Productos/70.jpg'), -- Auriculares
+('SSD001', 15, 'SSD de 500GB SATA III', 80.00, 100.00, 40, '/Productos/71.jpg'), -- SSD
+('SSD002', 15, 'SSD NVMe de 1TB M.2', 120.00, 150.00, 30, '/Productos/72.jpg'), -- SSD
+('SSD003', 15, 'SSD externo de 2TB USB-C', 150.00, 200.00, 25, '/Productos/73.jpg'), -- SSD
+('SSD004', 15, 'SSD de 250GB para portátil', 50.00, 70.00, 35, '/Productos/74.jpg'), -- SSD
+('SSD005', 15, 'SSD portátil de 1TB con cifrado de hardware', 100.00, 130.00, 20, '/Productos/75.jpg'), -- SSD
+('GPU001', 16, 'Tarjeta gráfica GeForce RTX 3060 Ti', 500.00, 600.00, 15, '/Productos/76.jpg'), -- Tarjetas Gráficas
+('GPU002', 16, 'Tarjeta gráfica AMD Radeon RX 6700 XT', 550.00, 650.00, 10, '/Productos/77.jpg'), -- Tarjetas Gráficas
+('GPU003', 16, 'Tarjeta gráfica NVIDIA Quadro RTX 4000', 700.00, 900.00, 8, '/Productos/78.jpg'), -- Tarjetas Gráficas
+('GPU004', 16, 'Tarjeta gráfica externa Thunderbolt 3', 400.00, 550.00, 12, '/Productos/79.jpg'), -- Tarjetas Gráficas
+('GPU005', 16, 'Tarjeta gráfica para workstation CAD', 800.00, 1000.00, 6, '/Productos/80.jpg'), -- Tarjetas Gráficas
+('CPU001', 17, 'Procesador Intel Core i7-11700K', 400.00, 500.00, 10, '/Productos/81.jpg'), -- Procesadores
+('CPU002', 17, 'Procesador AMD Ryzen 7 5800X', 450.00, 550.00, 8, '/Productos/82.jpg'), -- Procesadores
+('CPU003', 17, 'Procesador Intel Core i9-11900K', 550.00, 700.00, 6, '/Productos/83.jpg'), -- Procesadores
+('CPU004', 17, 'Procesador de bajo consumo Intel Core i5', 250.00, 350.00, 12, '/Productos/84.jpg'), -- Procesadores
+('CPU005', 17, 'Procesador de sobremesa AMD Ryzen 5', 200.00, 300.00, 15, '/Productos/85.jpg'), -- Procesadores
+('IMP001', 18, 'Impresora láser multifunción a color', 250.00, 350.00, 20, '/Productos/86.jpg'), -- Impresoras
+('IMP002', 18, 'Impresora de inyección de tinta', 150.00, 200.00, 25, '/Productos/87.jpg'), -- Impresoras
+('IMP003', 18, 'Impresora fotográfica portátil', 100.00, 150.00, 30, '/Productos/88.jpg'), -- Impresoras
+('IMP004', 18, 'Impresora láser monocromática', 200.00, 250.00, 18, '/Productos/89.jpg'), -- Impresoras
+('IMP005', 18, 'Impresora térmica de tickets', 180.00, 220.00, 22, '/Productos/90.jpg'), -- Impresoras
+('WEB001', 19, 'Webcam HD 1080p con micrófono integrado', 50.00, 70.00, 30, '/Productos/91.jpg'), -- Webcams
+('WEB002', 19, 'Webcam Full HD con lente gran angular', 60.00, 80.00, 25, '/Productos/92.jpg'), -- Webcams
+('WEB003', 19, 'Webcam 4K con seguimiento automático', 80.00, 100.00, 20, '/Productos/93.jpg'), -- Webcams
+('WEB004', 19, 'Webcam giratoria 360 grados', 70.00, 90.00, 18, '/Productos/94.jpg'), -- Webcams
+('WEB005', 19, 'Webcam con luz LED ajustable', 55.00, 75.00, 22, '/Productos/95.jpg'), -- Webcams
+('BAT001', 20, 'Batería externa de 20000mAh con carga rápida', 30.00, 50.00, 40, '/Productos/96.jpg'), -- Baterías Externas
+('BAT002', 20, 'Batería portátil solar de 10000mAh', 40.00, 60.00, 35, '/Productos/97.jpg'), -- Baterías Externas
+('BAT003', 20, 'Batería externa ultradelgada de 5000mAh', 20.00, 30.00, 50, '/Productos/98.jpg'), -- Baterías Externas
+('BAT004', 20, 'Batería externa inalámbrica de 15000mAh', 45.00, 65.00, 30, '/Productos/99.jpg'), -- Baterías Externas
+('BAT005', 20, 'Batería externa resistente al agua de 30000mAh', 50.00, 80.00, 25, '/Productos/100.jpg'); -- Baterías Externas
+GO
 
 insert into USUARIO(NombreCompleto, Correo, Clave) values 
 ('Jorge Fabrizio Olano Farfan 26', 'leder@hotmail.com', 'asd'),
@@ -245,6 +242,7 @@ end
 go
 
 -- Insertar el primer producto
+/*
 execute sp_guardar_producto
     @Codigo = 'PRD003',
     @IdCategoria = 1,
@@ -253,9 +251,11 @@ execute sp_guardar_producto
     @PrecioVenta = 15.99,
     @Stock = 100,
     @RutaImagen = '/Productos/01.jpg';
-	go
+go
+*/
 
 -- Insertar el segundo producto
+/*
 execute sp_guardar_producto
     @Codigo = 'PRD004',
     @IdCategoria = 2,
@@ -265,7 +265,7 @@ execute sp_guardar_producto
     @Stock = 75,
     @RutaImagen = '/Productos/02.jpg';
 go
-
+*/
 
 CREATE PROCEDURE sp_editar_producto
 (
@@ -294,6 +294,7 @@ END
 GO
 
 -- Editar el primer producto
+/*
 EXEC sp_editar_producto
     @IdProducto = 1,
     @Codigo = 'PRD003',
@@ -303,7 +304,8 @@ EXEC sp_editar_producto
     @PrecioVenta = 18.99,
     @Stock = 150,
     @RutaImagen = '/Productos/04.jpg';
-	go
+go
+*/
 
 
 
