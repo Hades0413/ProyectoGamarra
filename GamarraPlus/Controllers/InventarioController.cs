@@ -15,19 +15,15 @@ namespace GamarraPlus.Controllers
 
         public async Task<IActionResult> Productos()
         {
-            // Obtener la lista de categorías
             var categoriasTask = ListaCategoria();
             var categorias = await categoriasTask;
 
-            // Llama al método ListaProducto y espera su resultado
             var productosTask = ListaProducto();
             var productos = await productosTask;
 
-            // Puedes pasar tanto la lista de productos como la de categorías a la vista
             ViewBag.Productos = productos;
             ViewBag.Categorias = categorias;
 
-            // Devuelve la vista
             return View();
         }
 
@@ -51,7 +47,6 @@ namespace GamarraPlus.Controllers
                 }
             }
 
-            // Obtener la lista de categorías y almacenarla en ViewBag
             ViewBag.Categorias = await ListaCategoria();
 
             return View(lista);
@@ -62,26 +57,32 @@ namespace GamarraPlus.Controllers
         public async Task<JsonResult> GuardarProducto([FromBody] Producto obj)
         {
             bool respuesta;
-
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("https://localhost:7034/api/Inventario/");
-
-                var jsonProducto = JsonConvert.SerializeObject(obj);
-
-                var content = new StringContent(jsonProducto, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = await client.PostAsync("productos", content);
-
-                if (response.IsSuccessStatusCode)
+                using (var client = new HttpClient())
                 {
-                    respuesta = true;
+                    client.BaseAddress = new Uri("https://localhost:7034/api/Inventario/");
+
+                    var jsonProducto = JsonConvert.SerializeObject(obj);
+
+                    var content = new StringContent(jsonProducto, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = await client.PostAsync("productos", content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        respuesta = true;
+                    }
+                    else
+                    {
+                        respuesta = false;
+                        Console.WriteLine("Error al guardar el producto. Código de estado: " + response.StatusCode);
+                    }
                 }
-                else
-                {
-                    respuesta = false;
-                    Console.WriteLine("Error al guardar el producto. Código de estado: " + response.StatusCode);
-                }
+            }
+            catch
+            {
+                throw;
             }
 
             return Json(new { respuesta = respuesta });
@@ -142,14 +143,11 @@ namespace GamarraPlus.Controllers
             return Json(new { respuesta = respuesta });
         }
 
-
-
         public async Task<IActionResult> Categorias()
         {
             var result = await ListaCategoria();
             return View(result);
         }
-
 
         public async Task<List<Categoria>> ListaCategoria()
         {

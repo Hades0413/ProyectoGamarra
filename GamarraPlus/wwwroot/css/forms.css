@@ -1,0 +1,67 @@
+﻿
+/*------------ Login container ------------*/
+
+.box-area {
+    width: 930px;
+}
+
+/*------------ Right box ------------*/
+
+.right-box {
+    padding: 40px 30px 40px 40px;
+}
+
+.btn-accion {
+    border-radius: 1rem;
+    color: #fff;
+    padding: 14px 30px;
+    font-size:1.4rem;
+    border: none;
+}
+
+
+
+/*------------ Custom Placeholder ------------*/
+
+::placeholder {
+    font-size: 16px;
+}
+
+.rounded-4 {
+    border-radius: 20px;
+}
+
+.rounded-5 {
+    border-radius: 30px;
+}
+
+.featured-image i {
+    font-size: 8rem;
+    color: #fff
+}
+
+
+/*------------ For small screens------------*/
+
+@media only screen and (max-width: 768px) {
+
+
+    .featured-image i {
+        font-size: 2rem;
+    }
+
+    .box-area {
+        margin: 0 10px;
+    }
+
+
+
+    .left-box {
+        height: 140px;
+        overflow: hidden;
+    }
+
+    .right-box {
+        padding: 20px;
+    }
+}

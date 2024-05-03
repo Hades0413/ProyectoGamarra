@@ -9,6 +9,8 @@
 
 <head>
     <link rel="stylesheet" href="~/css/tables.css">
+    <link rel="stylesheet" href="~/css/forms.css">
+    <script src="https://kit.fontawesome.com/4dd764bfea.js" crossorigin="anonymous"></script>
 </head>
 
 <main>
@@ -20,6 +22,7 @@
 
     <div class="wrapper">
         <table class="tabla">
+            <caption>Productos</caption>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -64,6 +67,86 @@
 <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
+            <div class="modal-body">
+                <div class="container d-flex justify-content-center align-items-center min-vh-100">
+                    <div class="row border rounded-5 p-3 bg-white shadow box-area">
+                        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
+                             style="background: #4c9be8;">
+                            <div class="featured-image mb-3">
+                                <i class="fa-solid fa-truck-moving"></i>
+                            </div>
+                            <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">
+                                Editar Producto
+                            </p>
+                            <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Gamarra+</small>
+                        </div>
+
+                        <div class="col-md-6 right-box">
+                            <div class="row align-items-center">
+                                <div class="header-text mb-4">
+                                    <h2>Editar Producto</h2>
+                                </div>
+                                <form id="formEditarProducto">
+                                    <div class="mb-3">
+                                        <label for="inputCodigo" class="form-label">Código</label>
+                                        <input type="text" class="form-control form-control-lg bg-light mt-3 fs-7" id="inputCodigo" name="codigo" placeholder="Nuevo código">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputDescripcion" class="form-label">Descripción</label>
+                                        <input type="text" class="form-control form-control-lg bg-light mt-3 fs-7" id="inputDescripcion" name="descripcion" placeholder="Nueva descripción">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="selectCategoria" class="form-label">Categoría</label>
+                                        <select class="form-control form-control-lg bg-light mt-3 fs-7" id="selectCategoria" name="categoria">
+                                            @foreach (var categoria in ViewBag.Categorias)
+                                            {
+                                                <option value="@categoria.IdCategoria">@categoria.Descripcion</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputPrecioCompra" class="form-label">Precio de compra</label>
+                                        <input type="number" class="form-control form-control-lg bg-light mt-3 fs-7" id="inputPrecioCompra" name="precioCompra" placeholder="Nuevo precio de compra">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputPrecioVenta" class="form-label">Precio de venta</label>
+                                        <input type="number" class="form-control form-control-lg bg-light mt-3 fs-7" id="inputPrecioVenta" name="precioVenta" placeholder="Nuevo precio de venta">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputStock" class="form-label">Stock</label>
+                                        <input type="number" class="form-control form-control-lg bg-light mt-3 fs-7" id="inputStock" name="stock" placeholder="Nuevo stock">
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label class="control-label">Archivo</label>
+                                        <div class="custom-file" id="NombreArchivos">
+                                            <input type="file" class="custom-file-input" id="filess" onchange="getArchivoOnChanges()" />
+
+                                            <label class="custom-file-label" id="lblFiles">Adjuntar...</label>
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" id="inputIdProducto" name="idProducto">
+
+                                </form>
+                            </div>
+                            <div class="modal-footer mt-4">
+                                <button type="button" class="btn-accion btn-lg btn-primary mx-2" onclick="EditarProducto()">Guardar</button>
+                                <button type="button" class="btn-accion btn-lg btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+<div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalEditarLabel">Editar producto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -81,10 +164,7 @@
                     <div class="mb-3">
                         <label for="selectCategoria" class="form-label">Categoría</label>
                         <select class="form-control" id="selectCategoria" name="categoria">
-                            @foreach (var categoria in ViewBag.Categorias)
-                            {
-                                <option value="@categoria.IdCategoria">@categoria.Descripcion</option>
-                            }
+
                         </select>
                     </div>
                     <div class="mb-3">
@@ -115,7 +195,88 @@
         </div>
     </div>
 </div>
+-->
 
+<div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="modalCrearProductoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container d-flex justify-content-center align-items-center min-vh-100">
+                    <div class="row border rounded-5 p-3 bg-white shadow box-area">
+                        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
+                             style="background: #4c9be8;">
+                            <div class="featured-image mb-3">
+                                <i class="fa-solid fa-truck-moving"></i>
+
+                            </div>
+                            <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">
+                                Crear Nuevo Producto
+                            </p>
+                            <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Gamarra+</small>
+                        </div>
+
+                        <div class="col-md-6 right-box">
+                            <div class="row align-items-center">
+                                <div class="header-text mb-4">
+                                    <h2>Crear Producto</h2>
+                                </div>
+                                <form id="formCrearProducto">
+                                    <div class="mb-3">
+                                        <label for="inputNuevoCodigo" class="form-label">Código</label>
+                                        <input type="text" class="form-control form-control-lg bg-light mt-3 fs-7" id="inputNuevoCodigo" name="nuevoCodigo" placeholder="Nuevo código">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputNuevaDescripcion" class="form-label">Descripción</label>
+                                        <input type="text" class="form-control form-control-lg bg-light mt-3 fs-7" id="inputNuevaDescripcion" name="nuevaDescripcion" placeholder="Nueva descripción">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="selectNuevaCategoria" class="form-label">Categoría</label>
+
+                                        <select class="form-control form-control-lg bg-light mt-3 fs-7" id="selectNuevaCategoria" name="idCategoria">
+                                            <option value="">Nueva Categoría</option> <!-- Placeholder -->
+                                            @foreach (var categoria in ViewBag.Categorias)
+                                            {
+                                                <option value="@categoria.IdCategoria">@categoria.Descripcion</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputNuevoPrecioCompra" class="form-label">Precio de compra</label>
+                                        <input type="number" class="form-control form-control-lg bg-light mt-3 fs-7" id="inputNuevoPrecioCompra" name="nuevoPrecioCompra" placeholder="Nuevo precio de compra">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputNuevoPrecioVenta" class="form-label">Precio de venta</label>
+                                        <input type="number" class="form-control form-control-lg bg-light mt-3 fs-7" id="inputNuevoPrecioVenta" name="nuevoPrecioVenta" placeholder="Nuevo precio de venta">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputNuevoStock" class="form-label">Stock</label>
+                                        <input type="number" class="form-control form-control-lg bg-light mt-3 fs-7" id="inputNuevoStock" name="nuevoStock" placeholder="Nuevo stock">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="control-label">Archivo</label>
+                                        <div class="custom-file" id="NombreArchivo">
+                                            <input type="file" class="custom-file-input" id="files" onchange="getArchivoOnChange()" />
+
+                                            <label class="custom-file-label" id="lblFile">Adjuntar...</label>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="modal-footer mt-4">
+                                <button type="button" class="btn-accion btn-lg btn-primary mx-2" onclick="CrearProducto()">Crear</button>
+                                <button type="button" class="btn-accion btn-lg btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
 <div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="modalCrearLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -136,10 +297,7 @@
                     <div class="mb-3">
                         <label for="selectNuevaCategoria" class="form-label">Categoría</label>
                         <select class="form-control" id="selectNuevaCategoria" name="idCategoria">
-                            @foreach (var categoria in ViewBag.Categorias)
-                            {
-                                <option value="@categoria.IdCategoria">@categoria.Descripcion</option>
-                            }
+
                         </select>
                     </div>
                     <div class="mb-3">
@@ -164,7 +322,7 @@
         </div>
     </div>
 </div>
-
+-->
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -257,10 +415,23 @@
         $('#selectCategoria option').filter(function () {
             return $(this).text() === categoria;
         }).prop('selected', true);
+        $('#files').val('');
+
 
         $('#modalEditarLabel').text('Edit Product');
         $('#modalEditar').modal('show');
     }
+
+
+    function getArchivoOnChanges() {
+
+        debugger;
+        let file = document.getElementById('filess').files[0];
+
+        $('#lblFiles').text(file.name)
+    }
+
+
 
     async function EditarProducto() {
         var idProducto = $('#inputIdProducto').val();
@@ -268,6 +439,17 @@
         var nuevaDescripcion = $('#inputDescripcion').val();
         var nuevoPrecioCompra = $('#inputPrecioCompra').val();
         var nuevoPrecioVenta = $('#inputPrecioVenta').val();
+
+        // Obtener solo el nombre del archivo
+        var fileInput = document.getElementById('filess');
+        var fileName = fileInput.files[0].name;
+
+        // Ruta de la carpeta de almacenamiento de imágenes relativa al servidor
+        var rutaCarpeta = "/Productos/";
+
+        // Concatenar la ruta de la carpeta con el nombre del archivo
+        var rutaCompleta = rutaCarpeta + fileName;
+
         var nuevoStock = $('#inputStock').val();
         var categoria = $('#selectCategoria').val();
 
@@ -283,6 +465,8 @@
                     descripcion: nuevaDescripcion,
                     precioCompra: nuevoPrecioCompra,
                     precioVenta: nuevoPrecioVenta,
+                    RutaImagen: rutaCompleta, // Enviar la ruta completa del archivo
+
                     stock: nuevoStock,
                     oCategoria: {
                         IdCategoria: categoria,
@@ -316,40 +500,69 @@
         }
     }
 
+
 </script>
 
 <script>
+
+    function getArchivoOnChange() {
+
+        debugger;
+        let file = document.getElementById('files').files[0];
+
+        $('#lblFile').text(file.name)
+    }
+
+
+
     function openCreateModal() {
+        debugger;
         $('#inputNuevoCodigo').val('');
         $('#inputNuevaDescripcion').val('');
         $('#inputNuevoPrecioCompra').val('');
         $('#inputNuevoPrecioVenta').val('');
         $('#inputNuevoStock').val('');
         $('#selectNuevaCategoria').val('');
+        $('#files').val('');
+
         $('#modalCrearLabel').text('Create New Product');
         $('#modalCrear').modal('show');
     }
 
     async function CrearProducto() {
+        debugger;
         var nuevoCodigo = $('#inputNuevoCodigo').val();
         var nuevaDescripcion = $('#inputNuevaDescripcion').val();
         var nuevoPrecioCompra = $('#inputNuevoPrecioCompra').val();
         var nuevoPrecioVenta = $('#inputNuevoPrecioVenta').val();
         var nuevoStock = $('#inputNuevoStock').val();
         var idCategoria = $('#selectNuevaCategoria').val();
+        var file = $('#files').val();
 
         try {
+            const formData = new FormData();
+            formData.append('Codigo', nuevoCodigo);
+            formData.append('Descripcion', nuevaDescripcion);
+            formData.append('PrecioCompra', nuevoPrecioCompra);
+            formData.append('PrecioVenta', nuevoPrecioVenta);
+            formData.append('Stock', nuevoStock);
+            formData.append('oCategoria.IdCategoria', idCategoria);
+            formData.append('archivo', file);
+
             const response = await fetch(`/Inventario/GuardarProducto`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
+
                     Codigo: nuevoCodigo,
                     Descripcion: nuevaDescripcion,
                     PrecioCompra: nuevoPrecioCompra,
                     PrecioVenta: nuevoPrecioVenta,
+                    RutaImagen: file,
                     Stock: nuevoStock,
+
                     oCategoria: {
                         IdCategoria: idCategoria,
                         Descripcion: $('#selectNuevaCategoria option:selected').text()
@@ -382,5 +595,6 @@
         }
     }
 </script>
+
 
 

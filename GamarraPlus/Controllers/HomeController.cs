@@ -37,7 +37,7 @@ namespace GamarraPlus.Controllers
         }
 
 
-        public IActionResult Inicio()
+        public IActionResult CrearVenta()
         {
             return View();
         }
@@ -83,16 +83,16 @@ namespace GamarraPlus.Controllers
 
             string rpta = "";
 
-            XElement venta = new  XElement("Venta",
-                new XElement("TipoPago",body.TipoPago),
-                new XElement("NumeroDocumento","0"),
-                new XElement("DocumentoCliente",body.DocumentoCliente),
-                new XElement("NombreCliente",body.NombreCliente),
-                new XElement("MontoPagoCon",body.MontoPagoCon),
-                new XElement("MontoCambio",body.MontoCambio),
-                new XElement("MontoSubTotal",body.MontoSubTotal),
-                new XElement("MontoIGV",body.MontoIGV),
-                new XElement("MontoTotal",body.MontoTotal)
+            XElement venta = new XElement("Venta",
+                new XElement("TipoPago", body.TipoPago),
+                new XElement("NumeroDocumento", "0"),
+                new XElement("DocumentoCliente", body.DocumentoCliente),
+                new XElement("NombreCliente", body.NombreCliente),
+                new XElement("MontoPagoCon", body.MontoPagoCon),
+                new XElement("MontoCambio", body.MontoCambio),
+                new XElement("MontoSubTotal", body.MontoSubTotal),
+                new XElement("MontoIGV", body.MontoIGV),
+                new XElement("MontoTotal", body.MontoTotal)
             );
 
             XElement oDetalleVenta = new XElement("Detalle_Venta");
@@ -100,7 +100,7 @@ namespace GamarraPlus.Controllers
             {
                 oDetalleVenta.Add(new XElement("Item",
                     new XElement("IdProducto", item.oProducto.IdProducto),
-                    new XElement("PrecioVenta",item.PrecioVenta ),
+                    new XElement("PrecioVenta", item.PrecioVenta),
                     new XElement("Cantidad", item.Cantidad),
                     new XElement("Total", item.Total)
                     ));
