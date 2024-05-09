@@ -3,13 +3,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Styles {
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+
+
     <link rel="stylesheet" href="~/css/ventas.css">
 
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/rowgroup/1.1.4/css/rowGroup.dataTables.min.css">
 
 
 }
@@ -43,32 +40,33 @@
 
 
 
-                <div class="col-sm-12">
-                    <table id="tbdata" class="tabla">
-                        <thead>
-                            <tr>
-                                <th>Tipo Pago</th>
-                                <th>Numero Documento</th>
-                                <th>Monto Total</th>
-                                <th>Fecha Registro</th>
-                                <th>Producto</th>
-                                <th>Cantidad</th>
-                                <th>Precio Venta</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
+
+                <table id="tbdata" class="tabla">
+                    <thead>
+                        <tr>
+                            <th>Tipo Pago</th>
+                            <th>Numero Documento</th>
+                            <th>Monto Total</th>
+                            <th>Fecha Registro</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio Venta</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
 
 
             </div>
 
 
         </div>
-
+    </div>
 </main>
+
 @section Scripts
 {
     <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
@@ -112,15 +110,7 @@
 
 
             tabla = $("#tbdata").DataTable({
-                dom: "Bfrtip",
-                buttons: [
-                    {
-                        text: 'Exportar Excel',
-                        extend: 'excelHtml5',
-                        title: '',
-                        filename: 'Reporte Ventas'
-                    }, 'pageLength'
-                ],
+
                 pageLength: 10,
                 responsive: true,
                 "ajax": {
@@ -142,8 +132,8 @@
                 rowGroup: {
                     startRender: function (rows, group) {
                         var grupo = group.split(",")
-                        return $('<tr class="bg-light">').append(
-                            $('<td colspan="2">').text('Numero Documento: ' + grupo[0]),
+                        return $('<tr>').append(
+                            $('<td  data-cell="Producto" colspan="2">').text('Numero Documento: ' + grupo[0]),
                             $('<td colspan="2">').text('Fecha Venta: ' + grupo[1])
 
                         )
@@ -152,7 +142,7 @@
 
                         var total = rows.data().pluck("total").reduce(function (a, b) { return a + b; }, 0);
 
-                        return $('<tr class="bg-light">').append(
+                        return $('<tr>').append(
                             $('<td colspan="2">'),
                             $('<td>').text('Monto Total'),
                             $('<td>').text(total.toFixed(2))

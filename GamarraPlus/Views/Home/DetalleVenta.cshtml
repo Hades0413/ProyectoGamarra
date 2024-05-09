@@ -1,51 +1,75 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "DetalleVenta";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section Styles{
+@section Styles {
+
+    <link rel="stylesheet" href="~/css/ventas.css">
+
     <style>
-        .input-group-text{
-            background-color: #343a40;
-        }
-        #tabla{
-            border-collapse:collapse;
-            border:1px solid #9D9D9D;
+        .container-detalle-venta {
+            margin-top: 50px;
         }
 
-        #tabla > thead > tr{
-            background-color:#20374c !important;
+        #tabla {
+            margin-block: 20px;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .card {
+            color: #fff;
+        }
+
+        .tabla {
+            width: 100%;
+        }
+
+        .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+            font-size: 1.8rem;
+        }
+
+        .input-group-sm > .btn, .input-group-sm > .form-control, .input-group-sm > .form-select, .input-group-sm > .input-group-text {
+            font-size: 1.8rem;
+        }
+
+        .form-control-sm {
+            min-height: calc(1.5em + .5rem);
+            padding: .25rem .5rem;
+            font-size: 2rem;
+            border-radius: 0;
         }
     </style>
 }
 
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Ventas</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Ver Detalle</li>
-  </ol>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Ventas</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Ver Detalle</li>
+    </ol>
 </nav>
 
-<div class="row">
-    <div class="col-sm-8 mb-2">
+<div class="container-detalle-venta">
+    <div>
 
         <div class="card mb-2">
             <div class="card-body">
-               <div class="row align-items-end">
+                <div class="row align-items-end">
                     <div class="col-sm-4">
-
                     </div>
                     <div class="col-sm-6">
                         <div class="row align-items-end text-end">
                             <label for="txtNumeroDocumento" class="col-sm-6 col-form-label">Numero Documento:</label>
                             <div class="col-sm-6">
-                              <input type="text" class="form-control form-control-sm" id="txtNumeroDocumento" autocomplete="off"/>
+                                <input type="text" class="form-control form-control-sm" id="txtNumeroDocumento" autocomplete="off" />
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-2">
-                        <div  class="d-grid">
+                        <div class="d-grid">
                             <button class="btn btn-success btn-sm" id="btnbuscar"><i class="bi bi-search"></i> Buscar</button>
                         </div>
                     </div>
@@ -58,14 +82,14 @@
                 Productos
             </div>
             <div class="card-body">
-                
+
                 <div class="row">
                     <div class="col-sm-12">
-                        <table id="tabla" class="table table-bordered">
+                        <table id="tabla" class="tabla">
                             <thead>
                                 <tr>
                                     <th>Producto</th>
-                                    <th style="width: 80px;">Cantidad</th>
+                                    <th>Cantidad</th>
                                     <th>Precio</th>
                                     <th>Total</th>
                                 </tr>
@@ -75,15 +99,15 @@
                         </table>
                     </div>
 
-                    
+
                 </div>
             </div>
         </div>
 
-        
+
     </div>
 
-    <div class="col-sm-4">
+    <div>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -96,35 +120,35 @@
                                 <p id="pFechaVenta" class="text-warning fw-bold m-0 p-0"></p>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="card-body">
 
                         <div class="input-group input-group-sm mb-2">
-                          <span class="input-group-text bg-dark">Tipo de Pago:</span>
-                          <input type="text" class="form-control form-control-sm text-end fw-bold" id="txtTipoPago" disabled/>
+                            <span class="input-group-text bg-dark">Tipo de Pago:</span>
+                            <input type="text" class="form-control form-control-sm text-end fw-bold" id="txtTipoPago" disabled />
                         </div>
                         <hr />
                         <div class="input-group input-group-sm mb-2">
-                          <span class="input-group-text bg-dark">Pago con</span>
-                          <input type="text" class="form-control form-control-sm text-end fw-bold" id="txtPagoCon" disabled>
+                            <span class="input-group-text bg-dark">Pago con</span>
+                            <input type="text" class="form-control form-control-sm text-end fw-bold" id="txtPagoCon" disabled>
                         </div>
                         <div class="input-group input-group-sm mb-2">
-                          <span class="input-group-text bg-dark">Cambio</span>
-                          <input type="text" class="form-control form-control-sm text-end fw-bold" id="txtCambio" disabled >
+                            <span class="input-group-text bg-dark">Cambio</span>
+                            <input type="text" class="form-control form-control-sm text-end fw-bold" id="txtCambio" disabled>
                         </div>
 
                         <div class="input-group input-group-sm mb-2">
-                          <span class="input-group-text bg-primary">Sub Total</span>
-                          <input type="text" class="form-control form-control-sm text-end fw-bold" id="txtSubTotal" disabled>
+                            <span class="input-group-text bg-primary">Sub Total</span>
+                            <input type="text" class="form-control form-control-sm text-end fw-bold" id="txtSubTotal" disabled>
                         </div>
                         <div class="input-group input-group-sm mb-2">
-                          <span class="input-group-text bg-primary">IGV (18%)</span>
-                          <input type="text" class="form-control form-control-sm text-end fw-bold" id="txtIgv" disabled>
+                            <span class="input-group-text bg-primary">IGV (18%)</span>
+                            <input type="text" class="form-control form-control-sm text-end fw-bold" id="txtIgv" disabled>
                         </div>
                         <div class="input-group input-group-sm mb-2">
-                          <span class="input-group-text bg-primary">Total</span>
-                          <input type="text" class="form-control form-control-sm text-end fw-bold" id="txtTotal" disabled>
+                            <span class="input-group-text bg-primary">Total</span>
+                            <input type="text" class="form-control form-control-sm text-end fw-bold" id="txtTotal" disabled>
                         </div>
                     </div>
                 </div>
@@ -139,12 +163,12 @@
                     </div>
                     <div class="card-body">
                         <div class="input-group input-group-sm mb-2">
-                          <span class="input-group-text bg-dark">Nro. Documento</span>
-                          <input type="text" class="form-control form-control-sm" id="txtdocumentocliente" disabled>
+                            <span class="input-group-text bg-dark">Nro. Documento</span>
+                            <input type="text" class="form-control form-control-sm" id="txtdocumentocliente" disabled>
                         </div>
                         <div class="input-group input-group-sm mb-2">
-                          <span class="input-group-text bg-dark">Nombres</span>
-                          <input type="text" class="form-control form-control-sm" id="txtnombrecliente" disabled >
+                            <span class="input-group-text bg-dark">Nombres</span>
+                            <input type="text" class="form-control form-control-sm" id="txtnombrecliente" disabled>
                         </div>
                     </div>
                 </div>
@@ -154,7 +178,7 @@
     </div>
 </div>
 
-@section Scripts{
+@section Scripts {
     <script>
 
         $("#btnbuscar").on("click", function () {
@@ -167,52 +191,52 @@
                 success: function (data) {
 
                     $("#tabla tbody").html("");
-                        if(data.tipoPago !== null){
-                            $.each(data.oDetalleVenta,function(x,item){
-                                $("<tr>").append(
-                                    $("<td>").text(item.oProducto.descripcion),
-                                    $("<td>").text(item.cantidad),
-                                    $("<td>").text(item.precioVenta.toFixed(2)),
-                                    $("<td>").text(item.total.toFixed(2))
-                                ).appendTo("#tabla tbody")
-                            })
+                    if (data.tipoPago !== null) {
+                        $.each(data.oDetalleVenta, function (x, item) {
+                            $("<tr>").append(
+                                $('<td data-cell="Producto">').text(item.oProducto.descripcion),
+                                $('<td data-cell="Cantidad">').text(item.cantidad),
+                                $('<td data-cell="Precio de Venta">').text(item.precioVenta.toFixed(2)),
+                                $('<td data-cell="Total" >').text(item.total.toFixed(2))
+                            ).appendTo("#tabla tbody")
+                        })
 
-                            $("#pFechaVenta").text(data.fechaRegistro);
-                            $("#txtTipoPago").val(data.tipoPago);
-                            $("#txtPagoCon").val(data.montoPagoCon.toFixed(2));
-                            $("#txtCambio").val(data.montoCambio.toFixed(2));
-                            $("#txtSubTotal").val(data.montoSubTotal.toFixed(2));
-                            $("#txtIgv").val(data.montoIGV.toFixed(2));
-                            $("#txtTotal").val(data.montoTotal.toFixed(2));
+                        $("#pFechaVenta").text(data.fechaRegistro);
+                        $("#txtTipoPago").val(data.tipoPago);
+                        $("#txtPagoCon").val(data.montoPagoCon.toFixed(2));
+                        $("#txtCambio").val(data.montoCambio.toFixed(2));
+                        $("#txtSubTotal").val(data.montoSubTotal.toFixed(2));
+                        $("#txtIgv").val(data.montoIGV.toFixed(2));
+                        $("#txtTotal").val(data.montoTotal.toFixed(2));
 
-                            $("#txtdocumentocliente").val(data.documentoCliente);
-                            $("#txtnombrecliente").val(data.nombreCliente);
-                    
-                        }else{
-                            Swal.fire({
-                              icon: 'error',
-                              title: 'No se encontraron resultados',
-                            })
+                        $("#txtdocumentocliente").val(data.documentoCliente);
+                        $("#txtnombrecliente").val(data.nombreCliente);
 
-                            $("#pFechaVenta").text("");
-                            $("#txtTipoPago").val("");
-                            $("#txtPagoCon").val("");
-                            $("#txtCambio").val("");
-                            $("#txtSubTotal").val("");
-                            $("#txtIgv").val("");
-                            $("#txtTotal").val("");
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se encontraron resultados',
+                        })
 
-                            $("#txtdocumentocliente").val("");
-                            $("#txtnombrecliente").val("");
-                        }
-                    
+                        $("#pFechaVenta").text("");
+                        $("#txtTipoPago").val("");
+                        $("#txtPagoCon").val("");
+                        $("#txtCambio").val("");
+                        $("#txtSubTotal").val("");
+                        $("#txtIgv").val("");
+                        $("#txtTotal").val("");
+
+                        $("#txtdocumentocliente").val("");
+                        $("#txtnombrecliente").val("");
+                    }
+
 
                 },
                 error: function (error) {
                     console.log(error)
                 }
-        });
+            });
         })
-        
+
     </script>
 }

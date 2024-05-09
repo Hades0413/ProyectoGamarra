@@ -2,160 +2,174 @@
     ViewData["Title"] = "Home Page";
 }
 @section Styles {
+
+
+    <link rel="stylesheet" href="~/css/ventas.css">
+
     <style>
-        h1 {
-            color: #000;
-        }
-
-        .detalle {
-            min-height: 50vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .input-group-text {
-            background-color: #343a40;
+        .container-ventas-crear-nuevo {
+            margin-top: 50px;
         }
 
         #tabla {
-            border-collapse: collapse;
-            border: 1px solid #9D9D9D;
+            margin-block: 20px;
         }
 
-            #tabla > thead > tr {
-                background-color: #20374c !important;
-            }
+        .flex {
+            display: flex;
+        }
+
+        .card {
+            color: #fff;
+        }
+
+        .tabla {
+            width: 100%;
+        }
+
+        .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+            font-size: 1.8rem;
+        }
+
+        .input-group-sm > .btn, .input-group-sm > .form-control, .input-group-sm > .form-select, .input-group-sm > .input-group-text {
+            font-size: 1.8rem;
+        }
+
+        .form-control-sm {
+            min-height: calc(1.5em + .5rem);
+            padding: .25rem .5rem;
+            font-size: 2rem;
+            border-radius: 0;
+        }
     </style>
+
 }
 
-
-
-<div class="row detalle">
-    <div class="col-sm-8 mb-2">
-        <h1>Ventas</h1>
-        <div class="card mb-2">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-12 text-end">
-                        <button class="btn btn-primary me-2" id="btnTerminarVenta"><i class="bi bi-currency-dollar"></i> Terminar Venta</button>
-                        <button class="btn btn-danger" id="btnLimpiarLista"><i class="bi bi-x-circle-fill"></i> Limpiar Lista</button>
-                    </div>
+<div class="container-ventas-crear-nuevo">
+    <h1>Ventas</h1>
+    <div class="card mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="flex">
+                    <button class="btn btn-primary me-2" id="btnTerminarVenta"><i class="bi bi-currency-dollar"></i> Terminar Venta</button>
+                    <button class="btn btn-danger" id="btnLimpiarLista"><i class="bi bi-x-circle-fill"></i> Limpiar Lista</button>
                 </div>
             </div>
         </div>
-
-        <div class="card">
-            <div class="card-header">
-                Productos
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <label for="exampleFormControlInput1" class="form-label">Buscar Producto</label>
-                        <input type="text" class="form-control form-control-sm" id="buscarProducto" data-idproducto="0" />
-                    </div>
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col-sm-12">
-                        <table id="tabla" class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Producto</th>
-                                    <th style="width: 80px;">Cantidad</th>
-                                    <th>Precio</th>
-                                    <th>Total</th>
-                                    <th style="width: 50px;"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-
-
     </div>
 
-    <div class="col-sm-4">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                Detalle Venta
-                            </div>
-                            <div class="col-sm-6 text-end">
-                                <p id="pVentaTotal" class="text-warning fw-bold m-0 p-0"></p>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="card-body">
-
-                        <div class="input-group input-group-sm mb-2">
-                            <span class="input-group-text bg-dark">Tipo de Pago:</span>
-                            <select class="form-select form-select-sm" id="cbotipopago" style="cursor:pointer">
-                                <option value="Efectivo" selected>Efectivo</option>
-                                <option value="Tarjeta">Tarjeta</option>
-                                <option value="Movil">Movil</option>
-                            </select>
-                        </div>
-                        <hr />
-                        <div class="input-group input-group-sm mb-2">
-                            <span class="input-group-text bg-dark">Pago con</span>
-                            <input type="text" class="form-control form-control-sm" id="txtPagoCon">
-                        </div>
-                        <div class="input-group input-group-sm mb-2">
-                            <span class="input-group-text bg-dark">Cambio</span>
-                            <input type="text" class="form-control form-control-sm text-end fw-bold" id="txtCambio" disabled>
-                        </div>
-
-                        <div class="input-group input-group-sm mb-2">
-                            <span class="input-group-text bg-primary">Sub Total</span>
-                            <input type="text" id="txtSubTotal" class="form-control form-control-sm text-end fw-bold" disabled>
-                        </div>
-                        <div class="input-group input-group-sm mb-2">
-                            <span class="input-group-text bg-primary">IGV (18%)</span>
-                            <input type="text" id="txtIgv" class="form-control form-control-sm text-end fw-bold" disabled>
-                        </div>
-                        <div class="input-group input-group-sm mb-2">
-                            <span class="input-group-text bg-primary">Total</span>
-                            <input type="text" id="txtTotal" class="form-control form-control-sm text-end fw-bold" disabled>
-                        </div>
-                    </div>
+    <div class="card">
+        <div class="card-header">
+            Productos
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <label for="exampleFormControlInput1" class="form-label">Buscar Producto</label>
+                    <input type="text" class="form-control form-control-sm" id="buscarProducto" data-idproducto="0" />
                 </div>
             </div>
-        </div>
-
-        <div class="row mt-2">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        Cliente
-                    </div>
-                    <div class="card-body">
-                        <div class="input-group input-group-sm mb-2">
-                            <span class="input-group-text bg-dark">Nro. Documento</span>
-                            <input type="text" class="form-control form-control-sm" id="txtdocumentocliente">
-                        </div>
-                        <div class="input-group input-group-sm mb-2">
-                            <span class="input-group-text bg-dark">Nombres</span>
-                            <input type="text" class="form-control form-control-sm" id="txtnombrecliente">
-                        </div>
-                    </div>
+            <hr />
+            <div class="row">
+                <div>
+                    <table id="tabla" class="tabla">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
+
+
             </div>
         </div>
-
     </div>
+
+
 </div>
+
+<div class="container-detalle-venta">
+    <div>
+        <div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            Detalle Venta
+                        </div>
+                        <div class="col-sm-6 text-end">
+                            <p id="pVentaTotal" class="text-warning fw-bold m-0 p-0"></p>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-body">
+
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-dark">Tipo de Pago:</span>
+                        <select class="form-select form-select-sm" id="cbotipopago" style="cursor:pointer">
+                            <option value="Efectivo" selected>Efectivo</option>
+                            <option value="Tarjeta">Tarjeta</option>
+                            <option value="Movil">Movil</option>
+                        </select>
+                    </div>
+                    <hr />
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-dark">Pago con</span>
+                        <input type="text" class="form-control form-control-sm" id="txtPagoCon">
+                    </div>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-dark">Cambio</span>
+                        <input type="text" class="form-control form-control-sm text-end fw-bold" id="txtCambio" disabled>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-primary">Sub Total</span>
+                        <input type="text" id="txtSubTotal" class="form-control form-control-sm text-end fw-bold" disabled>
+                    </div>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-primary">IGV (18%)</span>
+                        <input type="text" id="txtIgv" class="form-control form-control-sm text-end fw-bold" disabled>
+                    </div>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-primary">Total</span>
+                        <input type="text" id="txtTotal" class="form-control form-control-sm text-end fw-bold" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    Cliente
+                </div>
+                <div class="card-body">
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-dark">Nro. Documento</span>
+                        <input type="text" class="form-control form-control-sm" id="txtdocumentocliente">
+                    </div>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-dark">Nombres</span>
+                        <input type="text" class="form-control form-control-sm" id="txtnombrecliente">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 
 @section Scripts
 {
@@ -250,11 +264,11 @@
                     $.each(productos, function (i, item) {
 
                         $("<tr>").append(
-                            $("<td>").append(item.Descripcion),
-                            $("<td>").append(item.Cantidad),
-                            $("<td>").append(item.PrecioVenta.toFixed(2)),
-                            $("<td>").append(item.Total.toFixed(2)),
-                            $("<td>").append(
+                            $('<td data-cell="Producto" >').append(item.Descripcion),
+                            $('<td data-cell="Cantidad" >').append(item.Cantidad),
+                            $('<td data-cell="Precio de Venta" >').append(item.PrecioVenta.toFixed(2)),
+                            $('<td data-cell="Total" >').append(item.Total.toFixed(2)),
+                            $('<td data-cell="Acciones" >').append(
                                 $("<button>").addClass("btn btn-danger btn-eliminar btn-sm").append(
                                     $("<i>").addClass("bi bi-trash-fill")
                                 )

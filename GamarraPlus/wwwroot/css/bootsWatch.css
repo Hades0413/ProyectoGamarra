@@ -256,13 +256,14 @@ caption {
 
 th {
     text-align: inherit;
-    text-align: -webkit-match-parent
+    text-align: -webkit-match-parent;
 }
 
 tbody, td, tfoot, th, thead, tr {
     border-color: inherit;
     border-style: solid;
-    border-width: 0
+    border-width: 0;
+   
 }
 
 label {
@@ -4846,7 +4847,7 @@ textarea.form-control-lg {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #3C1E1F;
+    background-color: #252422;
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: 0
