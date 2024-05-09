@@ -97,11 +97,6 @@
                     </div>
                     <div class="card-body">
 
-                        @* <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-dark">Nro Venta</span>
-                        <input type="text" class="form-control form-control-sm" disabled>
-                        </div>
-                        *@
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text bg-dark">Tipo de Pago:</span>
                             <select class="form-select form-select-sm" id="cbotipopago" style="cursor:pointer">
@@ -201,8 +196,6 @@
             select: function (event, ui) {
                 event.preventDefault();
 
-                //$(this).val(ui.item.label);
-                //$(this).data("idproducto",ui.item.value);
                 AgregarProducto(ui.item.value)
                 $(this).val("");
             },

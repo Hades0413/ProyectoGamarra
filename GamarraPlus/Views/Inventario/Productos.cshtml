@@ -70,16 +70,19 @@
             <div class="modal-body">
                 <div class="container d-flex justify-content-center align-items-center min-vh-100">
                     <div class="row border rounded-5 p-3 bg-white shadow box-area">
-                        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-                             style="background: #4c9be8;">
-                            <div class="featured-image mb-3">
-                                <i class="fa-solid fa-truck-moving"></i>
+                        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="position: relative; background: #4c9be8;">
+                            <div class="background-overlay saturar producto-editar"></div>
+                            <div class="content-container">
+                                <div class="featured-image mb-3">
+                                    <i class="fa-solid fa-truck-moving"></i>
+                                </div>
+                                <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">
+                                    Editar Producto
+                                </p>
+                                <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Gamarra+</small>
                             </div>
-                            <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">
-                                Editar Producto
-                            </p>
-                            <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Gamarra+</small>
                         </div>
+
 
                         <div class="col-md-6 right-box">
                             <div class="row align-items-center">
@@ -143,59 +146,6 @@
     </div>
 </div>
 
-<!--
-<div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalEditarLabel">Editar producto</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="formEditarProducto">
-                    <div class="mb-3">
-                        <label for="inputCodigo" class="form-label">Código</label>
-                        <input type="text" class="form-control" id="inputCodigo" name="codigo">
-                    </div>
-                    <div class="mb-3">
-                        <label for="inputDescripcion" class="form-label">Descripción</label>
-                        <input type="text" class="form-control" id="inputDescripcion" name="descripcion">
-                    </div>
-                    <div class="mb-3">
-                        <label for="selectCategoria" class="form-label">Categoría</label>
-                        <select class="form-control" id="selectCategoria" name="categoria">
-
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="inputPrecioCompra" class="form-label">Precio de compra</label>
-                        <input type="number" class="form-control" id="inputPrecioCompra" name="precioCompra">
-                    </div>
-                    <div class="mb-3">
-                        <label for="inputPrecioVenta" class="form-label">Precio de venta</label>
-                        <input type="number" class="form-control" id="inputPrecioVenta" name="precioVenta">
-                    </div>
-                    <div class="mb-3">
-                        <label for="inputStock" class="form-label">Stock</label>
-                        <input type="number" class="form-control" id="inputStock" name="stock">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="inputImagen" class="form-label">Imagen</label>
-                        <input type="file" class="form-control" id="inputImagen" name="imagen">
-                    </div>
-
-                    <input type="hidden" id="inputIdProducto" name="idProducto">
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="EditarProducto()">Save</button>
-            </div>
-        </div>
-    </div>
-</div>
--->
 
 <div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="modalCrearProductoLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -203,17 +153,19 @@
             <div class="modal-body">
                 <div class="container d-flex justify-content-center align-items-center min-vh-100">
                     <div class="row border rounded-5 p-3 bg-white shadow box-area">
-                        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-                             style="background: #4c9be8;">
-                            <div class="featured-image mb-3">
-                                <i class="fa-solid fa-truck-moving"></i>
-
+                        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="position: relative; background: #4c9be8;">
+                            <div class="background-overlay saturar producto-crear"></div>
+                            <div class="content-container">
+                                <div class="featured-image mb-3">
+                                    <i class="fa-solid fa-truck-moving"></i>
+                                </div>
+                                <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">
+                                    Crear Nuevo Producto
+                                </p>
+                                <small class="text-white text-wrap text-center" style="width: 17rem; font-family: 'Courier New', Courier, monospace;">Gamarra+</small>
                             </div>
-                            <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">
-                                Crear Nuevo Producto
-                            </p>
-                            <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Gamarra+</small>
                         </div>
+
 
                         <div class="col-md-6 right-box">
                             <div class="row align-items-center">
@@ -276,58 +228,9 @@
     </div>
 </div>
 
-<!--
-<div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="modalCrearLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalCrearLabel">Crear nuevo Producto</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="formCrearProducto">
-                    <div class="mb-3">
-                        <label for="inputNuevoCodigo" class="form-label">Código</label>
-                        <input type="text" class="form-control" id="inputNuevoCodigo" name="nuevoCodigo">
-                    </div>
-                    <div class="mb-3">
-                        <label for="inputNuevaDescripcion" class="form-label">Descripción</label>
-                        <input type="text" class="form-control" id="inputNuevaDescripcion" name="nuevaDescripcion">
-                    </div>
-                    <div class="mb-3">
-                        <label for="selectNuevaCategoria" class="form-label">Categoría</label>
-                        <select class="form-control" id="selectNuevaCategoria" name="idCategoria">
-
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="inputNuevoPrecioCompra" class="form-label">Precio de compra</label>
-                        <input type="number" class="form-control" id="inputNuevoPrecioCompra" name="nuevoPrecioCompra">
-                    </div>
-                    <div class="mb-3">
-                        <label for="inputNuevoPrecioVenta" class="form-label">Precio de venta</label>
-                        <input type="number" class="form-control" id="inputNuevoPrecioVenta" name="nuevoPrecioVenta">
-                    </div>
-                    <div class="mb-3">
-                        <label for="inputNuevoStock" class="form-label">Stock</label>
-                        <input type="number" class="form-control" id="inputNuevoStock" name="nuevoStock">
-                    </div>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="CrearProducto()">Create</button>
-            </div>
-        </div>
-    </div>
-</div>
--->
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-    // Script para mostrar la imagen en lugar de la ruta
     document.addEventListener("DOMContentLoaded", function () {
         var imagenes = document.querySelectorAll(".imagen-producto");
         imagenes.forEach(function (imagen) {
@@ -440,14 +343,11 @@
         var nuevoPrecioCompra = $('#inputPrecioCompra').val();
         var nuevoPrecioVenta = $('#inputPrecioVenta').val();
 
-        // Obtener solo el nombre del archivo
         var fileInput = document.getElementById('filess');
         var fileName = fileInput.files[0].name;
 
-        // Ruta de la carpeta de almacenamiento de imágenes relativa al servidor
         var rutaCarpeta = "/Productos/";
 
-        // Concatenar la ruta de la carpeta con el nombre del archivo
         var rutaCompleta = rutaCarpeta + fileName;
 
         var nuevoStock = $('#inputStock').val();
@@ -465,7 +365,7 @@
                     descripcion: nuevaDescripcion,
                     precioCompra: nuevoPrecioCompra,
                     precioVenta: nuevoPrecioVenta,
-                    RutaImagen: rutaCompleta, // Enviar la ruta completa del archivo
+                    RutaImagen: rutaCompleta, 
 
                     stock: nuevoStock,
                     oCategoria: {
@@ -506,14 +406,10 @@
 <script>
 
     function getArchivoOnChange() {
-
         debugger;
         let file = document.getElementById('files').files[0];
-
-        $('#lblFile').text(file.name)
+        $('#lblFile').text(file.name);
     }
-
-
 
     function openCreateModal() {
         debugger;
@@ -525,7 +421,7 @@
         $('#selectNuevaCategoria').val('');
         $('#files').val('');
 
-        $('#modalCrearLabel').text('Create New Product');
+        $('#modalCrearLabel').text('Crear Nuevo Producto');
         $('#modalCrear').modal('show');
     }
 
@@ -537,9 +433,13 @@
         var nuevoPrecioVenta = $('#inputNuevoPrecioVenta').val();
         var nuevoStock = $('#inputNuevoStock').val();
         var idCategoria = $('#selectNuevaCategoria').val();
-        var file = $('#files').val();
+        var fileInput = document.getElementById('files');
+        var fileName = fileInput.files[0] ? fileInput.files[0].name : '';
 
         try {
+            var rutaCarpeta = "/Productos/";
+            var rutaCompleta = rutaCarpeta + fileName;
+
             const formData = new FormData();
             formData.append('Codigo', nuevoCodigo);
             formData.append('Descripcion', nuevaDescripcion);
@@ -547,7 +447,7 @@
             formData.append('PrecioVenta', nuevoPrecioVenta);
             formData.append('Stock', nuevoStock);
             formData.append('oCategoria.IdCategoria', idCategoria);
-            formData.append('archivo', file);
+            formData.append('archivo', fileInput.files[0]);
 
             const response = await fetch(`/Inventario/GuardarProducto`, {
                 method: 'POST',
@@ -555,14 +455,12 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-
                     Codigo: nuevoCodigo,
                     Descripcion: nuevaDescripcion,
                     PrecioCompra: nuevoPrecioCompra,
                     PrecioVenta: nuevoPrecioVenta,
-                    RutaImagen: file,
+                    RutaImagen: rutaCompleta, 
                     Stock: nuevoStock,
-
                     oCategoria: {
                         IdCategoria: idCategoria,
                         Descripcion: $('#selectNuevaCategoria option:selected').text()
@@ -594,7 +492,9 @@
             });
         }
     }
+
 </script>
+
 
 
 

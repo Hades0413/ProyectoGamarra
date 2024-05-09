@@ -1,10 +1,8 @@
 
-
 create database GamarraPlus
 go
 
 USE GamarraPlus
-
 go
 
 
@@ -241,31 +239,6 @@ begin
 end
 go
 
--- Insertar el primer producto
-/*
-execute sp_guardar_producto
-    @Codigo = 'PRD003',
-    @IdCategoria = 1,
-    @Descripcion = 'Producto 1',
-    @PrecioCompra = 10.50,
-    @PrecioVenta = 15.99,
-    @Stock = 100,
-    @RutaImagen = '/Productos/01.jpg';
-go
-*/
-
--- Insertar el segundo producto
-/*
-execute sp_guardar_producto
-    @Codigo = 'PRD004',
-    @IdCategoria = 2,
-    @Descripcion = 'Producto 2',
-    @PrecioCompra = 15.75,
-    @PrecioVenta = 24.99,
-    @Stock = 75,
-    @RutaImagen = '/Productos/02.jpg';
-go
-*/
 
 CREATE PROCEDURE sp_editar_producto
 (
@@ -293,21 +266,6 @@ BEGIN
 END
 GO
 
--- Editar el primer producto
-/*
-EXEC sp_editar_producto
-    @IdProducto = 1,
-    @Codigo = 'PRD003',
-    @IdCategoria = 1,
-    @Descripcion = 'Producto Editado',
-    @PrecioCompra = 12.50,
-    @PrecioVenta = 18.99,
-    @Stock = 150,
-    @RutaImagen = '/Productos/04.jpg';
-go
-*/
-
-
 
 create procedure sp_eliminar_producto
 (
@@ -328,6 +286,20 @@ begin
 
 end
 go
+
+
+CREATE PROCEDURE sp_obtener_categoria_por_id
+(
+    @IdCategoria int
+)
+AS
+BEGIN
+    SELECT IdCategoria, Descripcion
+    FROM CATEGORIA
+    WHERE IdCategoria = @IdCategoria
+END
+GO
+
 
 create procedure sp_guardar_categoria
 (
@@ -539,7 +511,6 @@ begin
 	set dateformat dmy
 	
 	select v.TipoPago,v.NumeroDocumento,v.MontoTotal,
-	--concat(convert(char(10),v.FechaRegistro,103),' ',convert(char(8),v.FechaRegistro,108))[FechaRegistro],
 	convert(char(10),v.FechaRegistro,103)[FechaRegistro],
 	p.Descripcion[DesProducto], dv.Cantidad,dv.PrecioVenta,dv.Total
 	from VENTA v

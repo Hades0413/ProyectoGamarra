@@ -7,13 +7,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- ===== CSS ===== -->
     <link rel="stylesheet" href="~/css/styles.css">
 
-    <!-- ===== BOX ICONS ===== -->
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
-    <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <title>Responsive Login Form Sign In Sign Up</title>
@@ -43,14 +40,6 @@
                     </div>
 
                     <button type="submit" class="login__button">Iniciar Sesión</button>
-
-                    <!-- <a href="#" class="login__forgot">Olvidaste tu contraseña?</a>
-
-
-                    <div>
-                        <span class="login__account">No tienes cuenta?</span>
-                        <span class="login__signin" id="sign-up">Regístrate</span>
-                    </div>-->
                 </form>
             </div>
         </div>
@@ -62,7 +51,6 @@
 
 
     <script src="~/js/main.js"></script>
-    <!-- Script para mostrar la alerta -->
     @if (TempData["mensaje"] != null)
     {
         <script>

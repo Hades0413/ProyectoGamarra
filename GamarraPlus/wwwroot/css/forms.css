@@ -1,11 +1,7 @@
 ﻿
-/*------------ Login container ------------*/
-
 .box-area {
     width: 930px;
 }
-
-/*------------ Right box ------------*/
 
 .right-box {
     padding: 40px 30px 40px 40px;
@@ -15,13 +11,67 @@
     border-radius: 1rem;
     color: #fff;
     padding: 14px 30px;
-    font-size:1.4rem;
+    font-size: 1.4rem;
     border: none;
 }
 
+.left-box {
+    position: relative;
+}
+
+.background-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://img.cdn-pictorem.com/uploads/collection/E/EF5MND10RMF/900_Coolbits-Art_16_1600349900.167.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 2rem;
+    z-index: 0;
+}
 
 
-/*------------ Custom Placeholder ------------*/
+.usuario {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://img.cdn-pictorem.com/uploads/collection/E/EF5MND10RMF/900_Coolbits-Art_16_1600349900.167.jpg);
+}
+
+.producto-crear {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://larazon.pe/wp-content/uploads/2019/12/1.jpg);
+}
+
+.producto-editar {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://fifpro.org/media/fhmfhvkx/messi-world-cup.jpg?rxy=0.48356841796117644,0.31512414378031967&width=1600&height=1024&rnd=133210253587130000);
+}
+
+.categoria-crear {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://imgmedia.libero.pe/652x365/libero/original/2024/05/07/663aa1b758536743dd4783a9.webp);
+}
+
+
+.categoria-editar {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://larepublica.cronosmedia.glr.pe/original/2022/08/25/6307e63f75b37371f7329877.jpg);
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.featured-image i {
+    font-size: 8rem;
+    color: #fff;
+}
+
+.saturar{
+    filter:saturate(1.5);
+}
+
 
 ::placeholder {
     font-size: 16px;

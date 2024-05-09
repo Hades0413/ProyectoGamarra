@@ -1,30 +1,29 @@
 ﻿
-    /* Estilos para la tabla */
+    
     .table {
-        width: 100%; /* Hace que la tabla ocupe el 100% del ancho disponible */
-        border-collapse: collapse; /* Une los bordes de las celdas */
+        width: 100%;
+        border-collapse: collapse;
         color: #000;
     }
 
     thead th, tbody td {
         font-size: 1.5rem;
         width: 15%;
-        padding: 8px; /* Añade espaciado interno a las celdas */
-        text-align: left; /* Alinea el texto a la izquierda */
+        padding: 8px;
+        text-align: left;
         color: #000;
-        border-bottom: 1px solid #ddd; /* Añade bordes inferiores a las filas */
+        border-bottom: 1px solid #ddd;
     }
-    /* Estilos para los botones */
     .btn {
-        margin-right: 5px; /* Añade margen derecho a los botones */
+        margin-right: 5px;
     }
-    /* Media query para hacer la tabla responsive */
+
     @media screen and (max-width: 768px) {
         .table {
-            font-size: 0.8rem; /* Reduce el tamaño de fuente en pantallas pequeñas */
+            font-size: 0.8rem;
         }
 
         thead th, tbody td {
-            width: auto; /* Ajusta el ancho de las celdas automáticamente en pantallas pequeñas */
+            width: auto;
         }
     }

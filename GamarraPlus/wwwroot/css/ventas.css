@@ -1,0 +1,213 @@
+﻿main {
+    margin-top: 6rem;
+}
+
+
+.tabla {
+    margin-inline: auto;
+    width: 50%;
+    display: table;
+    background: #323232;
+    color: #fff;
+    caption-side: top;
+}
+
+    .tabla tbody {
+        display: table-row-group
+    }
+
+    .tabla caption, .tabla th, .tabla td {
+        padding: 1rem;
+    }
+
+    .tabla caption, .tabla th {
+        text-align: left;
+    }
+
+    .tabla caption {
+        background: hsl(0 0% 0%);
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #fff;
+    }
+
+    .tabla th {
+        background: hsl(0 0% 0% / 0.5);
+    }
+
+    .tabla tr:nth-of-type(2n) {
+        background: hsl(0 0% 0% / 0.1);
+    }
+
+.fechas {
+    display: flex;
+    gap: 15px;
+
+}
+
+    .fechas input {
+        padding: .775rem .675rem;
+        border: 1px solid #000;
+        border-radius: .25rem;
+        font-size: 1.5rem;
+        line-height: 1.5;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+.opciones {
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    margin-block: 20px;
+}
+
+.dataTables_filter {
+    color: #fff !important;
+}
+
+input[type="search"] {
+    color: #fff !important;
+}
+
+.dataTables_length {
+    color: #fff !important;
+}
+
+.dataTables_info {
+    color: #fff !important;
+}
+
+table.dataTable tbody tr {
+    background-color: #4e5d6c !important;
+}
+
+table.dataTable thead th {
+    padding: 0.5rem 0.5rem !important;
+}
+
+
+.btn-nuevo {
+    background-color: #5cb85c !important;
+    color: #fff !important;
+}
+
+.buttons-excel {
+    background-color: #5bc0de !important;
+    color: #fff !important;
+}
+
+.buttons-page-length {
+    background-color: #e9ecef !important;
+    color: #000 !important;
+}
+
+.paginate_button {
+    background-color: #e9ecef !important;
+    color: #000 !important;
+}
+
+
+#tbdata > thead input {
+    width: 100%;
+}
+
+table.dataTable tr.group-end td {
+    text-align: right;
+    font-weight: normal;
+}
+
+.table > thead {
+    background-color: #20374c !important;
+}
+
+tr.dtrg-group.dtrg-start > td {
+    /*background-color:#5cb85c !important;*/
+    color: #000 !important;
+}
+
+tr.dtrg-group.dtrg-end > td {
+    /*background-color:#5cb85c !important;*/
+    color: #000 !important;
+}
+
+
+
+
+
+    .tabla .btnEditar, .tabla .btnEliminar {
+        padding: 8px 12px;
+        margin: 4px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .tabla .btnEditar {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .tabla .btnEliminar {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .tabla .btn:hover {
+        opacity: 0.8;
+    }
+
+.acciones-btns {
+    display: flex;
+}
+
+.dataTables_filter {
+    margin-block: 20px;
+}
+    /* Estilo para el input de búsqueda */
+    .dataTables_filter input {
+        padding: .775rem .675rem;
+        border: 1px solid #000;
+        border-radius: .25rem;
+        font-size: 1.5rem;
+        line-height: 1.5;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+        /* Estilo para el hover */
+        .dataTables_filter input:hover {
+            border-color: #444;
+        }
+
+        /* Estilo para el foco */
+        .dataTables_filter input:focus {
+            border-color: #007bff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+
+
+
+@media (max-width: 850px) {
+    .tabla th {
+        display: none;
+    }
+
+    .tabla td {
+        display: grid;
+        gap: 0.5rem;
+        grid-template-columns: 16ch auto;
+        padding: 0.5rem 1rem;
+    }
+
+        .tabla td:first-child {
+            padding-top: 2rem;
+        }
+
+        .tabla td:last-child {
+            padding-bottom: 2rem;
+        }
+}

@@ -325,6 +325,62 @@
       "PackagePath": "staticwebassets\\Productos\\80.jpg"
     },
     {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\81.jpg",
+      "PackagePath": "staticwebassets\\Productos\\81.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\82.jpg",
+      "PackagePath": "staticwebassets\\Productos\\82.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\83.jpg",
+      "PackagePath": "staticwebassets\\Productos\\83.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\84.jpg",
+      "PackagePath": "staticwebassets\\Productos\\84.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\85.jpg",
+      "PackagePath": "staticwebassets\\Productos\\85.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\86.jpg",
+      "PackagePath": "staticwebassets\\Productos\\86.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\87.jpg",
+      "PackagePath": "staticwebassets\\Productos\\87.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\88.jpg",
+      "PackagePath": "staticwebassets\\Productos\\88.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\89.jpg",
+      "PackagePath": "staticwebassets\\Productos\\89.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\90.jpg",
+      "PackagePath": "staticwebassets\\Productos\\90.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\91.jpg",
+      "PackagePath": "staticwebassets\\Productos\\91.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\92.jpg",
+      "PackagePath": "staticwebassets\\Productos\\92.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\93.jpg",
+      "PackagePath": "staticwebassets\\Productos\\93.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\94.jpg",
+      "PackagePath": "staticwebassets\\Productos\\94.jpg"
+    },
+    {
       "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\Productos\\hades0.png",
       "PackagePath": "staticwebassets\\Productos\\hades0.png"
     },
@@ -665,6 +721,14 @@
       "PackagePath": "staticwebassets\\css\\tables.css"
     },
     {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\css\\usuarios.css",
+      "PackagePath": "staticwebassets\\css\\usuarios.css"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\css\\ventas.css",
+      "PackagePath": "staticwebassets\\css\\ventas.css"
+    },
+    {
       "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
@@ -691,6 +755,10 @@
     {
       "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\Zinzu Chan Lee.jpg",
       "PackagePath": "staticwebassets\\imagenes\\Zinzu Chan Lee.jpg"
+    },
+    {
+      "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\cr7.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\cr7.jpg"
     },
     {
       "Id": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\wwwroot\\imagenes\\csv.png",

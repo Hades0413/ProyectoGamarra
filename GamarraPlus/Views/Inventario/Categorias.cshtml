@@ -12,39 +12,39 @@
 </head>
 
 <main>
-<p class="crear-btn">
-    <button class="btn btn-primary" onclick="openCreateModal()">Crear Nuevo</button>
-</p>
+    <p class="crear-btn">
+        <button class="btn btn-primary" onclick="openCreateModal()">Crear Nuevo</button>
+    </p>
 
     <div class="wrapper">
-  
-    <table class="tabla">
+
+        <table class="tabla">
             <caption>Categorías</caption>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>DESCRIPCIÓN</th>
-                <th>ACCIONES</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+            <thead>
                 <tr>
-                    <td data-cell="categoria">@Html.DisplayFor(modelItem => item.IdCategoria)</td>
-                    <td data-cell="descripcion">@Html.DisplayFor(modelItem => item.Descripcion)</td>
-                    <td data-cell="acciones">
-                        <div class="acciones-btns">
-                        <a class="btnEditar btn-primary" onclick="openEditModal('@item.IdCategoria', '@item.Descripcion')">EDITAR</a>
-                        <button class="btnEliminar btn-danger" onclick="confirmDelete('@item.IdCategoria', '@item.Descripcion')">DELETE</button>
-                        </div>
-                    </td>
+                    <th>ID</th>
+                    <th>DESCRIPCIÓN</th>
+                    <th>ACCIONES</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-    
-</div>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td data-cell="categoria">@Html.DisplayFor(modelItem => item.IdCategoria)</td>
+                        <td data-cell="descripcion">@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                        <td data-cell="acciones">
+                            <div class="acciones-btns">
+                                <a class="btnEditar btn-primary" onclick="openEditModal('@item.IdCategoria', '@item.Descripcion')">EDITAR</a>
+                                <button class="btnEliminar btn-danger" onclick="confirmDelete('@item.IdCategoria', '@item.Descripcion')">DELETE</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
 </main>
 
 <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
@@ -53,16 +53,19 @@
             <div class="modal-body">
                 <div class="container d-flex justify-content-center align-items-center min-vh-100">
                     <div class="row border rounded-5 p-3 bg-white shadow box-area">
-                        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-                             style="background: #4c9be8;">
-                            <div class="featured-image mb-3">
-                                <i class="fa-solid fa-layer-group"></i>
+                        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="position: relative;">
+                            <div class="background-overlay saturar categoria-editar"></div>
+                            <div class="content-container">
+                                <div class="featured-image mb-3">
+                                    <i class="fa-solid fa-layer-group"></i>
+                                </div>
+                                <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">
+                                    Editar Categoría
+                                </p>
+                                <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Gamarra+</small>
                             </div>
-                            <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">
-                                Editar Categoría
-                            </p>
-                            <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Gamarra+</small>
                         </div>
+
 
                         <div class="col-md-6 right-box">
                             <div class="row align-items-center">
@@ -89,31 +92,6 @@
     </div>
 </div>
 
-<!--
-<div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalEditarLabel">Editar Categoria</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="formEditarCategoria">
-                    <div class="mb-3">
-                        <label for="inputDescripcion" class="form-label">Descripción</label>
-                        <input type="text" class="form-control" id="inputDescripcion" name="descripcion">
-                    </div>
-                    <input type="hidden" id="inputIdCategoria" name="idCategoria">
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="EditarCategoria()">Save</button>
-            </div>
-        </div>
-    </div>
-</div>
--->
 
 <div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="modalCrearLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -121,16 +99,21 @@
             <div class="modal-body">
                 <div class="container d-flex justify-content-center align-items-center min-vh-100">
                     <div class="row border rounded-5 p-3 bg-white shadow box-area">
-                        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-                             style="background: #4c9be8;">
-                            <div class="featured-image mb-3">
-                                <i class="fa-solid fa-layer-group"></i>
+                        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="position: relative;">
+                            <div class="background-overlay saturar categoria-crear"></div>
+                            <div class="content-container">
+                                <div class="featured-image mb-3">
+                                    <i class="fa-solid fa-layer-group"></i>
+                                </div>
+                                <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">
+                                    Nueva Categoría
+                                </p>
+                                <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Gamarra+</small>
                             </div>
-                            <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">
-                                Nueva Categoría
-                            </p>
-                            <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Gamarra+</small>
                         </div>
+
+
+
 
                         <div class="col-md-6 right-box">
                             <div class="row align-items-center">
@@ -149,38 +132,14 @@
                                 <button type="button" class="btn-accion btn-lg btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
-         
+
         </div>
     </div>
 </div>
-    
-<!---
-<div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="modalCrearLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalCrearLabel">Crear nueva Categoría</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="formCrearCategoria">
-                    <div class="mb-3">
-                        <label for="inputNuevaDescripcion" class="form-label">Descripción</label>
-                        <input type="text" class="form-control" id="inputNuevaDescripcion" name="nuevaDescripcion">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="CrearCategoria()">Create</button>
-            </div>
-        </div>
-    </div>
-</div>-->
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
@@ -329,4 +288,3 @@
         }
     }
 </script>
-<
