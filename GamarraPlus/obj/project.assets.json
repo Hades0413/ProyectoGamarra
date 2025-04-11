@@ -6141,26 +6141,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\migve\\.nuget\\packages\\": {}
+    "/home/hades/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj",
+      "projectUniqueName": "/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/GamarraPlus.csproj",
       "projectName": "GamarraPlus",
-      "projectPath": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\GamarraPlus.csproj",
-      "packagesPath": "C:\\Users\\migve\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\migve\\OneDrive\\Escritorio\\Proyecto\\GamarraPlus\\GamarraPlus\\obj\\",
+      "projectPath": "/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/GamarraPlus.csproj",
+      "packagesPath": "/home/hades/.nuget/packages/",
+      "outputPath": "/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\migve\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/hades/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -6178,7 +6176,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -6216,7 +6215,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

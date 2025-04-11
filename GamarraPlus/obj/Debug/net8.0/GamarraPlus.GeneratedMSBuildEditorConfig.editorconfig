@@ -17,71 +17,73 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GamarraPlus
 build_property.RootNamespace = GamarraPlus
-build_property.ProjectDir = C:\Users\migve\OneDrive\Escritorio\Proyecto\GamarraPlus\GamarraPlus\
+build_property.ProjectDir = /mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = C:\Users\migve\OneDrive\Escritorio\Proyecto\GamarraPlus\GamarraPlus
+build_property.MSBuildProjectDirectory = /mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus
 build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/migve/OneDrive/Escritorio/Proyecto/GamarraPlus/GamarraPlus/Views/Acceso/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNvXEluZGV4LmNzaHRtbA==
+[/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/Views/Acceso/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjZXNvL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/migve/OneDrive/Escritorio/Proyecto/GamarraPlus/GamarraPlus/Views/Home/CrearVenta.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhclZlbnRhLmNzaHRtbA==
+[/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/Views/Home/CrearVenta.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DcmVhclZlbnRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/migve/OneDrive/Escritorio/Proyecto/GamarraPlus/GamarraPlus/Views/Home/DetalleVenta.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhbGxlVmVudGEuY3NodG1s
+[/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/Views/Home/DetalleVenta.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9EZXRhbGxlVmVudGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/migve/OneDrive/Escritorio/Proyecto/GamarraPlus/GamarraPlus/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/migve/OneDrive/Escritorio/Proyecto/GamarraPlus/GamarraPlus/Views/Home/Inicio.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmljaW8uY3NodG1s
+[/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/Views/Home/Inicio.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmljaW8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/migve/OneDrive/Escritorio/Proyecto/GamarraPlus/GamarraPlus/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/migve/OneDrive/Escritorio/Proyecto/GamarraPlus/GamarraPlus/Views/Inventario/Categorias.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50YXJpb1xDYXRlZ29yaWFzLmNzaHRtbA==
+[/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/Views/Inventario/Categorias.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW52ZW50YXJpby9DYXRlZ29yaWFzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/migve/OneDrive/Escritorio/Proyecto/GamarraPlus/GamarraPlus/Views/Inventario/Productos.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50YXJpb1xQcm9kdWN0b3MuY3NodG1s
+[/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/Views/Inventario/Productos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW52ZW50YXJpby9Qcm9kdWN0b3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/migve/OneDrive/Escritorio/Proyecto/GamarraPlus/GamarraPlus/Views/Reporte/Ventas.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0ZVxWZW50YXMuY3NodG1s
+[/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/Views/Reporte/Ventas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVwb3J0ZS9WZW50YXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/migve/OneDrive/Escritorio/Proyecto/GamarraPlus/GamarraPlus/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+[/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/migve/OneDrive/Escritorio/Proyecto/GamarraPlus/GamarraPlus/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/migve/OneDrive/Escritorio/Proyecto/GamarraPlus/GamarraPlus/Views/Usuario/Usuarios.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xVc3Vhcmlvcy5jc2h0bWw=
+[/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/Views/Usuario/Usuarios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpby9Vc3Vhcmlvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/migve/OneDrive/Escritorio/Proyecto/GamarraPlus/GamarraPlus/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/migve/OneDrive/Escritorio/Proyecto/GamarraPlus/GamarraPlus/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+[/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/migve/OneDrive/Escritorio/Proyecto/GamarraPlus/GamarraPlus/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-z4reoa9qen
+[/mnt/Disco2/Proyectos-Repo/ProyectoGamarra/GamarraPlus/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-y1c2gmo8b6

@@ -2,9 +2,13 @@
 using GamarraPlus.Datos;
 using GamarraPlus.Models;
 using System.Xml.Linq;
-
 using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
+using System.Net.Http;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
+using System.Net;
+using System.Security.Authentication;
 
 namespace GamarraPlus.Controllers
 {
@@ -18,30 +22,60 @@ namespace GamarraPlus.Controllers
         {
             List<Producto> productos;
 
-            using (var client = new HttpClient())
+            // Crear un HttpClientHandler que omita la validación del certificado SSL
+            var handler = new HttpClientHandler
             {
-                client.BaseAddress = new Uri("https://localhost:7034/api/Inventario/productos/");
-                HttpResponseMessage response = await client.GetAsync("");
-                if (response.IsSuccessStatusCode)
+                // Si es un certificado autofirmado o un certificado inválido, se acepta.
+                ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+            };
+
+            // Forzar el uso de TLS 1.2
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            try
+            {
+                using (var client = new HttpClient(handler))
                 {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    productos = JsonConvert.DeserializeObject<List<Producto>>(apiResponse);
+                    client.BaseAddress = new Uri("http://localhost:5009/api/Inventario/productos/");
+                    HttpResponseMessage response = await client.GetAsync("");
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        productos = JsonConvert.DeserializeObject<List<Producto>>(apiResponse);
+                    }
+                    else
+                    {
+                        productos = new List<Producto>();
+                    }
                 }
-                else
-                {
-                    productos = new List<Producto>();
-                }
+            }
+            catch (HttpRequestException httpRequestException)
+            {
+                // Capturar más detalles sobre el error de la solicitud HTTP
+                Console.WriteLine($"Error en la solicitud HTTP: {httpRequestException.Message}");
+                productos = new List<Producto>();
+            }
+            catch (AuthenticationException authException)
+            {
+                // Capturar detalles sobre el error de autenticación
+                Console.WriteLine($"Error de autenticación SSL: {authException.Message}");
+                productos = new List<Producto>();
+            }
+            catch (Exception ex)
+            {
+                // Capturar cualquier otro error general
+                Console.WriteLine($"Se produjo un error inesperado: {ex.Message}");
+                productos = new List<Producto>();
             }
 
             return View(productos);
         }
 
-
         public IActionResult CrearVenta()
         {
             return View();
         }
-
 
         public IActionResult DetalleVenta()
         {
@@ -80,7 +114,6 @@ namespace GamarraPlus.Controllers
         [HttpPost]
         public JsonResult RegistrarVenta([FromBody] Venta body)
         {
-
             string rpta = "";
 
             XElement venta = new XElement("Venta",
@@ -120,6 +153,5 @@ namespace GamarraPlus.Controllers
             oVenta = _daVenta.Detalle(nrodocumento);
             return Json(oVenta);
         }
-
     }
 }

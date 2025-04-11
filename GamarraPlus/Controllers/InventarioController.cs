@@ -10,8 +10,14 @@ namespace GamarraPlus.Controllers
     [Authorize]
     public class InventarioController : Controller
     {
-        DA_Producto _daProducto = new DA_Producto();
-        DA_Categoria _daCategoria = new DA_Categoria();
+        private readonly IHttpClientFactory _httpClientFactory; // Usamos IHttpClientFactory
+        private readonly DA_Producto _daProducto = new DA_Producto();
+        private readonly DA_Categoria _daCategoria = new DA_Categoria();
+
+        public InventarioController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory;
+        }
 
         public async Task<IActionResult> Productos()
         {
@@ -27,65 +33,68 @@ namespace GamarraPlus.Controllers
             return View();
         }
 
-
         public async Task<IActionResult> ListaProducto()
         {
             List<Producto> lista;
 
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("https://localhost:7034/api/Inventario/productos/");
-                HttpResponseMessage response = await client.GetAsync("");
-                if (response.IsSuccessStatusCode)
+                using (var client = _httpClientFactory.CreateClient())
                 {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    lista = JsonConvert.DeserializeObject<List<Producto>>(apiResponse);
+                    client.BaseAddress = new Uri("http://localhost:5009/api/Inventario/productos/");
+                    HttpResponseMessage response = await client.GetAsync("");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        lista = JsonConvert.DeserializeObject<List<Producto>>(apiResponse);
+                    }
+                    else
+                    {
+                        lista = new List<Producto>();
+                        Console.WriteLine($"Error al obtener productos. Código de estado: {response.StatusCode}");
+                    }
                 }
-                else
-                {
-                    lista = new List<Producto>();
-                }
+            }
+            catch (Exception ex)
+            {
+                lista = new List<Producto>();
+                Console.WriteLine($"Excepción al obtener productos: {ex.Message}");
             }
 
             ViewBag.Categorias = await ListaCategoria();
-
             return View(lista);
         }
-
 
         [HttpPost]
         public async Task<JsonResult> GuardarProducto([FromBody] Producto obj)
         {
             bool respuesta;
+
             try
             {
-                using (var client = new HttpClient())
+                using (var client = _httpClientFactory.CreateClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:7034/api/Inventario/");
+                    client.BaseAddress = new Uri("https://localhost:5009/api/Inventario/");
 
                     var jsonProducto = JsonConvert.SerializeObject(obj);
-
                     var content = new StringContent(jsonProducto, Encoding.UTF8, "application/json");
 
                     HttpResponseMessage response = await client.PostAsync("productos", content);
 
-                    if (response.IsSuccessStatusCode)
+                    respuesta = response.IsSuccessStatusCode;
+                    if (!respuesta)
                     {
-                        respuesta = true;
-                    }
-                    else
-                    {
-                        respuesta = false;
-                        Console.WriteLine("Error al guardar el producto. Código de estado: " + response.StatusCode);
+                        Console.WriteLine($"Error al guardar el producto. Código de estado: {response.StatusCode}");
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                respuesta = false;
+                Console.WriteLine($"Excepción al guardar el producto: {ex.Message}");
             }
 
-            return Json(new { respuesta = respuesta });
+            return Json(new { respuesta });
         }
 
         [HttpPost]
@@ -95,29 +104,28 @@ namespace GamarraPlus.Controllers
 
             try
             {
-                using (var client = new HttpClient())
+                using (var client = _httpClientFactory.CreateClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:7034/api/Inventario/");
-                    HttpResponseMessage response = await client.PutAsync($"productos/{obj.IdProducto}", new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json"));
+                    client.BaseAddress = new Uri("https://localhost:5009/api/Inventario/");
+                    var jsonProducto = JsonConvert.SerializeObject(obj);
+                    var content = new StringContent(jsonProducto, Encoding.UTF8, "application/json");
 
-                    if (response.IsSuccessStatusCode)
+                    HttpResponseMessage response = await client.PutAsync($"productos/{obj.IdProducto}", content);
+
+                    respuesta = response.IsSuccessStatusCode;
+                    if (!respuesta)
                     {
-                        respuesta = true;
-                    }
-                    else
-                    {
-                        respuesta = false;
-                        Console.WriteLine("Error al actualizar el producto. Código de estado: " + response.StatusCode);
+                        Console.WriteLine($"Error al actualizar el producto. Código de estado: {response.StatusCode}");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al actualizar el producto: " + ex.Message);
                 respuesta = false;
+                Console.WriteLine($"Excepción al actualizar el producto: {ex.Message}");
             }
 
-            return Json(new { respuesta = respuesta });
+            return Json(new { respuesta });
         }
 
         [HttpDelete]
@@ -125,22 +133,27 @@ namespace GamarraPlus.Controllers
         {
             bool respuesta;
 
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("https://localhost:7034/api/Inventario/");
-                HttpResponseMessage response = await client.DeleteAsync($"productos/{idProducto}");
-                if (response.IsSuccessStatusCode)
+                using (var client = _httpClientFactory.CreateClient())
                 {
-                    respuesta = true;
-                }
-                else
-                {
-                    respuesta = false;
-                    Console.WriteLine("Error al eliminar el producto. Código de estado: " + response.StatusCode);
+                    client.BaseAddress = new Uri("https://localhost:5009/api/Inventario/");
+                    HttpResponseMessage response = await client.DeleteAsync($"productos/{idProducto}");
+
+                    respuesta = response.IsSuccessStatusCode;
+                    if (!respuesta)
+                    {
+                        Console.WriteLine($"Error al eliminar el producto. Código de estado: {response.StatusCode}");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                respuesta = false;
+                Console.WriteLine($"Excepción al eliminar el producto: {ex.Message}");
+            }
 
-            return Json(new { respuesta = respuesta });
+            return Json(new { respuesta });
         }
 
         public async Task<IActionResult> Categorias()
@@ -153,20 +166,30 @@ namespace GamarraPlus.Controllers
         {
             List<Categoria> lista;
 
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("https://localhost:7034/api/Inventario/categorias/");
-                HttpResponseMessage response = await client.GetAsync("");
-                if (response.IsSuccessStatusCode)
+                using (var client = _httpClientFactory.CreateClient())
                 {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    lista = JsonConvert.DeserializeObject<List<Categoria>>(apiResponse);
-                }
-                else
-                {
-                    lista = new List<Categoria>();
+                    client.BaseAddress = new Uri("https://localhost:5009/api/Inventario/categorias/");
+                    HttpResponseMessage response = await client.GetAsync("");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        lista = JsonConvert.DeserializeObject<List<Categoria>>(apiResponse);
+                    }
+                    else
+                    {
+                        lista = new List<Categoria>();
+                        Console.WriteLine($"Error al obtener categorías. Código de estado: {response.StatusCode}");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                lista = new List<Categoria>();
+                Console.WriteLine($"Excepción al obtener categorías: {ex.Message}");
+            }
+
             return lista;
         }
 
@@ -175,28 +198,31 @@ namespace GamarraPlus.Controllers
         {
             bool respuesta;
 
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("https://localhost:7034/api/Inventario/");
-
-                var jsonCategoria = JsonConvert.SerializeObject(obj);
-
-                var content = new StringContent(jsonCategoria, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = await client.PostAsync("categorias", content);
-
-                if (response.IsSuccessStatusCode)
+                using (var client = _httpClientFactory.CreateClient())
                 {
-                    respuesta = true;
-                }
-                else
-                {
-                    respuesta = false;
-                    Console.WriteLine("Error al guardar la categoría. Código de estado: " + response.StatusCode);
+                    client.BaseAddress = new Uri("https://localhost:5009/api/Inventario/");
+
+                    var jsonCategoria = JsonConvert.SerializeObject(obj);
+                    var content = new StringContent(jsonCategoria, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = await client.PostAsync("categorias", content);
+
+                    respuesta = response.IsSuccessStatusCode;
+                    if (!respuesta)
+                    {
+                        Console.WriteLine($"Error al guardar la categoría. Código de estado: {response.StatusCode}");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                respuesta = false;
+                Console.WriteLine($"Excepción al guardar la categoría: {ex.Message}");
+            }
 
-            return Json(new { respuesta = respuesta });
+            return Json(new { respuesta });
         }
 
         [HttpPost]
@@ -206,52 +232,56 @@ namespace GamarraPlus.Controllers
 
             try
             {
-                using (var client = new HttpClient())
+                using (var client = _httpClientFactory.CreateClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:7034/api/Inventario/");
-                    HttpResponseMessage response = await client.PutAsync($"categorias/{obj.IdCategoria}", new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json"));
+                    client.BaseAddress = new Uri("https://localhost:5009/api/Inventario/");
+                    var jsonCategoria = JsonConvert.SerializeObject(obj);
+                    var content = new StringContent(jsonCategoria, Encoding.UTF8, "application/json");
 
-                    if (response.IsSuccessStatusCode)
+                    HttpResponseMessage response = await client.PutAsync($"categorias/{obj.IdCategoria}", content);
+
+                    respuesta = response.IsSuccessStatusCode;
+                    if (!respuesta)
                     {
-                        respuesta = true;
-                    }
-                    else
-                    {
-                        respuesta = false;
-                        Console.WriteLine("Error al actualizar la categoría. Código de estado: " + response.StatusCode);
+                        Console.WriteLine($"Error al actualizar la categoría. Código de estado: {response.StatusCode}");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al actualizar la categoría: " + ex.Message);
                 respuesta = false;
+                Console.WriteLine($"Excepción al actualizar la categoría: {ex.Message}");
             }
-            return Json(new { respuesta = respuesta });
-        }
 
+            return Json(new { respuesta });
+        }
 
         [HttpDelete]
         public async Task<JsonResult> EliminarCategoria(int idCategoria)
         {
             bool respuesta;
 
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("https://localhost:7034/api/Inventario/");
-                HttpResponseMessage response = await client.DeleteAsync($"categorias/{idCategoria}");
-                if (response.IsSuccessStatusCode)
+                using (var client = _httpClientFactory.CreateClient())
                 {
-                    respuesta = true;
-                }
-                else
-                {
-                    respuesta = false;
-                    Console.WriteLine("Error al eliminar la categoría. Código de estado: " + response.StatusCode);
+                    client.BaseAddress = new Uri("https://localhost:5009/api/Inventario/");
+                    HttpResponseMessage response = await client.DeleteAsync($"categorias/{idCategoria}");
+
+                    respuesta = response.IsSuccessStatusCode;
+                    if (!respuesta)
+                    {
+                        Console.WriteLine($"Error al eliminar la categoría. Código de estado: {response.StatusCode}");
+                    }
                 }
             }
-            return Json(new { respuesta = respuesta });
-        }
+            catch (Exception ex)
+            {
+                respuesta = false;
+                Console.WriteLine($"Excepción al eliminar la categoría: {ex.Message}");
+            }
 
+            return Json(new { respuesta });
+        }
     }
 }
